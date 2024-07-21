@@ -4,7 +4,7 @@ title = 'Programmation de plateformes embarquées'
 theme = 'hugo-theme-relearn'
 [params]
   # Change default color scheme with a variant one. Can be empty, "red", "blue", "green".
-  themeVariant = "green"
+  themeVariant = "red"
   disableLandingPageButton = true
   alwaysopen = false
   # Set this to true to disable copy-to-clipboard button for inline code.
