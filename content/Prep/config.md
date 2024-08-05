@@ -18,6 +18,9 @@ IMAGE
 
 Ces broches permettent de connecter les différentes composantes électroniques qui seront utilisées avec le Pi dans ce cours.
 
+Pour l'instant, connectez le clavier et la souris sur votre Pi et branchez-le pour le démarrer.
+
+IMAGE
 
 ## Changer le _hostname_
 La première chose à faire est de renommner votre _Pi_. Ceci lui donnera un nom unique qui permettra de l'identifier sur le réseau.
@@ -44,6 +47,7 @@ La première (en bleu) est reliée au réseau du cégep.
 
 La 2e et la 3e sont reliées au réseau du département d'informatique. Connectez-y votre PC et votre Pi afin qu'ils puissent communiquer ensemble.
 
+IMAGE
 
 ## Environnement de développement
 Avant d'installer des logiciels, mettez votre système d'exploitation à jour:
