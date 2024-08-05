@@ -18,8 +18,8 @@ theme = 'hugo-theme-relearn'
   # Hide Next and Previous page buttons normally displayed full height beside content
   disableNextPrev = true
   [params.imageEffects]
-    border = true
+    border = false
     lazy = true
     lightbox = false
-    shadow = true
+    shadow = false
 #comment
