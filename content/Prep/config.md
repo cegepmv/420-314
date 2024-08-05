@@ -1,7 +1,7 @@
 +++
 title = 'Configuration du Pi'
 date = 2024-08-01T13:48:14-04:00
-draft = true
+draft = false
 weight = 11
 +++
 
@@ -24,8 +24,9 @@ La première chose à faire est de renommner votre _Pi_. Ceci lui donnera un nom
 
 Par défaut, ce nom est “raspberrypi”. Choisissez un nom ayant de bonnes chances d’être unique sur le réseau, puis écrivez-le dans le fichier `/etc/hostname`:
 
-Il faut aussi changer le nom associé à l'adresse `127.0.1.1` dans le fichier `/etc/hosts`:
+Il faut aussi changer le nom dans le fichier `/etc/hosts`, qui est associé à l'adresse locale `127.0.1.1` :
 
+![etchosts](/420-314/images/etchosts.png)
 
 ## Inverser l'écran
 Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Pour le remettre à l'endroit il faut apporter des modifications dans le fichier `/boot/config.txt`:
@@ -35,8 +36,62 @@ Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Po
 Redémarrez ensuite le Pi avec la commande `sudo restart now`.
 
 ## Connexion au réseau
+Dans ce cours nous utiliserons souvent les PC du lab pour nous connecter sur le RaspberryPi. Pour ce faire, les deux hôtes doivent être connectés sur le même réseau local. 
 
-## Activer pigpio
+Sur chacun des bureaux du local S-013 il y a 4 prises RJ-45. 
 
-## Programme python avec thonny
+La première (en bleu) est reliée au réseau du cégep.
 
+La 2e et la 3e sont reliées au réseau du département d'informatique. Connectez-y votre PC et votre Pi afin qu'ils puissent communiquer ensemble.
+
+
+## Environnement de développement
+Avant d'installer des logiciels, mettez votre système d'exploitation à jour:
+```
+sudo apt update
+sudo apt upgrade
+```
+
+#### _pigpio_
+Le langage python sera utilisé dans ce cours.
+
+La librairie python qui permet de communiquer avec le GPIO du _RaspberryPi_ est "pigpio". Pour l'installer, lancez la commande suivante sur votre Pi:
+
+```
+sudo apt install pigpio
+```
+
+Lorsque vous êtes connecté directement sur le _RaspberryPi_, il y a deux façons de développer en python.
+
+#### nano
+La première consiste à utiliser l'éditeur de texte **nano** sur la ligne de commande. Par exemple, créez un fichier nommé _hello.py_ avec la commande suivante:
+
+```
+nano hello.py
+```
+Ajoutez ensuite l'instruction suivante dans votre programme:
+
+![nano](/420-314/images/nano.png)
+
+Sauvegardez ensuite votre fichier (`CTRL-O` + `CTRL-X`), puis exécutez-le comme suit:
+
+```
+pi@demo:~ $ python hello.py
+hello
+```
+
+#### Thonny
+Le système d'exploitation _RaspberryPi OS_ inclut le programme _Thonny_, un environnement de développement simple pour python.
+
+![thonny](/420-314/images/thonny.png)
+
+Celui-ci dispose des fonctionnalités essentielles d’un IDE de base: débogueur, points d’arrêts et une console au bas de l’interface. Pour exécuter un programme, cliquez sur _Run_:
+
+![thonnyexec](/420-314/images/thonnyexec.png)
+
+## Programmes complémentaires
+#### Clavier tactile
+Si vous souhaitez utiliser un clavier tactile à l’écran, vous devez installer _matchbox-keyboard_, comme suit:
+```
+sudo apt install matchbox-keyboard
+```
