@@ -71,6 +71,4 @@ Une manière simple de se souvenir de cette loi est le triangle suivant:
 
 <!-- On peut laisser faire les schémas -->
 
-#### Exercices:
-+ 4 exercices théoriques sur la loi de Ohm
-+ 2 exercices sur TinkerCAD et le vrai breadboard avec composantes simples (LED, bouton, potentiomètre)
+

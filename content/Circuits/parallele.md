@@ -11,3 +11,17 @@ Pas de contenu à recopier...
 + Loi de Kirchhoff
 + 4 exercices théoriques
 + 2 exercices réels
+
+
+Les résistances s'additionnent
+
+Les tensions s'additionnent
+
+L'intensité est constante dans tous les segments d'un même circuit série
+
+Loi 1: La somme des intensités qui entre est égale à la somme des intensités qui sortent.
+- Dans un circuit série -> intnsité égale partout
+- Dans un circuit parallèle, ça dépend de chaque boucle
+
+
+

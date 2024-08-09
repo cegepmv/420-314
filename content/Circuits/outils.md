@@ -48,8 +48,6 @@ Un multimètre sert principalement à mesurer:
 + La tension (en volts)
 + L'intensité (en ampères)
 
-<!-- TODO: Montrer l'utilisation d'un multimètre réel -->
-
 ### Mesurer la tension
 Lorsqu'on utilise un multimètre pour mesurer la tension électrique, ce qu'on mesure est une *différence de tension* entre un pôle positif (+) et négatif (-).
 
@@ -96,6 +94,28 @@ On constate que l'intensité du courant est de 15.4mA. Si on branche le multimè
 
 On peut conclure que l'intensité du courant ne varie pas dans un même circuit.
 
+### Utilisation d'un multimètre "réel"
+Dans la section précédente on utilise des exemples de TinkerCAD, où le multimètre est très simplifié. Un multimètre réel a de nombreuses fonctionnalités, il est donc utile de voir ici comment on s'en sert.
+
+Le cadran au centre permet de sélectionner la fonction qu'on veut utiliser:
+
+![vraimulti1](/420-314/images/vraimulti1.png?width=400px)
+
+Pour mesurer la tension:
++ Câble positif (rouge) dans **INPUT** 
++ Câble négatif (noir) dans **COM**
++ Cadran sur **V (DC)**
+
+Pour mesurer l'intensité:
++ Câble positif (rouge) dans **mA** 
++ Câble négatif (noir) dans **COM**
++ Cadran sur **mA (AC/DC)**
+
+Pour mesurer la résistance:
++ Câble positif (rouge) dans **INPUT** 
++ Câble négatif (noir) dans **COM**
++ Cadran sur **Ω**
+  
 ## Plaquette de prototypage
 Une plaquette de prototypage, aussi appelée "breadboard", sert à faciliter l'assemblage des composantes électroniques lorsqu'on construit des circuits.
 
