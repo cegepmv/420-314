@@ -2,7 +2,7 @@
 title = 'Service SSH'
 date = 2024-08-01T13:49:54-04:00
 draft = false
-weight = 13
+weight = 12
 +++
 
 ## Installer SSH

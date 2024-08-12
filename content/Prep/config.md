@@ -32,11 +32,15 @@ Il faut aussi changer le nom dans le fichier `/etc/hosts`, qui est associé à l
 ![etchosts](/420-314/images/etchosts.png)
 
 ## Inverser l'écran
-Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Pour le remettre à l'endroit il faut apporter des modifications dans le fichier `/boot/config.txt`:
-+ Ajouter la ligne `lcd_rotate=2`
-+ Commentez la ligne `dtoverlay=vc4-fkms-v3d`
 
-Redémarrez ensuite le Pi avec la commande `sudo restart now`.
+Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Pour le remettre à l'endroit il faut changer la configuration dans les préférences:
+
+![screenconf1](/420-314/images/screenconf1.png?width=600px)
+
+Ensuite, changez l'orientation pour "Inverted":
+
+![screenconf](/420-314/images/screenconf2.png?width=600px)
+
 
 ## Connexion au réseau
 Dans ce cours nous utiliserons souvent les PC du lab pour nous connecter sur le RaspberryPi. Pour ce faire, les deux hôtes doivent être connectés sur le même réseau local. 

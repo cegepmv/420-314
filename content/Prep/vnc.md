@@ -2,7 +2,7 @@
 title = 'Service VNC'
 date = 2024-08-01T13:49:33-04:00
 draft = false
-weight = 12
+weight = 13
 +++
 
 VNC est un protocole qui permet d'accéder à distance à l'environnement graphique d'un hôte. Le **serveur** VNC doit s'éxécuter sur l'hôte où on veut se connecter; le **client** VNC doit s'éxécuter sur l'hôte à partir d'où on se connecte. 
