@@ -97,9 +97,11 @@ Le cadran au centre permet de sélectionner la fonction qu'on veut utiliser:
 
 ![vraimulti](/420-314/images/vraimulti.jpg)
 
-+ **⎓** désigne le courant direct (DC).
-+ **∿** désigne le courant alternatif (AC).
-+ **≃** désigne les deux types de courant (AC/DC).
+Le symbole **⎓** désigne le courant direct (DC).
+
+Le symbole **∿** désigne le courant alternatif (AC).
+
+Le symbole **≃** désigne les deux types de courant (AC/DC).
 
 Pour mesurer la tension:
 + Câble positif (rouge) dans **INPUT** 

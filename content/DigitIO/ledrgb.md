@@ -2,7 +2,7 @@
 title = 'LED RGB'
 date = 2024-08-11T18:31:43-04:00
 draft = false
-weight = 32
+weight = 34
 +++
 
 Les LED RGB ("Light Emitting Diode Red, Green, Blue") sont des diodes électroluminescentes qui peuvent émettre de la lumière dans différentes couleurs en mélangeant la lumière rouge, verte et bleue à des intensités variables. 
@@ -17,26 +17,26 @@ Les LED RGB à **anode commune** et à **cathode commune** sont deux configurati
 
 ![rgbtypes](/420-314/images/rgbtypes.png?width=400px)
 
-### Cathode commune
+## Cathode commune
 Dans une *LED RGB à cathode commune*, les cathodes (-) de chaque LED interne sont connectées ensemble et sortent sous forme d'une seule broche commune (la LED RGB dans *TinkerCAD* est de ce type).
 
 Pour allumer une couleur spécifique sur une LED RGB à cathode commune, il faut connecter la broche de cette couleur à un courant positif et connecter la cathode commune au courant négatif (*ground*).
 
-### Anode commune
+## Anode commune
 Dans une *LED RGB à anode commune*, les anodes (+) de chaque LED interne (rouge, verte et bleue) sont connectées ensemble et sortent sous forme d'une seule broche commune.
 
 Pour allumer une couleur spécifique sur une LED RGB à anode commune, il faut connecter l'anode commune à un courant positif et connecter la ou les broches de la couleur souhaitée au courant négatif (*ground*).
 
 > La LED RGB du module Keystudio KS0522 est une LED à anode commune. Il faut donc envoyer un courant positif sur l'anode et les broches qu'on veut garder éteintes, et un courant négatif sur les broches qu'on veut allumer.
 
-### Matériel requis
+## Matériel requis
 
 | | |
 |:--|--|
 | Module "RGB LED" | ![ksrgbled](/420-314/images/ksrgbled.png?width=150px) |
 | 4 connecteurs F-F | ![3jumpff](/420-314/images/3jumpff.png?width=150px) |
 
-### Connexions
+## Connexions
 
 Dans cet exemple nous utiliserons les broches suivantes du *RaspberryPi*:
 + broche 17 (courant 3,3V)
@@ -44,7 +44,7 @@ Dans cet exemple nous utiliserons les broches suivantes du *RaspberryPi*:
 + broche 13 (GPIO 27, vert)
 + broche 15 (GPIO 22, bleu)
   
-### Programme `rgb1.py`
+## Programme `rgb1.py`
 
 Le programme suivant aura pour effet d'allumer la LED selon le cycle suivant: 1 seconde en rouge, 1 seconde en vert et 1 seconde en bleu.
 
