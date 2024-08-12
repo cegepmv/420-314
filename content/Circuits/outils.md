@@ -36,10 +36,6 @@ Lorsque c'est fait, relancez la simulation; vous verrez que la LED ne "brûle" p
 
 ![batt-led-ok](/420-314/images/batt-led-ok.png?width=400px)
 
-#### Exercices
-1. Il y a une pile de 3V et une pile de 1.5V dans les composantes disponibles. Si vous connectez une LED sur chacune, avez-vous besoin d'ajouter une résistance?
-2. Ajoutez un bouton ("Pushbutton") à votre circuit pour que la LED s'allume seulement lorsque vous appuyez dessus.
-
 
 ## Multimètre
 Un multimètre est un instrument électrique utilisé pour mesurer les différentes propriétés des courants électriques et électroniques dans un circuit. Ils sont couramment utilisés par les électriciens, les électroniciens, les techniciens et les ingénieurs pour effectuer des tests et des mesures de tous genres dans le domaine de l'électricité et de l'électronique.
@@ -99,7 +95,11 @@ Dans la section précédente on utilise des exemples de TinkerCAD, où le multim
 
 Le cadran au centre permet de sélectionner la fonction qu'on veut utiliser:
 
-![vraimulti1](/420-314/images/vraimulti1.png?width=400px)
+![vraimulti](/420-314/images/vraimulti.jpg)
+
++ **⎓** désigne le courant direct (DC).
++ **∿** désigne le courant alternatif (AC).
++ **≃** désigne les deux types de courant (AC/DC).
 
 Pour mesurer la tension:
 + Câble positif (rouge) dans **INPUT** 
