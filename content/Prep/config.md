@@ -20,7 +20,8 @@ Ces broches permettent de connecter les différentes composantes électroniques 
 
 Pour l'instant, connectez le clavier et la souris sur votre Pi et branchez-le pour le démarrer.
 
-IMAGE
+![assemblage](/420-314/images/prepAssemblage.png)
+
 <!-- 
     Il faut pensez à comment pouvons nous partager les Pi entre 3 élèves et aussi comment faire nos examens
     EX: username, mdp hostname prédeterminé. 
@@ -35,6 +36,12 @@ Il faut aussi changer le nom dans le fichier `/etc/hosts`, qui est associé à l
 
 ![etchosts](/420-314/images/etchosts.png)
 
+
+<!-- 
+Necessite un reboot nn?
+Proposons :
+    init 6 ou systemctl reboot ? 
+-->
 ## Inverser l'écran
 
 Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Pour le remettre à l'endroit il faut changer la configuration dans les préférences:
@@ -44,8 +51,6 @@ Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Po
 Ensuite, changez l'orientation pour "Inverted":
 
 ![screenconf](/420-314/images/screenconf2.png?width=600px)
-
-<!-- sudo restart now ne fonctionne pas de base plutot init 6 ou systemctl reboot ? -->
 ## Connexion au réseau
 Dans ce cours nous utiliserons souvent les PC du lab pour nous connecter sur le RaspberryPi. Pour ce faire, les deux hôtes doivent être connectés sur le même réseau local. 
 
@@ -87,7 +92,7 @@ Ajoutez ensuite l'instruction suivante dans votre programme:
 
 <!-- Je préfère CTRL-S + CTRL-X -->
 Sauvegardez ensuite votre fichier (`CTRL-O` + `CTRL-X`), puis exécutez-le comme suit:
-
+<!-- Fin -->
 ```
 pi@demo:~ $ python hello.py
 hello
@@ -108,3 +113,9 @@ Si vous souhaitez utiliser un clavier tactile à l’écran, vous devez installe
 ```
 sudo apt install matchbox-keyboard
 ```
+<!-- Ajout Maxime -->
+Ensuite pour activer le clavier faites 
+```
+matchbox-keyboard
+```
+<!-- Fin -->
