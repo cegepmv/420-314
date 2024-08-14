@@ -14,14 +14,18 @@ Le Raspberry Pi est un ordinateur à part entière: on l'utilise souvent dans de
 
 Le Pi de votre kit est dans un boîtier et est déjà connecté à un écran tactile. Vous pouvez ôter la plaque de derrière pour accéder aux broches GPIO:
 
-IMAGE
+![broche](/420-314/images/prepBroche.png)
 
 Ces broches permettent de connecter les différentes composantes électroniques qui seront utilisées avec le Pi dans ce cours.
 
 Pour l'instant, connectez le clavier et la souris sur votre Pi et branchez-le pour le démarrer.
 
 IMAGE
-
+<!-- 
+    Il faut pensez à comment pouvons nous partager les Pi entre 3 élèves et aussi comment faire nos examens
+    EX: username, mdp hostname prédeterminé. 
+        Image rafraichi entre les cours. 
+ -->
 ## Changer le _hostname_
 La première chose à faire est de renommner votre _Pi_. Ceci lui donnera un nom unique qui permettra de l'identifier sur le réseau.
 
@@ -41,7 +45,7 @@ Ensuite, changez l'orientation pour "Inverted":
 
 ![screenconf](/420-314/images/screenconf2.png?width=600px)
 
-
+<!-- sudo restart now ne fonctionne pas de base plutot init 6 ou systemctl reboot ? -->
 ## Connexion au réseau
 Dans ce cours nous utiliserons souvent les PC du lab pour nous connecter sur le RaspberryPi. Pour ce faire, les deux hôtes doivent être connectés sur le même réseau local. 
 
@@ -81,6 +85,7 @@ Ajoutez ensuite l'instruction suivante dans votre programme:
 
 ![nano](/420-314/images/nano.png)
 
+<!-- Je préfère CTRL-S + CTRL-X -->
 Sauvegardez ensuite votre fichier (`CTRL-O` + `CTRL-X`), puis exécutez-le comme suit:
 
 ```
