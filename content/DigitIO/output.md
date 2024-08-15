@@ -28,7 +28,8 @@ Connectez le module LED au Pi comme suit:
 + Broche `G` sur broche `9` (Ground)
 + Broche `S` sur broche `11` (GPIO 17)
 
-IMAGE
+![testLed](/420-314/images/outputExo1.png)
+<!-- J'ai du faire sudo systemctl start pigpiod -->
 
 Lancez ensuite le programme suivant sur votre Pi:
 ```python
