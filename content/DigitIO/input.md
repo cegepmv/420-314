@@ -96,11 +96,14 @@ pi.set_pull_up_down(4,pigpio.PUD_DOWN)
 while True:
     print(pi.read(4))
 ```
+
+<!-- Mis en commentaire OT le 18 aout
+
 #### Exercices
 
 1. Faites un programme qui affiche "0" une seule fois lorsqu'on clique le bouton, et qui affiche "1" une seule fois lorsqu'on le relâche.
 2. Faites un programme qui affiche seulement "clic" chaque fois qu'on clique sur le bouton.
-<!-- J'ajoute un petit sleep pour éviter les faux positifs -->
+
 {{% expand "Solution 1." %}}
 ```python
 import pigpio
@@ -133,6 +136,6 @@ while True:
 ```
 {{% /expand %}}
 
-
+-->
 
 
