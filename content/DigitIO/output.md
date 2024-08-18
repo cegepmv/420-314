@@ -55,12 +55,6 @@ La ligne `pi.write(17,1)` permet d'envoyer un signal au `GPIO 17`. Avec l'argume
 Avec une LED ordinaire, c'est en envoyant un courant positif qu'on l'allume. Dans le cas des modules Keystudio, il faut toujours les alimenter avec un courant positif, et c'est le signal envoyé sur la broche `S` (contrôlé par le GPIO) qui agit comme un interrupteur.
 {{% /notice %}}
 
-#### Exercices
-1. Branchez le module "buzzer" sur la broche `GPIO 18`, et faites-la émettre un son durant 2 secondes.
-2. Faites un programme qui émet un son chaque fois que la LED est allumée. Un nombre passé au programme définit le nombre de fois par seconde où la LED s'allume (utilisez `sys.argv[]` dans votre programme). Par exemple, pour l'appel suivant la LED et le `buzzer`s'allumeront 4 fois par seconde:
-```python
-python exercice.py 4
-```  
 
 ## Composantes de base
 Les broches 1, 2, 4 et 17 du Pi envoient un courant continu de 3.3V ou 5V. 

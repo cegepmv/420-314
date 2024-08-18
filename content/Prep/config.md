@@ -69,6 +69,16 @@ La librairie python qui permet de communiquer avec le GPIO du _RaspberryPi_ est 
 sudo apt install pigpio
 ```
 
+Cette librairie a besoin que le service _**pigpiod**_ s'exécute sur le _RaspberryPi_. Pour démarrer le service:
+```
+sudo systemctl start pigpiod
+```
+
+Pour que le service démarre automatiquement avec le *RaspberryPi*, la commande est celle-ci:
+```
+sudo systemctl enable pigpiod
+```
+
 Lorsque vous êtes connecté directement sur le _RaspberryPi_, il y a deux façons de développer en python.
 
 #### nano
