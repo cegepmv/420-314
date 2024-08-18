@@ -48,7 +48,7 @@ Dans l'exemple suivant nous allons utiliser un bouton poussoir comme interrupteu
 
 Posez le bouton sur la plaquette et reliez une de ses pattes à la broche du GPIO 4 sur votre Pi:
 
-IMAGE
+![poussoir](/420-314/images/inputPoussoir.png)
 
 Le GPIO 4 sera utilisé en mode INPUT puisqu'il doit détecter si le bouton est appuyé. Mais il peut aussi fournir un courant de 3.3V au circuit. Il y a donc 2 possibilités pour la 2e broche du bouton:
 + On le connecte à une broche GND du Pi, donc GPIO 4 fournit le courant
@@ -100,7 +100,7 @@ while True:
 
 1. Faites un programme qui affiche "0" une seule fois lorsqu'on clique le bouton, et qui affiche "1" une seule fois lorsqu'on le relâche.
 2. Faites un programme qui affiche seulement "clic" chaque fois qu'on clique sur le bouton.
-
+<!-- J'ajoute un petit sleep pour éviter les faux positifs -->
 {{% expand "Solution 1." %}}
 ```python
 import pigpio
