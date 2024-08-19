@@ -82,7 +82,7 @@ pi.write(R,1)
 pi.write(G,1)
 pi.write(B,1)
 ```
-
+<!-- Mis dans un doc 
 #### Exercices
 1. Faites un programme qui allume la LED en rouge lorsqu'on appuie le bouton et l'éteint lorsqu'on le relâche.
 2. Faites un programme qui allume la LED en rouge lorsqu'on clique une fois et l'éteint lorsqu'on clique une deuxième fois.
@@ -312,3 +312,5 @@ while True:
     time.sleep(0.1)
 ```
 {{% /expand %}}
+
+-->
