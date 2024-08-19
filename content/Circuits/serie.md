@@ -69,7 +69,3 @@ Une manière simple de se souvenir de cette loi est le triangle suivant:
 ![triangleohm](/420-314/images/triangleohm.png?width=400px)
 
 
-<!-- On peut laisser faire les schémas -->
-
-## EXERCICES: inclure https://otardi.gitlab.io/420-314/prototypage/projet2/
-

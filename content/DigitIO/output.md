@@ -30,6 +30,7 @@ Connectez le module LED au Pi comme suit:
 
 ![testLed](/420-314/images/outputExo1.png)
 <!-- J'ai du faire sudo systemctl start pigpiod -->
+<!-- OT: Il faut aussi faire 'enable' comme dans https://cegepmv.github.io/420-314/prep/config/index.html#_pigpio_-->
 
 Lancez ensuite le programme suivant sur votre Pi:
 ```python

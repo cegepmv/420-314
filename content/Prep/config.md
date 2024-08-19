@@ -22,11 +22,7 @@ Pour l'instant, connectez le clavier et la souris sur votre Pi et branchez-le po
 
 ![assemblage](/420-314/images/prepAssemblage.png)
 
-<!-- 
-    Il faut pensez à comment pouvons nous partager les Pi entre 3 élèves et aussi comment faire nos examens
-    EX: username, mdp hostname prédeterminé. 
-        Image rafraichi entre les cours. 
- -->
+
 ## Changer le _hostname_
 La première chose à faire est de renommner votre _Pi_. Ceci lui donnera un nom unique qui permettra de l'identifier sur le réseau.
 
@@ -36,12 +32,8 @@ Il faut aussi changer le nom dans le fichier `/etc/hosts`, qui est associé à l
 
 ![etchosts](/420-314/images/etchosts.png)
 
+> Attention, le nom ne changera pas tant que vous n'aurez pas redémarrez le Pi. Pour ce faire vous pouvez lancer la commande `sudo reboot now`.
 
-<!-- 
-Necessite un reboot nn?
-Proposons :
-    init 6 ou systemctl reboot ? 
--->
 ## Inverser l'écran
 
 Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Pour le remettre à l'endroit il faut changer la configuration dans les préférences:
@@ -100,9 +92,8 @@ Ajoutez ensuite l'instruction suivante dans votre programme:
 
 ![nano](/420-314/images/nano.png)
 
-<!-- Je préfère CTRL-S + CTRL-X -->
-Sauvegardez ensuite votre fichier (`CTRL-O` + `CTRL-X`), puis exécutez-le comme suit:
-<!-- Fin -->
+Sauvegardez ensuite votre fichier (`CTRL-S` + `CTRL-X`), puis exécutez-le comme suit:
+
 ```
 pi@demo:~ $ python hello.py
 hello
@@ -123,9 +114,4 @@ Si vous souhaitez utiliser un clavier tactile à l’écran, vous devez installe
 ```
 sudo apt install matchbox-keyboard
 ```
-<!-- Ajout Maxime -->
-Ensuite pour activer le clavier faites 
-```
-matchbox-keyboard
-```
-<!-- Fin -->
+Ensuite pour activer le clavier tapez la commande `matchbox-keyboard` ou exécutez-le à partir de l'item "Accessoires" dans le menu de démarrage
