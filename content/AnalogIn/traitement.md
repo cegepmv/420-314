@@ -22,9 +22,15 @@ Lancez le programme *testADC.py* et observez ce qui se passe lorsque vous tourne
 ## Interprétation des signaux analogiques
 Lorsqu'on tourne le potentiomètre, le voltage envoyé par celui-ci vers le convertisseur augmente ou diminue (selon le sens de rotation). Le convertisseur ADC reçoit ce signal électrique et le traduit en valeur numérique, puis l'envoit vers le RaspberryPi. 
 
-Ce signal envoyé par la puce ADC vers le Pi est une valeur stockée sur 16 bits. Elle peut donc contenir 65536 valeurs distinctes, de -32768 à +32767. Mais attention: ce nombre n'est pas une mesure directe du voltage. 
+Ce signal envoyé par la puce ADC vers le Pi est une valeur stockée sur 16 bits. En théorie elle peut donc contenir 65536 valeurs distinctes, de -32768 à +32767. Mais attention: ce nombre n'est pas une mesure directe du voltage. 
 
-Le module ADS1115 est conçu pour recevoir des signaux entre -4.096V et +4.096V. Si le potentiomètre est connecté sur 5V
+Le module ADS1115 est conçu pour recevoir des signaux entre -4.096V et +4.096V. Lorsque le potentiomètre est connecté sur 5V, le signal électrique minimum qu'il envoit est de 0V et le maximum, de 5V. Sa valeur maximum dépasse donc celle que peut recevoir le module (+4.096V); cela ne causera pas de dommages, mais les valeurs lues au-delà de cette limite seront erronées. Si vous lancez le programme `testADC.py` vu précédemment et tournez le potentiomètre à son maximum, vous verrez que les valeurs ne se rendent pas jusqu'à 32767 / 5V.
+
+Connectez maintenant le potentiomètre sur le courant 3.3V. Cette fois-ci lorsque vous le tournez au maximum, vous verrez que la valeur est d'environ 26340 / 3.3V.
+
+
+
+
 
 <!-- TO BE CONTINUED -->
 
