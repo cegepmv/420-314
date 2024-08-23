@@ -24,9 +24,12 @@ Lorsqu'on tourne le potentiomètre, le voltage envoyé par celui-ci vers le conv
 
 Ce signal envoyé par la puce ADC vers le Pi est une valeur stockée sur 16 bits. En théorie elle peut donc contenir 65536 valeurs distinctes, de -32768 à +32767. Mais attention: ce nombre n'est pas une mesure directe du voltage. 
 
-Le module ADS1115 est conçu pour recevoir des signaux entre -4.096V et +4.096V. Lorsque le potentiomètre est connecté sur 5V, le signal électrique minimum qu'il envoit est de 0V et le maximum, de 5V. Sa valeur maximum dépasse donc celle que peut recevoir le module (+4.096V); cela ne causera pas de dommages, mais les valeurs lues au-delà de cette limite seront erronées. Si vous lancez le programme `testADC.py` vu précédemment et tournez le potentiomètre à son maximum, vous verrez que les valeurs ne se rendent pas jusqu'à 32767 / 5V.
+Le module ADS1115 est conçu pour recevoir des signaux entre -4.096V et +4.096V. Mais le potentiomètre, s'il est connecté sur 5V, envoit un signal entre 0 et 5V: sa valeur maximum dépasse donc celle que peut recevoir le module (+4.096V). Cela ne causera pas de dommages, mais les valeurs lues au-delà de cette limite seront erronées. Si vous lancez le programme `testADC.py` vu précédemment et tournez le potentiomètre à son maximum, vous verrez que les valeurs ne se rendent pas jusqu'à 32767 / 5V.
 
-Connectez maintenant le potentiomètre sur le courant 3.3V. Cette fois-ci lorsque vous le tournez au maximum, vous verrez que la valeur est d'environ 26340 / 3.3V.
+Connectez maintenant le potentiomètre sur le courant 3.3V. Cette fois-ci lorsque vous le tournez au maximum, vous verrez que la valeur reçue est d'environ 26340 / 3.3V: les valeurs sont bonnes car elles sont à l'intérieur des limites du convertisseur ADS1115.
+
+#### Gain
+
 
 
 
