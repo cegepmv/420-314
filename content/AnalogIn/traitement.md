@@ -30,20 +30,40 @@ Connectez maintenant le potentiomètre sur le courant 3.3V. Cette fois-ci lorsqu
 
 #### Gain
 
+Selon le senseur et le voltage du courant, les caractéristiques du signal envoyé peuvent être différentes. Comme on vient de le voir, il arrive que les limites des valeurs envoyées par le convertisseur ADS1115 ne correspondent pas exactement aux limites du courant envoyé par le senseur: avec un potentiomètre branché sur 3.3V, la valeur maximum du potentiomètre (3.3V) est inférieure au maximum du module ADS1115 (4.096V); avec un courant de 5V, le maximum du potentiomètre (5V) est supérieur à 4.096V. Mais il est possible d'ajuster le maximum du module ADS1115. 
 
+Le courant électrique peut être amplifié par le module ADS1115, et il est possible de contrôler cette amplification dans nos programmes. La variable `GAIN`, passée (optionnellement) au constructeur `ADS1115()`, correspond au facteur d'amplification qu'on souhaite avoir. Par exemple, pour multiplier par 2 le signal, on appellera la fonction comme suit:
+```python
+import busio
+import board
+import time
 
+from adafruit_ads1x15.ads1115 import ADS1115
+from adafruit_ads1x15.ads1115 import P0
+from adafruit_ads1x15.analog_in import AnalogIn
+ 
+# Initialisation de l'interface i2c
+i2c = busio.I2C(board.SCL, board.SDA)
+ 
+# GAIN = 2
+ads = ADS1115(i2c,2)
+ 
+# Créer une instance d'entrée analogique
+# et l'associer à la broche 0 du module ADC
+data = AnalogIn(ads, P0)
+ 
+# Lire la valeur numérique et le voltage
+while True:
+    print(data.value, data.voltage)
+```
 
-
-
-<!-- TO BE CONTINUED -->
-
-
-
-Selon le senseur, les caractéristiques du signal envoyé peuvent être différentes. C'est pourquoi on peut utiliser un paramètre (la variable `GAIN`) pour modifier la manière dont la puce ADC convertit le voltage en valeurs 16bit.
+Attention: le gain correspond à une amplification, mais le voltage, lui, ne change pas, ni le fait que c'est toujours sur 16 bits que le signal est représenté. Donc, un gain de valeur 2 a pour effet de diviser par 2 le voltage qui correspond à la valeur maximum de 32767.
 
 Le tableau suivant donne les valeurs possibles de la variable GAIN et l'effet qu'elles ont sur le signal envoyé:
 
 ![tblgain](/420-314/images/tblgain.png?width=400px)
+
+> Il n'est pas possible de donner des valeurs de gain autre que celles du tableau: par exemple, des gains de 3 ou 32 ne sont pas possibles et causeront une erreur dans le programme.
 
 Ceci signifie que:
 + Un gain de 1 permet de lire les voltages allant de -4.096V à 4.096V et donc, que la valeur 16bit de -32768 correspond à -4.096V et 32767 correspond à 4.096V.
@@ -55,7 +75,7 @@ En contrepartie, lorsque le gain augmente, il devient possible de détecter des 
 + Un gain de 2 permet de lire des variations de voltage de 0.0625mV.
 + etc.
 
-> Lorsque le gain augmente, la précision des valeurs lues augmente, mais la plage des valeurs possibles diminue.
+> Lorsque le gain augmente, la **précision** des valeurs lues augmente, mais l'écart entre les valeurs minimum et maximum diminue.
 
 <!--
 {{% notice info "Quelques exercices de compréhension" %}}
