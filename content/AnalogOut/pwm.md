@@ -34,7 +34,7 @@ On utilise la fonction `set_PWM_dutycycle()` du module *pigpio*. Elle prend 2 pa
 Ici le **dutycycle** n'est pas un pourcentage mais plutôt une valeur comprise entre 0 et 255. Sur le Raspberry Pi, ils correspondent respectivement à 0V et 3.3V car le courant électrique qu'on peut envoyer via une broche GPIO a une tension de 3.3V.
 
 ### Connexions
-+ LED: S sur broche 33 (GPIO13)
++ LED: S sur broche 37 (GPIO26)
 + LED: V sur courant 3.3V
 + LED: G sur "ground"
 
