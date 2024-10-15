@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>I2C :: Programmation de plateformes embarquées</title>
+    <link>http://localhost:1313/420-314/i2c/index.html</link>
+    <description>Objectif: Utiliser le protocole I2C sur un RaspberryPi</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <atom:link href="http://localhost:1313/420-314/i2c/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Input analogique :: Programmation de plateformes embarquées</title>
+    <link>http://localhost:1313/420-314/analogin/index.html</link>
+    <description>Objectif: Traiter des signaux analogiques avec le RaspberryPi</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <lastBuildDate>Tue, 20 Aug 2024 11:56:27 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/420-314/analogin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Module ADS1115</title>
+      <link>http://localhost:1313/420-314/analogin/ads1115/index.html</link>
+      <pubDate>Tue, 20 Aug 2024 11:53:41 -0400</pubDate>
+      <guid>http://localhost:1313/420-314/analogin/ads1115/index.html</guid>
+      <description>Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.&#xA;Nous utiliserons le convertisseur ADS1115 de Adafruit:&#xA;Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.&#xA;La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.</description>
+    </item>
+    <item>
+      <title>Traitement des signaux analogiques</title>
+      <link>http://localhost:1313/420-314/analogin/traitement/index.html</link>
+      <pubDate>Tue, 20 Aug 2024 11:56:27 -0400</pubDate>
+      <guid>http://localhost:1313/420-314/analogin/traitement/index.html</guid>
+      <description>Dans cet exemple nous allons utiliser le module de potentiomètre du kit Keystudio (“analog rotation sensor”) pour générer un signal analogique, et nous verrons comment varier le gain pour modifier la qualité des données reçues.&#xA;Après avoir connecté le convertisseur au Pi, il reste 6 broches inutilisées; parmi celles-ci 4 peuvent être utilisées pour recevoir des signaux analogiques: il s’agit de A0, A1, A2 et A3. Nous devons donc brancher une de ces 4 broches à celle qui correspond au signal envoyé par le senseur (la broche “S”).</description>
+    </item>
+  </channel>
+</rss>
