@@ -1,7 +1,7 @@
 +++
 title = 'Fonctionnement'
 date = 2024-10-01T16:27:41-04:00
-draft = true
+draft = false
 weight = 61
 +++
 
