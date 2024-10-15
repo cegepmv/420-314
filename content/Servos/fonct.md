@@ -30,6 +30,6 @@ La tige que le moteur fait tourner est rattachée à un potentiomètre. Ainsi, l
 
 Les nombreux engrenages, qu'on voit bien sur l'illustration, permettent de transformer la vitesse de rotation du moteur en _couple_ (la force de rotation de la tige du servo-moteur). La tige de rotation tourne moins vite que le moteur, mais sa "force" est plus grande.
 
-# Références
+## Références
 - [Fonctionnement d'un potentiomètre](https://youtu.be/TepQsclEERA)
 - [Fonctionnement d'un servo-moteur](https://youtu.be/fb8ZSe8fVIQ)

@@ -5,50 +5,50 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.123.7">
     <meta name="generator" content="Relearn 6.0.0+tip">
-    <meta name="description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
+    <meta name="description" content="On contrôle les mouvements d’un servo-moteur en utilisant la technique PWM.
+Dans cette section on utilisera le module Micro Servo 9G:
+On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
+Contrôle des servos-moteurs L’utilisation de PWM, lorsqu’on l’utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l’impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu’on veut faire faire par le moteur.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Module ADS1115 :: Programmation de plateformes embarquées">
-    <meta name="twitter:description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
-    <meta property="og:url" content="http://localhost:1313/420-314/analogin/ads1115/index.html">
+    <meta name="twitter:title" content="Contrôle avec PWM :: Programmation de plateformes embarquées">
+    <meta name="twitter:description" content="On contrôle les mouvements d’un servo-moteur en utilisant la technique PWM.
+Dans cette section on utilisera le module Micro Servo 9G:
+On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
+Contrôle des servos-moteurs L’utilisation de PWM, lorsqu’on l’utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l’impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu’on veut faire faire par le moteur.">
+    <meta property="og:url" content="http://localhost:1313/420-314/servos/controle/index.html">
     <meta property="og:site_name" content="Programmation de plateformes embarquées">
-    <meta property="og:title" content="Module ADS1115 :: Programmation de plateformes embarquées">
-    <meta property="og:description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
+    <meta property="og:title" content="Contrôle avec PWM :: Programmation de plateformes embarquées">
+    <meta property="og:description" content="On contrôle les mouvements d’un servo-moteur en utilisant la technique PWM.
+Dans cette section on utilisera le module Micro Servo 9G:
+On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
+Contrôle des servos-moteurs L’utilisation de PWM, lorsqu’on l’utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l’impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu’on veut faire faire par le moteur.">
     <meta property="og:locale" content="fr_ca">
     <meta property="og:type" content="article">
-    <meta property="article:section" content="Input analogique">
-    <meta property="article:published_time" content="2024-08-20T11:53:41-04:00">
-    <meta property="article:modified_time" content="2024-08-20T11:53:41-04:00">
-    <meta itemprop="name" content="Module ADS1115 :: Programmation de plateformes embarquées">
-    <meta itemprop="description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
-    <meta itemprop="datePublished" content="2024-08-20T11:53:41-04:00">
-    <meta itemprop="dateModified" content="2024-08-20T11:53:41-04:00">
-    <meta itemprop="wordCount" content="281">
-    <title>Module ADS1115 :: Programmation de plateformes embarquées</title><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
+    <meta property="article:section" content="Servo-moteurs">
+    <meta property="article:published_time" content="2024-10-01T16:28:35-04:00">
+    <meta property="article:modified_time" content="2024-10-01T16:28:35-04:00">
+    <meta itemprop="name" content="Contrôle avec PWM :: Programmation de plateformes embarquées">
+    <meta itemprop="description" content="On contrôle les mouvements d’un servo-moteur en utilisant la technique PWM.
+Dans cette section on utilisera le module Micro Servo 9G:
+On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
+Contrôle des servos-moteurs L’utilisation de PWM, lorsqu’on l’utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l’impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu’on veut faire faire par le moteur.">
+    <meta itemprop="datePublished" content="2024-10-01T16:28:35-04:00">
+    <meta itemprop="dateModified" content="2024-10-01T16:28:35-04:00">
+    <meta itemprop="wordCount" content="555">
+    <title>Contrôle avec PWM :: Programmation de plateformes embarquées</title><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
 
-    <link href="/420-314/css/fontawesome-all.min.css?1729011363" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fontawesome-all.min.css?1729011363" rel="stylesheet"></noscript>
-    <link href="/420-314/css/nucleus.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/auto-complete.css?1729011363" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/auto-complete.css?1729011363" rel="stylesheet"></noscript>
-    <link href="/420-314/css/perfect-scrollbar.min.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/fonts.css?1729011363" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fonts.css?1729011363" rel="stylesheet"></noscript>
-    <link href="/420-314/css/theme.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/theme-red.css?1729011363" rel="stylesheet" id="R-variant-style">
-    <link href="/420-314/css/chroma-learn.css?1729011363" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/420-314/css/variant.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/print.css?1729011363" rel="stylesheet" media="print">
-    <script src="/420-314/js/variant.js?1729011363"></script>
+    <link href="/420-314/css/fontawesome-all.min.css?1729018570" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fontawesome-all.min.css?1729018570" rel="stylesheet"></noscript>
+    <link href="/420-314/css/nucleus.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/auto-complete.css?1729018570" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/auto-complete.css?1729018570" rel="stylesheet"></noscript>
+    <link href="/420-314/css/perfect-scrollbar.min.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/fonts.css?1729018570" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fonts.css?1729018570" rel="stylesheet"></noscript>
+    <link href="/420-314/css/theme.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/theme-red.css?1729018570" rel="stylesheet" id="R-variant-style">
+    <link href="/420-314/css/chroma-learn.css?1729018570" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/420-314/css/variant.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/print.css?1729018570" rel="stylesheet" media="print">
+    <script src="/420-314/js/variant.js?1729018570"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -67,7 +67,7 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/analogin/ads1115/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/servos/controle/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -79,8 +79,8 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/index.html"><span itemprop="name">Programmation de plateformes embarquées</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/analogin/index.html"><span itemprop="name">Input analogique</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Module ADS1115</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/servos/index.html"><span itemprop="name">Servo-moteurs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Contrôle avec PWM</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
@@ -101,63 +101,75 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
             <header class="headline">
             </header>
 
-<h1 id="module-ads1115">Module ADS1115</h1>
+<h1 id="contrôle-avec-pwm">Contrôle avec PWM</h1>
 
-<p>Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d&rsquo;un senseur analogique afin de les rendre utilisables par un RaspberryPi.</p>
-<p>Nous utiliserons le convertisseur ADS1115 de <em>Adafruit</em>:</p>
-<p><img alt="adcchip" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/adcchip.png?width=300px" style=" height: auto; width: 300px;"></p>
-<p>Tous les senseurs analogiques qu&rsquo;on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le <em>Raspberry Pi</em> doit lui aussi se connecter sur le convertisseur.</p>
-<p>La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.</p>
-<h2 id="connexions">Connexions</h2>
+<p>On contrôle les mouvements d&rsquo;un servo-moteur en utilisant la technique PWM.</p>
+<p>Dans cette section on utilisera le module <em>Micro Servo 9G</em>:</p>
+<p><img alt="microservo" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/microservo.png" style=" height: auto; width: auto;"></p>
+<p>On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.</p>
+<h2 id="contrôle-des-servos-moteurs">Contrôle des servos-moteurs</h2>
+<p>L&rsquo;utilisation de PWM, lorsqu&rsquo;on l&rsquo;utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l&rsquo;impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu&rsquo;on veut faire faire par le moteur.</p>
+<!-- raw HTML omitted -->
+<p>Le servo-moteur <em>Micro Servo 9G</em> utilise un signal PWM dont la période est de 20ms, et des cycles de travail allant de 0.5ms à 2.5ms (donc 2.5% à 12.5%). Les angles correspondants à chacun de ces cycles de travail sont les suivants:</p>
+<p><img alt="pwm2" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/pwm2.png" style=" height: auto; width: auto;"></p>
+<p>Les valeurs intermédiaires, par exemple -15°, +40°, etc. sont obtenues en faisant varier le cycle de travail entre 2.5% et 12.5%. Pour calculer le cycle de travail pour un angle donné, la logique est la suivante:</p>
 <ul>
-<li>VDD sur 3.3V</li>
-<li>GND sur Ground</li>
-<li>SCL sur I2C1 SCL</li>
-<li>SDA sur I2C1 SDA</li>
+<li>La plage de valeurs possibles en degrés est de 180 (de -90° à +90°)</li>
+<li>La plage de valeurs possibles de cycle est de 10% (de 2.5% à 12.5%)</li>
+<li>On rapporte l&rsquo;angle recherché comme un pourcentage de 180</li>
+<li>On rapporte ce pourcentage sur 10</li>
+<li>On additionne 2.5 car la valeur minimale possible de cycle est 2.5%</li>
 </ul>
-<h2 id="installer-les-librairies">Installer les librairies</h2>
-<p>À partir d&rsquo;une ligne de commande, installez les librairies python requises avec <code>pip3 install</code> comme suit:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pip3 install adafruit-circuitpython-ads1x15 --break-system-packages</span></span></code></pre></div><h2 id="activer-interface-i2c">Activer interface I2C</h2>
-<p>Pour activer l&rsquo;interface <em>i2c</em>, il faut lancer la commande <code>raspi-config</code>:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo raspi-config</span></span></code></pre></div><p>Ensuite allez dans <code>Interface options</code> pour activer I2C.</p>
-<h2 id="tester-la-communication">Tester la communication</h2>
-<p>Vous pouvez tester si votre Pi peut communiquer avec les capteurs en exécutant ce script Python:</p>
-<p><em>python testADC.py</em>:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> busio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> board
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+<p>Par exemple, pour un angle de +45°:
+<img alt="calc_dc" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/calc_dc.png" style=" height: auto; width: auto;"></p>
+<ul>
+<li>Un angle de +45° correspond à 135° à partir de la valeur minimale du cycle de travail (-90° + 45°).</li>
+<li>135 / 180 = 0.75</li>
+<li>0.75 x 10 = 7.5</li>
+<li>7.5 + 2.5 = 10</li>
+</ul>
+<p>Donc un cycle de 10% correspond à un angle de +45°.</p>
+<h2 id="contrôle-avec-_pigpio_">Contrôle avec <em>pigpio</em></h2>
+<p>Pour définir une période de 20ms avec la librairie <em>pigpio</em> on doit utiliser la méthode <code>set_PWM_frequency(pi,f)</code> où <code>pi</code> désigne l&rsquo;instance de la classe &ldquo;Pi&rdquo; qu&rsquo;on utilise dans le programme et <code>f</code> désigne la fréquence en Hz correpsondant à la période.</p>
+<blockquote>
+<p>Sachant que 1Hz correspond à une période de 1ms, la formule pour convertir en Hz une période mesurée en ms est <strong>Hz = 1000 / ms</strong>.</p>
+</blockquote>
+<p>Aussi, il peut être utile de redéfinir la plage de valeurs possibles de cycles. En effet, la librairie <code>pigpio</code> utilise par défaut une plage de 256 valeurs lorsqu&rsquo;on appelle la méthode <code>set_PWM_dutycycle()</code>. Si on souhaite utiliser une plage de 100, ce qui serait utile si on représente les cycles comme des pourcentages, on doit appeler la méthode <code>set_PWM_range(pi,max)</code> où <code>max</code> correspond à la valeur maximale de la plage qu&rsquo;on veut définir.</p>
+<h2 id="exemple-1">Exemple 1</h2>
+<p>Dans cet exemple on génère un mouvement angulaire de 90 degrés à gauche.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pigpio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ads1x15.ads1115 <span style="color:#f92672">import</span> ADS1115
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ads1x15.ads1115 <span style="color:#f92672">import</span> P0
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ads1x15.analog_in <span style="color:#f92672">import</span> AnalogIn
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialisation de l&#39;interface i2c</span>
-</span></span><span style="display:flex;"><span>i2c <span style="color:#f92672">=</span> busio<span style="color:#f92672">.</span>I2C(board<span style="color:#f92672">.</span>SCL, board<span style="color:#f92672">.</span>SDA)
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une instance de la classe ADS1115 </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># et l&#39;associer à l&#39;interface i2c</span>
-</span></span><span style="display:flex;"><span>ads <span style="color:#f92672">=</span> ADS1115(i2c)
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une instance d&#39;entrée analogique</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># et l&#39;associer à la broche 0 du module ADC</span>
-</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> AnalogIn(ads, P0)
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Lire la valeur numérique et le voltage</span>
+</span></span><span style="display:flex;"><span>servo <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span> <span style="color:#75715e"># Le numéro GPIO de la broche ou est connecté le servomoteur</span>
+</span></span><span style="display:flex;"><span>FREQ <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span> <span style="color:#75715e"># Fréquence en Hz de la période</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pi <span style="color:#f92672">=</span> pigpio<span style="color:#f92672">.</span>pi()
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_mode(servo,pigpio<span style="color:#f92672">.</span>OUTPUT)
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_PWM_frequency(servo,FREQ)
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_PWM_range(servo,<span style="color:#ae81ff">100</span>) <span style="color:#75715e"># Valeurs possibles dutycycle de 0-100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plus90 <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.5</span>
+</span></span><span style="display:flex;"><span>moins90 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_PWM_dutycycle(servo,plus90)
+</span></span><span style="display:flex;"><span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_PWM_dutycycle(servo,moins90)</span></span></code></pre></div><h2 id="exemple-2">Exemple 2</h2>
+<p>Dans cet exemple on demande à l&rsquo;utilisateur d&rsquo;entrer une valeur entre 2.5 et 12.5 et on applique la rotation correspondante.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pigpio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>servo <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>
+</span></span><span style="display:flex;"><span>FREQ <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span> <span style="color:#75715e"># Fréquence en Hz de la période</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pi <span style="color:#f92672">=</span> pigpio<span style="color:#f92672">.</span>pi()
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_mode(servo,pigpio<span style="color:#f92672">.</span>OUTPUT)
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_PWM_frequency(servo,FREQ)
+</span></span><span style="display:flex;"><span>pi<span style="color:#f92672">.</span>set_PWM_range(servo,<span style="color:#ae81ff">100</span>) <span style="color:#75715e"># Valeurs possibles dutycycle de 0-100</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>    print(data<span style="color:#f92672">.</span>value, data<span style="color:#f92672">.</span>voltage)
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.5</span>)</span></span></code></pre></div><p>Vous devriez voir 2 valeurs s&rsquo;afficher à chaque demi-seconde (valeur numérique et voltage), comme dans l&rsquo;exemple suivant:</p>
-<div class="highlight wrap-code"><pre tabindex="0"><code>pi@prof:~ $ python3 testADC.py 
-7358 0.915125
-7345 0.913875
-7352 0.914375
-7339 0.9167500000000001
-7328 0.9185
-7314 0.9197500000000001
-7317 0.917625</code></pre></div><h2 id="références">Références</h2>
-<ul>
-<li>Convertisseur analogue/digital ADS1115: <a href="https://cdn-learn.adafruit.com/downloads/pdf/adafruit-4-channel-adc-breakouts.pdf" rel="external" target="_blank">https://cdn-learn.adafruit.com/downloads/pdf/adafruit-4-channel-adc-breakouts.pdf</a></li>
-<li>Librairie python pour le module: <a href="https://docs.circuitpython.org/projects/ads1x15/" rel="external" target="_blank">https://docs.circuitpython.org/projects/ads1x15/</a></li>
-</ul>
+</span></span><span style="display:flex;"><span>    dc <span style="color:#f92672">=</span> float(input(<span style="color:#e6db74">&#34;Entrez une valeur entre 2.5 et 12.5:&#34;</span>))
+</span></span><span style="display:flex;"><span>    pi<span style="color:#f92672">.</span>set_PWM_dutycycle(servo,dc)</span></span></code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
             <footer class="footline">
             </footer>
@@ -184,12 +196,12 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
         <script>
           var contentLangs=['fr'];
         </script>
-        <script src="/420-314/js/auto-complete.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.min.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.stemmer.support.min.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.multi.min.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.fr.min.js?1729011363" defer></script>
-        <script src="/420-314/js/search.js?1729011363" defer></script>
+        <script src="/420-314/js/auto-complete.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.min.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.stemmer.support.min.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.multi.min.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.fr.min.js?1729018570" defer></script>
+        <script src="/420-314/js/search.js?1729018570" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -210,14 +222,14 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
           <li data-nav-id="/420-314/digitio/output/index.html" class=""><a class="padding" href="/420-314/digitio/output/index.html">Actuateurs</a></li>
           <li data-nav-id="/420-314/digitio/input/index.html" class=""><a class="padding" href="/420-314/digitio/input/index.html">Senseurs</a></li>
           <li data-nav-id="/420-314/digitio/ledrgb/index.html" class=""><a class="padding" href="/420-314/digitio/ledrgb/index.html">LED RGB</a></li></ul></li>
-          <li data-nav-id="/420-314/analogin/index.html" class="parent "><a class="padding" href="/420-314/analogin/index.html">4. Input analogique</a><ul id="R-subsections-44ded8057918726964d0f9aef86d0d67" class="morespace collapsible-menu">
-          <li data-nav-id="/420-314/analogin/ads1115/index.html" class="active"><a class="padding" href="/420-314/analogin/ads1115/index.html">Module ADS1115</a></li>
+          <li data-nav-id="/420-314/analogin/index.html" class=""><a class="padding" href="/420-314/analogin/index.html">4. Input analogique</a><ul id="R-subsections-44ded8057918726964d0f9aef86d0d67" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/analogin/ads1115/index.html" class=""><a class="padding" href="/420-314/analogin/ads1115/index.html">Module ADS1115</a></li>
           <li data-nav-id="/420-314/analogin/traitement/index.html" class=""><a class="padding" href="/420-314/analogin/traitement/index.html">Traitement des signaux analogiques</a></li></ul></li>
           <li data-nav-id="/420-314/analogout/index.html" class=""><a class="padding" href="/420-314/analogout/index.html">5. Output analogique</a><ul id="R-subsections-79899f17ae394539155b9de7f1258b40" class="morespace collapsible-menu">
           <li data-nav-id="/420-314/analogout/pwm/index.html" class=""><a class="padding" href="/420-314/analogout/pwm/index.html">PWM</a></li></ul></li>
-          <li data-nav-id="/420-314/servos/index.html" class=""><a class="padding" href="/420-314/servos/index.html">6. Servo-moteurs</a><ul id="R-subsections-3a97cc522e8bb0fb4b8699ab4ad38bb5" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/servos/index.html" class="parent "><a class="padding" href="/420-314/servos/index.html">6. Servo-moteurs</a><ul id="R-subsections-3a97cc522e8bb0fb4b8699ab4ad38bb5" class="morespace collapsible-menu">
           <li data-nav-id="/420-314/servos/fonct/index.html" class=""><a class="padding" href="/420-314/servos/fonct/index.html">Fonctionnement</a></li>
-          <li data-nav-id="/420-314/servos/controle/index.html" class=""><a class="padding" href="/420-314/servos/controle/index.html">Contrôle avec PWM</a></li></ul></li>
+          <li data-nav-id="/420-314/servos/controle/index.html" class="active"><a class="padding" href="/420-314/servos/controle/index.html">Contrôle avec PWM</a></li></ul></li>
           <li data-nav-id="/420-314/i2c/index.html" class=""><a class="padding" href="/420-314/i2c/index.html">7. I2C</a></li>
           </ul>
         </div>
@@ -233,7 +245,7 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/analogin/ads1115/index.html" lang="fr-ca" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/servos/controle/index.html" lang="fr-ca" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>
@@ -272,8 +284,8 @@ BY-NC-SA
         </div>
       </div>
     </aside>
-    <script src="/420-314/js/clipboard.min.js?1729011363" defer></script>
-    <script src="/420-314/js/perfect-scrollbar.min.js?1729011363" defer></script>
-    <script src="/420-314/js/theme.js?1729011363" defer></script>
+    <script src="/420-314/js/clipboard.min.js?1729018570" defer></script>
+    <script src="/420-314/js/perfect-scrollbar.min.js?1729018570" defer></script>
+    <script src="/420-314/js/theme.js?1729018570" defer></script>
   </body>
 </html>

@@ -6,7 +6,21 @@
     <description>Objectif: Contrôler un servo-moteur à partir d’un RaspberryPi</description>
     <generator>Hugo</generator>
     <language>fr-ca</language>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Tue, 01 Oct 2024 16:28:35 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/420-314/servos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fonctionnement</title>
+      <link>http://localhost:1313/420-314/servos/fonct/index.html</link>
+      <pubDate>Tue, 01 Oct 2024 16:27:41 -0400</pubDate>
+      <guid>http://localhost:1313/420-314/servos/fonct/index.html</guid>
+      <description>Contrairement à un moteur électrique ordinaire qui tourne tant qu’on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s’en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.&#xA;Potentiomètre Pour comprendre le fonctionnement d’un servo-moteur, il faut tout d’abord comprendre le fonctionnement d’un potentiomètre.</description>
+    </item>
+    <item>
+      <title>Contrôle avec PWM</title>
+      <link>http://localhost:1313/420-314/servos/controle/index.html</link>
+      <pubDate>Tue, 01 Oct 2024 16:28:35 -0400</pubDate>
+      <guid>http://localhost:1313/420-314/servos/controle/index.html</guid>
+      <description>On contrôle les mouvements d’un servo-moteur en utilisant la technique PWM.&#xA;Dans cette section on utilisera le module Micro Servo 9G:&#xA;On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.&#xA;Contrôle des servos-moteurs L’utilisation de PWM, lorsqu’on l’utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l’impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu’on veut faire faire par le moteur.</description>
+    </item>
   </channel>
 </rss>

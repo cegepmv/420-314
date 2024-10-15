@@ -8,7 +8,11 @@ weight = 62
 
 On contrôle les mouvements d'un servo-moteur en utilisant la technique PWM.
 
-Dans cette section on utilisera le module *Micro Servo 9G*. On connecte les fils positifs et négatifs, et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
+Dans cette section on utilisera le module *Micro Servo 9G*:
+
+![microservo](/420-314/images/microservo.png)
+
+On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
 
 ## Contrôle des servos-moteurs
 L'utilisation de PWM, lorsqu'on l'utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l'impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu'on veut faire faire par le moteur.
@@ -59,11 +63,12 @@ pi.set_mode(servo,pigpio.OUTPUT)
 pi.set_PWM_frequency(servo,FREQ)
 pi.set_PWM_range(servo,100) # Valeurs possibles dutycycle de 0-100
 
-dc = 2.5
+plus90 = 12.5
+moins90 = 2.5
 
-while True:
-    pi.set_PWM_dutycycle(servo,dc)
-
+pi.set_PWM_dutycycle(servo,plus90)
+sleep(1)
+pi.set_PWM_dutycycle(servo,moins90)
 ```
 
 ## Exemple 2
@@ -85,6 +90,14 @@ while True:
     pi.set_PWM_dutycycle(servo,dc)
 ```
 <!--
+- 4 exercices de conversion angle/DC
+- 1 exercice où on doit entrer un angle au lieu d'un DC
+- 1 exercice avec 3 boutons correspondant à 0, 90 et 180 degrés
+- 1 exercice avec bouton KS où chaque clic bouge de 10 degrés, reset à la fin
+- 1 exercice avec potentiomètre
+- 1 exam avec bouton KS qui alterne entre 0 et 180
+- 1 exam avec servo qui fait des va et vient où bouton est un on/off
+
 ## Exercice 1
 Faites un programmes similaire à l'exmeple 2, mais l'utilisateur doit entrer un angle entre 0 et 180 degrés au lieu d'une valeur entre 2.5 et 12.5.
 

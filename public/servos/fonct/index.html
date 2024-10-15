@@ -5,50 +5,42 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.123.7">
     <meta name="generator" content="Relearn 6.0.0+tip">
-    <meta name="description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
+    <meta name="description" content="Contrairement à un moteur électrique ordinaire qui tourne tant qu’on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s’en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
+Potentiomètre Pour comprendre le fonctionnement d’un servo-moteur, il faut tout d’abord comprendre le fonctionnement d’un potentiomètre.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Module ADS1115 :: Programmation de plateformes embarquées">
-    <meta name="twitter:description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
-    <meta property="og:url" content="http://localhost:1313/420-314/analogin/ads1115/index.html">
+    <meta name="twitter:title" content="Fonctionnement :: Programmation de plateformes embarquées">
+    <meta name="twitter:description" content="Contrairement à un moteur électrique ordinaire qui tourne tant qu’on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s’en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
+Potentiomètre Pour comprendre le fonctionnement d’un servo-moteur, il faut tout d’abord comprendre le fonctionnement d’un potentiomètre.">
+    <meta property="og:url" content="http://localhost:1313/420-314/servos/fonct/index.html">
     <meta property="og:site_name" content="Programmation de plateformes embarquées">
-    <meta property="og:title" content="Module ADS1115 :: Programmation de plateformes embarquées">
-    <meta property="og:description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
+    <meta property="og:title" content="Fonctionnement :: Programmation de plateformes embarquées">
+    <meta property="og:description" content="Contrairement à un moteur électrique ordinaire qui tourne tant qu’on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s’en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
+Potentiomètre Pour comprendre le fonctionnement d’un servo-moteur, il faut tout d’abord comprendre le fonctionnement d’un potentiomètre.">
     <meta property="og:locale" content="fr_ca">
     <meta property="og:type" content="article">
-    <meta property="article:section" content="Input analogique">
-    <meta property="article:published_time" content="2024-08-20T11:53:41-04:00">
-    <meta property="article:modified_time" content="2024-08-20T11:53:41-04:00">
-    <meta itemprop="name" content="Module ADS1115 :: Programmation de plateformes embarquées">
-    <meta itemprop="description" content="Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.
-Nous utiliserons le convertisseur ADS1115 de Adafruit:
-Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.
-La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.">
-    <meta itemprop="datePublished" content="2024-08-20T11:53:41-04:00">
-    <meta itemprop="dateModified" content="2024-08-20T11:53:41-04:00">
-    <meta itemprop="wordCount" content="281">
-    <title>Module ADS1115 :: Programmation de plateformes embarquées</title><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
+    <meta property="article:section" content="Servo-moteurs">
+    <meta property="article:published_time" content="2024-10-01T16:27:41-04:00">
+    <meta property="article:modified_time" content="2024-10-01T16:27:41-04:00">
+    <meta itemprop="name" content="Fonctionnement :: Programmation de plateformes embarquées">
+    <meta itemprop="description" content="Contrairement à un moteur électrique ordinaire qui tourne tant qu’on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s’en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
+Potentiomètre Pour comprendre le fonctionnement d’un servo-moteur, il faut tout d’abord comprendre le fonctionnement d’un potentiomètre.">
+    <meta itemprop="datePublished" content="2024-10-01T16:27:41-04:00">
+    <meta itemprop="dateModified" content="2024-10-01T16:27:41-04:00">
+    <meta itemprop="wordCount" content="294">
+    <title>Fonctionnement :: Programmation de plateformes embarquées</title><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
 
-    <link href="/420-314/css/fontawesome-all.min.css?1729011363" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fontawesome-all.min.css?1729011363" rel="stylesheet"></noscript>
-    <link href="/420-314/css/nucleus.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/auto-complete.css?1729011363" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/auto-complete.css?1729011363" rel="stylesheet"></noscript>
-    <link href="/420-314/css/perfect-scrollbar.min.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/fonts.css?1729011363" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fonts.css?1729011363" rel="stylesheet"></noscript>
-    <link href="/420-314/css/theme.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/theme-red.css?1729011363" rel="stylesheet" id="R-variant-style">
-    <link href="/420-314/css/chroma-learn.css?1729011363" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/420-314/css/variant.css?1729011363" rel="stylesheet">
-    <link href="/420-314/css/print.css?1729011363" rel="stylesheet" media="print">
-    <script src="/420-314/js/variant.js?1729011363"></script>
+    <link href="/420-314/css/fontawesome-all.min.css?1729018570" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fontawesome-all.min.css?1729018570" rel="stylesheet"></noscript>
+    <link href="/420-314/css/nucleus.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/auto-complete.css?1729018570" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/auto-complete.css?1729018570" rel="stylesheet"></noscript>
+    <link href="/420-314/css/perfect-scrollbar.min.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/fonts.css?1729018570" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fonts.css?1729018570" rel="stylesheet"></noscript>
+    <link href="/420-314/css/theme.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/theme-red.css?1729018570" rel="stylesheet" id="R-variant-style">
+    <link href="/420-314/css/chroma-learn.css?1729018570" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/420-314/css/variant.css?1729018570" rel="stylesheet">
+    <link href="/420-314/css/print.css?1729018570" rel="stylesheet" media="print">
+    <script src="/420-314/js/variant.js?1729018570"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -67,7 +59,7 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/analogin/ads1115/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/servos/fonct/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -79,8 +71,8 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/index.html"><span itemprop="name">Programmation de plateformes embarquées</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/analogin/index.html"><span itemprop="name">Input analogique</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Module ADS1115</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/servos/index.html"><span itemprop="name">Servo-moteurs</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Fonctionnement</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
@@ -101,62 +93,25 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
             <header class="headline">
             </header>
 
-<h1 id="module-ads1115">Module ADS1115</h1>
+<h1 id="fonctionnement">Fonctionnement</h1>
 
-<p>Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d&rsquo;un senseur analogique afin de les rendre utilisables par un RaspberryPi.</p>
-<p>Nous utiliserons le convertisseur ADS1115 de <em>Adafruit</em>:</p>
-<p><img alt="adcchip" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/adcchip.png?width=300px" style=" height: auto; width: 300px;"></p>
-<p>Tous les senseurs analogiques qu&rsquo;on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le <em>Raspberry Pi</em> doit lui aussi se connecter sur le convertisseur.</p>
-<p>La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.</p>
-<h2 id="connexions">Connexions</h2>
+<p>Contrairement à un moteur électrique ordinaire qui tourne tant qu&rsquo;on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s&rsquo;en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.</p>
+<h2 id="potentiomètre">Potentiomètre</h2>
+<p>Pour comprendre le fonctionnement d&rsquo;un servo-moteur, il faut tout d&rsquo;abord comprendre le fonctionnement d&rsquo;un potentiomètre.</p>
+<p>Dans la fiche techniques d&rsquo;un potentiomètre, vous trouverez toujours une valeur de résistance: dans celle du modèle <a href="https://www.protechtrader.com/manuals/PTT-B1k-Rotary-Potentiometer-Datasheet.pdf" rel="external" target="_blank">PTT-B1K</a> par exemple, elle est de 0 à 1000 ohms.</p>
+<p>Un potentiomètre est une composante qui permet de faire varier la résistance d&rsquo;un circuit électronique; c&rsquo;est en fait une résistance qu&rsquo;on contrôle manuellement.</p>
+<p>Un potentiomètre a 3 broches: 2 sont utilisées pour le courant positif et négatif, et celle du milieu fournit le signal électrique au circuit.</p>
+<p>Dans le circuit suivant on voir comment connecter le potentiomètre, et on constate que le voltage est à 1,5V lorsque le potentiomètre est à la moitié:</p>
+<p><img alt="pot1" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/pot1.png" style=" height: auto; width: auto;"></p>
+<h2 id="servo-moteur">Servo-moteur</h2>
+<p>On peut décrire simplement un servo-moteur comme un moteur ordinaire dans lequel on a intégré un potentiomètre.</p>
+<p>La tige que le moteur fait tourner est rattachée à un potentiomètre. Ainsi, la rotation du moteur entraîne un mouvement du potentiomètre, ce qui augmente la résistance; la résistance qui augmente a pour effet de diminuer le courant envoyé au moteur, et cette diminution du courant fait que la rotation s&rsquo;arrête.</p>
+<p><img alt="servo1" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/servo1.png" style=" height: auto; width: auto;"></p>
+<p>Les nombreux engrenages, qu&rsquo;on voit bien sur l&rsquo;illustration, permettent de transformer la vitesse de rotation du moteur en <em>couple</em> (la force de rotation de la tige du servo-moteur). La tige de rotation tourne moins vite que le moteur, mais sa &ldquo;force&rdquo; est plus grande.</p>
+<h2 id="références">Références</h2>
 <ul>
-<li>VDD sur 3.3V</li>
-<li>GND sur Ground</li>
-<li>SCL sur I2C1 SCL</li>
-<li>SDA sur I2C1 SDA</li>
-</ul>
-<h2 id="installer-les-librairies">Installer les librairies</h2>
-<p>À partir d&rsquo;une ligne de commande, installez les librairies python requises avec <code>pip3 install</code> comme suit:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pip3 install adafruit-circuitpython-ads1x15 --break-system-packages</span></span></code></pre></div><h2 id="activer-interface-i2c">Activer interface I2C</h2>
-<p>Pour activer l&rsquo;interface <em>i2c</em>, il faut lancer la commande <code>raspi-config</code>:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo raspi-config</span></span></code></pre></div><p>Ensuite allez dans <code>Interface options</code> pour activer I2C.</p>
-<h2 id="tester-la-communication">Tester la communication</h2>
-<p>Vous pouvez tester si votre Pi peut communiquer avec les capteurs en exécutant ce script Python:</p>
-<p><em>python testADC.py</em>:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> busio
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> board
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ads1x15.ads1115 <span style="color:#f92672">import</span> ADS1115
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ads1x15.ads1115 <span style="color:#f92672">import</span> P0
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ads1x15.analog_in <span style="color:#f92672">import</span> AnalogIn
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialisation de l&#39;interface i2c</span>
-</span></span><span style="display:flex;"><span>i2c <span style="color:#f92672">=</span> busio<span style="color:#f92672">.</span>I2C(board<span style="color:#f92672">.</span>SCL, board<span style="color:#f92672">.</span>SDA)
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une instance de la classe ADS1115 </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># et l&#39;associer à l&#39;interface i2c</span>
-</span></span><span style="display:flex;"><span>ads <span style="color:#f92672">=</span> ADS1115(i2c)
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Créer une instance d&#39;entrée analogique</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># et l&#39;associer à la broche 0 du module ADC</span>
-</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> AnalogIn(ads, P0)
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Lire la valeur numérique et le voltage</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>    print(data<span style="color:#f92672">.</span>value, data<span style="color:#f92672">.</span>voltage)
-</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.5</span>)</span></span></code></pre></div><p>Vous devriez voir 2 valeurs s&rsquo;afficher à chaque demi-seconde (valeur numérique et voltage), comme dans l&rsquo;exemple suivant:</p>
-<div class="highlight wrap-code"><pre tabindex="0"><code>pi@prof:~ $ python3 testADC.py 
-7358 0.915125
-7345 0.913875
-7352 0.914375
-7339 0.9167500000000001
-7328 0.9185
-7314 0.9197500000000001
-7317 0.917625</code></pre></div><h2 id="références">Références</h2>
-<ul>
-<li>Convertisseur analogue/digital ADS1115: <a href="https://cdn-learn.adafruit.com/downloads/pdf/adafruit-4-channel-adc-breakouts.pdf" rel="external" target="_blank">https://cdn-learn.adafruit.com/downloads/pdf/adafruit-4-channel-adc-breakouts.pdf</a></li>
-<li>Librairie python pour le module: <a href="https://docs.circuitpython.org/projects/ads1x15/" rel="external" target="_blank">https://docs.circuitpython.org/projects/ads1x15/</a></li>
+<li><a href="https://youtu.be/TepQsclEERA" rel="external" target="_blank">Fonctionnement d&rsquo;un potentiomètre</a></li>
+<li><a href="https://youtu.be/fb8ZSe8fVIQ" rel="external" target="_blank">Fonctionnement d&rsquo;un servo-moteur</a></li>
 </ul>
 
             <footer class="footline">
@@ -184,12 +139,12 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
         <script>
           var contentLangs=['fr'];
         </script>
-        <script src="/420-314/js/auto-complete.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.min.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.stemmer.support.min.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.multi.min.js?1729011363" defer></script>
-        <script src="/420-314/js/lunr/lunr.fr.min.js?1729011363" defer></script>
-        <script src="/420-314/js/search.js?1729011363" defer></script>
+        <script src="/420-314/js/auto-complete.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.min.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.stemmer.support.min.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.multi.min.js?1729018570" defer></script>
+        <script src="/420-314/js/lunr/lunr.fr.min.js?1729018570" defer></script>
+        <script src="/420-314/js/search.js?1729018570" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -210,13 +165,13 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
           <li data-nav-id="/420-314/digitio/output/index.html" class=""><a class="padding" href="/420-314/digitio/output/index.html">Actuateurs</a></li>
           <li data-nav-id="/420-314/digitio/input/index.html" class=""><a class="padding" href="/420-314/digitio/input/index.html">Senseurs</a></li>
           <li data-nav-id="/420-314/digitio/ledrgb/index.html" class=""><a class="padding" href="/420-314/digitio/ledrgb/index.html">LED RGB</a></li></ul></li>
-          <li data-nav-id="/420-314/analogin/index.html" class="parent "><a class="padding" href="/420-314/analogin/index.html">4. Input analogique</a><ul id="R-subsections-44ded8057918726964d0f9aef86d0d67" class="morespace collapsible-menu">
-          <li data-nav-id="/420-314/analogin/ads1115/index.html" class="active"><a class="padding" href="/420-314/analogin/ads1115/index.html">Module ADS1115</a></li>
+          <li data-nav-id="/420-314/analogin/index.html" class=""><a class="padding" href="/420-314/analogin/index.html">4. Input analogique</a><ul id="R-subsections-44ded8057918726964d0f9aef86d0d67" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/analogin/ads1115/index.html" class=""><a class="padding" href="/420-314/analogin/ads1115/index.html">Module ADS1115</a></li>
           <li data-nav-id="/420-314/analogin/traitement/index.html" class=""><a class="padding" href="/420-314/analogin/traitement/index.html">Traitement des signaux analogiques</a></li></ul></li>
           <li data-nav-id="/420-314/analogout/index.html" class=""><a class="padding" href="/420-314/analogout/index.html">5. Output analogique</a><ul id="R-subsections-79899f17ae394539155b9de7f1258b40" class="morespace collapsible-menu">
           <li data-nav-id="/420-314/analogout/pwm/index.html" class=""><a class="padding" href="/420-314/analogout/pwm/index.html">PWM</a></li></ul></li>
-          <li data-nav-id="/420-314/servos/index.html" class=""><a class="padding" href="/420-314/servos/index.html">6. Servo-moteurs</a><ul id="R-subsections-3a97cc522e8bb0fb4b8699ab4ad38bb5" class="morespace collapsible-menu">
-          <li data-nav-id="/420-314/servos/fonct/index.html" class=""><a class="padding" href="/420-314/servos/fonct/index.html">Fonctionnement</a></li>
+          <li data-nav-id="/420-314/servos/index.html" class="parent "><a class="padding" href="/420-314/servos/index.html">6. Servo-moteurs</a><ul id="R-subsections-3a97cc522e8bb0fb4b8699ab4ad38bb5" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/servos/fonct/index.html" class="active"><a class="padding" href="/420-314/servos/fonct/index.html">Fonctionnement</a></li>
           <li data-nav-id="/420-314/servos/controle/index.html" class=""><a class="padding" href="/420-314/servos/controle/index.html">Contrôle avec PWM</a></li></ul></li>
           <li data-nav-id="/420-314/i2c/index.html" class=""><a class="padding" href="/420-314/i2c/index.html">7. I2C</a></li>
           </ul>
@@ -233,7 +188,7 @@ La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/analogin/ads1115/index.html" lang="fr-ca" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/servos/fonct/index.html" lang="fr-ca" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>
@@ -272,8 +227,8 @@ BY-NC-SA
         </div>
       </div>
     </aside>
-    <script src="/420-314/js/clipboard.min.js?1729011363" defer></script>
-    <script src="/420-314/js/perfect-scrollbar.min.js?1729011363" defer></script>
-    <script src="/420-314/js/theme.js?1729011363" defer></script>
+    <script src="/420-314/js/clipboard.min.js?1729018570" defer></script>
+    <script src="/420-314/js/perfect-scrollbar.min.js?1729018570" defer></script>
+    <script src="/420-314/js/theme.js?1729018570" defer></script>
   </body>
 </html>
