@@ -5,24 +5,34 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.123.7">
     <meta name="generator" content="Relearn 6.0.0+tip">
-    <meta name="description" content="Objectif: Utiliser le protocole I2C sur un RaspberryPi">
+    <meta name="description" content="Le fonctionnement du protocole I2C s’appuie sur des principes qu’on retrouve dans les communications digitales “sérielles”.
+Horloge et données Il se base sur 2 signaux: SCL (l’horloge ou “clock”) et SDA (les données ou “data”). L’horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l’horloge.
+Un exemple simple: supposons que vous voulez transmettre la lettre “a” à l’aide de I2C.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="I2C :: Programmation de plateformes embarquées">
-    <meta name="twitter:description" content="Objectif: Utiliser le protocole I2C sur un RaspberryPi">
-    <meta property="og:url" content="http://localhost:1313/420-314/i2c/index.html">
+    <meta name="twitter:title" content="Fonctionnement :: Programmation de plateformes embarquées">
+    <meta name="twitter:description" content="Le fonctionnement du protocole I2C s’appuie sur des principes qu’on retrouve dans les communications digitales “sérielles”.
+Horloge et données Il se base sur 2 signaux: SCL (l’horloge ou “clock”) et SDA (les données ou “data”). L’horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l’horloge.
+Un exemple simple: supposons que vous voulez transmettre la lettre “a” à l’aide de I2C.">
+    <meta property="og:url" content="http://localhost:1313/420-314/i2c/fct/index.html">
     <meta property="og:site_name" content="Programmation de plateformes embarquées">
-    <meta property="og:title" content="I2C :: Programmation de plateformes embarquées">
-    <meta property="og:description" content="Objectif: Utiliser le protocole I2C sur un RaspberryPi">
+    <meta property="og:title" content="Fonctionnement :: Programmation de plateformes embarquées">
+    <meta property="og:description" content="Le fonctionnement du protocole I2C s’appuie sur des principes qu’on retrouve dans les communications digitales “sérielles”.
+Horloge et données Il se base sur 2 signaux: SCL (l’horloge ou “clock”) et SDA (les données ou “data”). L’horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l’horloge.
+Un exemple simple: supposons que vous voulez transmettre la lettre “a” à l’aide de I2C.">
     <meta property="og:locale" content="fr_ca">
-    <meta property="og:type" content="website">
-    <meta itemprop="name" content="I2C :: Programmation de plateformes embarquées">
-    <meta itemprop="description" content="Objectif: Utiliser le protocole I2C sur un RaspberryPi">
-    <meta itemprop="datePublished" content="2024-11-21T11:28:46-05:00">
-    <meta itemprop="dateModified" content="2024-11-21T11:28:46-05:00">
-    <meta itemprop="wordCount" content="8">
-    <title>I2C :: Programmation de plateformes embarquées</title>
-    <link href="/420-314/i2c/index.xml" rel="alternate" type="application/rss+xml" title="I2C :: Programmation de plateformes embarquées"><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="I2C">
+    <meta property="article:published_time" content="2024-11-21T11:28:38-05:00">
+    <meta property="article:modified_time" content="2024-11-21T11:28:38-05:00">
+    <meta itemprop="name" content="Fonctionnement :: Programmation de plateformes embarquées">
+    <meta itemprop="description" content="Le fonctionnement du protocole I2C s’appuie sur des principes qu’on retrouve dans les communications digitales “sérielles”.
+Horloge et données Il se base sur 2 signaux: SCL (l’horloge ou “clock”) et SDA (les données ou “data”). L’horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l’horloge.
+Un exemple simple: supposons que vous voulez transmettre la lettre “a” à l’aide de I2C.">
+    <meta itemprop="datePublished" content="2024-11-21T11:28:38-05:00">
+    <meta itemprop="dateModified" content="2024-11-21T11:28:38-05:00">
+    <meta itemprop="wordCount" content="1296">
+    <title>Fonctionnement :: Programmation de plateformes embarquées</title><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
 
     <link href="/420-314/css/fontawesome-all.min.css?1732220348" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fontawesome-all.min.css?1732220348" rel="stylesheet"></noscript>
     <link href="/420-314/css/nucleus.css?1732220348" rel="stylesheet">
@@ -37,8 +47,8 @@
     <script src="/420-314/js/variant.js?1732220348"></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.relBasePath='..';
-      window.relearn.relBaseUri='..\/..';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='http:\/\/localhost:1313\/420-314';
       // variant stuff
       window.variants && variants.init( [ 'red' ] );
@@ -53,7 +63,7 @@
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/i2c/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/i2c/fct/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -65,7 +75,8 @@
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/index.html"><span itemprop="name">Programmation de plateformes embarquées</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">I2C</span><meta itemprop="position" content="2"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/i2c/index.html"><span itemprop="name">I2C</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Fonctionnement</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
@@ -80,16 +91,153 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable chapter narrow" tabindex="-1">
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
         <div class="flex-block-wrapper">
-          <article class="chapter">
+          <article class="default">
             <header class="headline">
             </header>
-<div class="article-subheading">Module 7</div>
 
-<h1 id="i2c">I2C</h1>
+<h1 id="fonctionnement">Fonctionnement</h1>
 
-<p>Objectif: Utiliser le protocole I2C sur un <em>RaspberryPi</em></p>
+<p>Le fonctionnement du protocole I2C s&rsquo;appuie sur des principes qu&rsquo;on retrouve dans les communications digitales &ldquo;sérielles&rdquo;.</p>
+<h4 id="horloge-et-données">Horloge et données</h4>
+<p>Il se base sur 2 signaux: SCL (l&rsquo;horloge ou &ldquo;clock&rdquo;) et SDA (les données ou &ldquo;data&rdquo;). L&rsquo;horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l&rsquo;horloge.</p>
+<p>Un exemple simple: supposons que vous voulez transmettre la lettre &ldquo;a&rdquo; à l&rsquo;aide de I2C. Cette lettre correspond à l&rsquo;octet <code>01100001</code> en ASCII, où chaque bit sera une impulsion électrique envoyée à chaque période de la fréquence définie par l&rsquo;horloge :</p>
+<p><img alt="sdascl" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/sdascl.png" style=" height: auto; width: auto;"></p>
+<h4 id="adressage">Adressage</h4>
+<p>Un contrôleur (&ldquo;master&rdquo;) peut envoyer et recevoir des signaux de plusieurs périphériques (&ldquo;slave&rdquo;); il peut y avoir jusqu&rsquo;à 127 périphériques. Pour s&rsquo;y retrouver, chaque périphérique se fait attribuer une adresse.</p>
+<p>La commande <code>i2cdetect -y 1</code> permet de voir les adresses des périphériques connectés:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>info@pi:~ $ i2cdetect -y 0
+
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- 2a -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- -- </code></pre></div><h2 id="opérations-bitwise">Opérations &ldquo;bitwise&rdquo;</h2>
+<p>Le protocole I2C requiert souvent qu&rsquo;on se représente les données sous forme de bits et d&rsquo;octets. Par exemple, on pourrait avoir des composants où, pour activer une fonctionnalité particulière, on doit envoyer la séquence de 4 bits <code>0101</code> (5) à l&rsquo;adresse <code>0x4a</code> (74). Dans ce contexte, il est important de savoir se représenter les données numériques au format binaire, et aussi de comprendre le fonctionnement des opérateurs <em>bitwise</em>, qui servent à effectuer des opérations sur les bits individuels des nombres binaires.</p>
+<p>Il y a 4 opérateurs bitwise en python:</p>
+<ul>
+<li><code>&amp;</code> : ET logique</li>
+<li><code>|</code>: OU logique</li>
+<li><code>&lt;&lt;</code> : Décalage vers la gauche</li>
+<li><code>&gt;&gt;</code> : Décalage vers la droite</li>
+</ul>
+<h4 id="et-logique">ET logique</h4>
+<p>Le ET logique correspond à faire une opération de conjonction sur <strong>chacun des bits</strong> correspondants de deux nombres. Le résultat vaut 1 si et seulement si les deux bits valent 1:</p>
+<ul>
+<li>1 ET 1 = 1</li>
+<li>1 ET 0 = 0</li>
+<li>0 ET 1 = 0</li>
+<li>0 ET 0 = 0</li>
+</ul>
+<p>Dans l&rsquo;exemple suivant, 235 ET 173 = 169:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>1 1 1 0 1 0 1 1  (235)
+1 0 1 0 1 1 0 1  (173)
+---------------
+1 0 1 0 1 0 0 1  (169)</code></pre></div><p>En python, on peut effectuer cette opération avec le symbole <code>&amp;</code>:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>&gt;&gt;&gt; n1 = 0b11101011
+&gt;&gt;&gt; n2 = 0b10101101
+&gt;&gt;&gt; n1 &amp; n2
+169
+&gt;&gt;&gt; bin(n1 &amp; n2)
+&#39;0b10101001&#39;</code></pre></div><h4 id="ou-logique">OU logique</h4>
+<p>Le OU logique correspond à faire une opération de disjonction sur chacun des bits correspondants de deux nombres. Le résultat vaut 1 lorsqu&rsquo;au moins un des deux bits vaut 1:</p>
+<ul>
+<li>1 ET 1 = 1</li>
+<li>1 ET 0 = 1</li>
+<li>0 ET 1 = 1</li>
+<li>0 ET 0 = 0</li>
+</ul>
+<p>Par exemple, 235 OU 173 = 239:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>1 1 1 0 1 0 1 1  (235)
+1 0 1 0 1 1 0 1  (173)
+---------------
+1 1 1 0 1 1 1 1  (239)</code></pre></div><p>En python, on peut effectuer cette opération avec le symbole <code>|</code>:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>&gt;&gt;&gt; n1 = 0b11101011
+&gt;&gt;&gt; n2 = 0b10101101
+&gt;&gt;&gt; n1 | n2
+239
+&gt;&gt;&gt; bin(n1 | n2)
+&#39;0b11101111&#39;</code></pre></div><h4 id="ou-exclusif-xor">OU exclusif (XOR)</h4>
+<p>Pour le OU exclusif, les deux bits correspondants doivent être différents pour que le résultat soit 1:</p>
+<ul>
+<li>1 ET 1 = 0</li>
+<li>1 ET 0 = 1</li>
+<li>0 ET 1 = 1</li>
+<li>0 ET 0 = 0</li>
+</ul>
+<p>Dans l&rsquo;exemple suivant, 235 XOR 173 = 70:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>1 1 1 0 1 0 1 1  (235)
+1 0 1 0 1 1 0 1  (173)
+---------------
+0 1 0 0 0 1 1 0  (70)</code></pre></div><p>En python, on peut effectuer cette opération avec le symbole <code>^</code>:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>&gt;&gt;&gt; n1 = 0b11101011
+&gt;&gt;&gt; n2 = 0b10101101
+&gt;&gt;&gt; n1 ^ n2
+70
+&gt;&gt;&gt; bin(n1 ^ n2)
+&#39;0b1000110&#39;</code></pre></div><h4 id="décalage-bit-shift">Décalage (&ldquo;bit shift&rdquo;)</h4>
+<p>Les opérations de décalage consistent à &ldquo;glisser&rdquo; la séquence de bits vers la gauche ou la droite. Concrètement cela correspond soit à ajouter un ou plusieurs 0 à la fin de la séquence (décalage à gauche), soit à supprimer un certain nombre de bits à la fin de la séquence (décalage à droite).</p>
+<p>Dans l&rsquo;exemple suivant, on décale de 1 vers la gauche le nombre 15; le résultat est 30:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>01111 (15)
+11110 (30)</code></pre></div><p>En python, l&rsquo;opérateur utilisé pour le décalage à gauche est <code>&lt;&lt;</code>:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>&gt;&gt;&gt; 15 &lt;&lt; 1
+30
+&gt;&gt;&gt; bin(15);bin(30)
+&#39;0b1111&#39;
+&#39;0b11110&#39;</code></pre></div><p>Dans l&rsquo;exemple suivant, on décale de 1 vers la droite le nombre 54; le résultat est 27:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>110110 (54)
+011011 (27)</code></pre></div><p>En python, l&rsquo;opérateur utilisé pour le décalage à droite est <code>&gt;&gt;</code>:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>&gt;&gt;&gt; 54 &gt;&gt; 1
+27
+&gt;&gt;&gt; bin(54);bin(27)
+&#39;0b110110&#39;
+&#39;0b11011&#39;</code></pre></div>
+<div class="box notices cstyle info">
+  <div class="box-label"><i class="fa-fw fas fa-info-circle"></i> Remarque</div>
+  <div class="box-content">
+
+<p>Étant donné que chaque position dans un nombre binaire est une puissance de 2, à chaque décalage vers la gauche de 1 bit, on multiplie par 2 :</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>10 &lt;&lt; 3 = 80 =  10 x 2³</code></pre></div><p>Inversement, à chaque décalage à droite de 1 bit on divise (division entière) par 2:</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code>67 &gt;&gt; 3 = 8 = 67 // 2³</code></pre></div></div>
+</div>
+<h4 id="exemple-dutilisation">Exemple d&rsquo;utilisation</h4>
+<p>Imaginons une composante électronique, par exemple une caméra dont les spécifications techniques décrivent trois paramètres de configuration possibles: un mode couleur ou noir et blanc, un mode haute définition et un filtre pour augmenter le contraste. Ces paramètres correspondent chacun à 1 bit dans une séquence de 3 bits :</p>
+<ul>
+<li>bit 1: Filtre activé / filtre désactivé</li>
+<li>bit 2: Haute définition / basse définition</li>
+<li>bit 3: Couleur / noir et blanc</li>
+</ul>
+<blockquote>
+<p>Attention: On les ordonne de droite à gauche.</p>
+</blockquote>
+<p>Donc, la valeur de cette séquence correspond à une combinaison des paramètres de configuration:</p>
+<ul>
+<li><code>101</code>: Couleur, basse définition, filtre activé</li>
+<li><code>010</code>: Noir et blanc, haute définition, filtre désactivé</li>
+<li><code>001</code>: Noir et blanc, basse définition, filtre activé</li>
+<li>etc.</li>
+</ul>
+<p>Cette valeur doit être écrite à l&rsquo;adresse mémoire <code>0x20</code>; ensuite, lorsque les données seront lues, l&rsquo;image aura les propriétés définies par la configuration.</p>
+<p>Imaginons qu&rsquo;on a une fonction pour configurer notre caméra dont les paramètres sont des valeurs booléennes:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>configCamera(oCamera,activerFiltre<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, activerHauteDef<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, activerCouleur<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)</span></span></code></pre></div><p>Cette fonction peut être définie comme suit:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">configCamera</span>(oCam,onFilt,onHDef,onCoul):
+</span></span><span style="display:flex;"><span>    config <span style="color:#f92672">=</span> <span style="color:#ae81ff">0b000</span>
+</span></span><span style="display:flex;"><span>    config <span style="color:#f92672">=</span> config <span style="color:#f92672">|</span> (onFilt <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Premier bit : filtre</span>
+</span></span><span style="display:flex;"><span>    config <span style="color:#f92672">=</span> config <span style="color:#f92672">|</span> (onHDef <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># Deuxième bit : HD</span>
+</span></span><span style="display:flex;"><span>    config <span style="color:#f92672">=</span> config <span style="color:#f92672">|</span> (onCoul <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># troisième bit : couleur</span>
+</span></span><span style="display:flex;"><span>    oCam<span style="color:#f92672">.</span>write(<span style="color:#ae81ff">0x20</span>, config)</span></span></code></pre></div><p>Puisque les valeurs <strong>True</strong> ou <strong>False</strong> en python correspondent respectivement à <code>0b1</code> et <code>0b0</code>, le décalage place cette valeur au bon endroit dans la séquence. Par exemple, si <code>onHDef = True</code>, le décalage donne <code>010</code>; si <code>onHDef = False</code>, le décalage donne <code>000</code>. Cette opération permet de représenter les trois valeurs booléennes en une séquence de 3 bits.</p>
+<p>Ensuite, pour appliquer ces valeurs, on doit les combiner dans une seule séquence. Par exemple si on veut que le filtre (<code>001</code>) et que la couleur (<code>100</code>) soient activés, on devra envoyer <code>101</code> à la caméra. L&rsquo;opérateur OU logique permet de faire cette combinaison. En effet si la valeur initiale de <em>config</em> est de 0:</p>
+<ul>
+<li><code>config | (onFilt &lt;&lt; 0)</code> vaut <code>000 | 001</code> = 001</li>
+<li><code>config | (onHDef &lt;&lt; 1)</code> vaut <code>001 | 000</code> = 001</li>
+<li><code>config | (onCoul &lt;&lt; 2)</code> vaut <code>001 | 100</code> = 101</li>
+</ul>
+<p>Ce qui permet d&rsquo;écrire la valeur qui correspond à la configuration souhaitée à l&rsquo;adresse <code>0x20</code>.</p>
 
             <footer class="footline">
             </footer>
@@ -150,8 +298,8 @@
           <li data-nav-id="/420-314/servos/index.html" class=""><a class="padding" href="/420-314/servos/index.html">6. Servo-moteurs</a><ul id="R-subsections-3a97cc522e8bb0fb4b8699ab4ad38bb5" class="morespace collapsible-menu">
           <li data-nav-id="/420-314/servos/fonct/index.html" class=""><a class="padding" href="/420-314/servos/fonct/index.html">Fonctionnement</a></li>
           <li data-nav-id="/420-314/servos/controle/index.html" class=""><a class="padding" href="/420-314/servos/controle/index.html">Contrôle avec PWM</a></li></ul></li>
-          <li data-nav-id="/420-314/i2c/index.html" class="active parent "><a class="padding" href="/420-314/i2c/index.html">7. I2C</a><ul id="R-subsections-8c32969aa0a203beacabb0100b592fe1" class="morespace collapsible-menu">
-          <li data-nav-id="/420-314/i2c/fct/index.html" class=""><a class="padding" href="/420-314/i2c/fct/index.html">Fonctionnement</a></li>
+          <li data-nav-id="/420-314/i2c/index.html" class="parent "><a class="padding" href="/420-314/i2c/index.html">7. I2C</a><ul id="R-subsections-8c32969aa0a203beacabb0100b592fe1" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/i2c/fct/index.html" class="active"><a class="padding" href="/420-314/i2c/fct/index.html">Fonctionnement</a></li>
           <li data-nav-id="/420-314/i2c/led8x8/index.html" class=""><a class="padding" href="/420-314/i2c/led8x8/index.html">Matrice LED 8x8</a></li></ul></li>
           </ul>
         </div>
@@ -167,7 +315,7 @@
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/i2c/index.html" lang="fr-ca" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/i2c/fct/index.html" lang="fr-ca" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>

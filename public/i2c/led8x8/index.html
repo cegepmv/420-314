@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head><script src="/420-314/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=420-314/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="generator" content="Relearn 6.0.0+tip">
+    <meta name="description" content="La matrice de LED founie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en “output” et donc n’envoie pas de signal analogique au RaspberryPi, on n’a pas besoin du convertisseur ADC pour l’utiliser. Elle est équipée d’une puce HT16K33, conçue spécialement pour contrôler l’affichage dans des matrices de LED de différentes dimensions.
+À partir de RaspberryPi il existe deux manières de lui envoyer des données:">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Matrice LED 8x8 :: Programmation de plateformes embarquées">
+    <meta name="twitter:description" content="La matrice de LED founie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en “output” et donc n’envoie pas de signal analogique au RaspberryPi, on n’a pas besoin du convertisseur ADC pour l’utiliser. Elle est équipée d’une puce HT16K33, conçue spécialement pour contrôler l’affichage dans des matrices de LED de différentes dimensions.
+À partir de RaspberryPi il existe deux manières de lui envoyer des données:">
+    <meta property="og:url" content="http://localhost:1313/420-314/i2c/led8x8/index.html">
+    <meta property="og:site_name" content="Programmation de plateformes embarquées">
+    <meta property="og:title" content="Matrice LED 8x8 :: Programmation de plateformes embarquées">
+    <meta property="og:description" content="La matrice de LED founie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en “output” et donc n’envoie pas de signal analogique au RaspberryPi, on n’a pas besoin du convertisseur ADC pour l’utiliser. Elle est équipée d’une puce HT16K33, conçue spécialement pour contrôler l’affichage dans des matrices de LED de différentes dimensions.
+À partir de RaspberryPi il existe deux manières de lui envoyer des données:">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="I2C">
+    <meta property="article:published_time" content="2024-11-21T11:28:46-05:00">
+    <meta property="article:modified_time" content="2024-11-21T11:28:46-05:00">
+    <meta itemprop="name" content="Matrice LED 8x8 :: Programmation de plateformes embarquées">
+    <meta itemprop="description" content="La matrice de LED founie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en “output” et donc n’envoie pas de signal analogique au RaspberryPi, on n’a pas besoin du convertisseur ADC pour l’utiliser. Elle est équipée d’une puce HT16K33, conçue spécialement pour contrôler l’affichage dans des matrices de LED de différentes dimensions.
+À partir de RaspberryPi il existe deux manières de lui envoyer des données:">
+    <meta itemprop="datePublished" content="2024-11-21T11:28:46-05:00">
+    <meta itemprop="dateModified" content="2024-11-21T11:28:46-05:00">
+    <meta itemprop="wordCount" content="890">
+    <title>Matrice LED 8x8 :: Programmation de plateformes embarquées</title><link rel="icon" href="/420-314/images/favicon.png" type="image/png">
+
+    <link href="/420-314/css/fontawesome-all.min.css?1732220348" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fontawesome-all.min.css?1732220348" rel="stylesheet"></noscript>
+    <link href="/420-314/css/nucleus.css?1732220348" rel="stylesheet">
+    <link href="/420-314/css/auto-complete.css?1732220348" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/auto-complete.css?1732220348" rel="stylesheet"></noscript>
+    <link href="/420-314/css/perfect-scrollbar.min.css?1732220348" rel="stylesheet">
+    <link href="/420-314/css/fonts.css?1732220348" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/420-314/css/fonts.css?1732220348" rel="stylesheet"></noscript>
+    <link href="/420-314/css/theme.css?1732220348" rel="stylesheet">
+    <link href="/420-314/css/theme-red.css?1732220348" rel="stylesheet" id="R-variant-style">
+    <link href="/420-314/css/chroma-learn.css?1732220348" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/420-314/css/variant.css?1732220348" rel="stylesheet">
+    <link href="/420-314/css/print.css?1732220348" rel="stylesheet" media="print">
+    <script src="/420-314/js/variant.js?1732220348"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/420-314';
+      // variant stuff
+      window.variants && variants.init( [ 'red' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/420-314/i2c/led8x8/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/index.html"><span itemprop="name">Programmation de plateformes embarquées</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/420-314/i2c/index.html"><span itemprop="name">I2C</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Matrice LED 8x8</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <article class="default">
+            <header class="headline">
+            </header>
+
+<h1 id="matrice-led-8x8">Matrice LED 8x8</h1>
+
+<p>La matrice de LED founie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en &ldquo;output&rdquo; et donc n&rsquo;envoie pas de signal analogique au RaspberryPi, on n&rsquo;a pas besoin du convertisseur ADC pour l&rsquo;utiliser. Elle est équipée d&rsquo;une puce HT16K33, conçue spécialement pour contrôler l&rsquo;affichage dans des matrices de LED de différentes dimensions.</p>
+<p>À partir de RaspberryPi il existe deux manières de lui envoyer des données:</p>
+<ul>
+<li>Le module <code>adafruit_ht16k33</code></li>
+<li>Le module <code>adafruit_bus_device</code>, plus générique</li>
+</ul>
+<p>Dans cette section nous verrons les deux méthodes.</p>
+<h2 id="adafruit_ht16k33">adafruit_ht16k33</h2>
+<p>Ce module définit de nombreuses classes permettant de contrôler facilement divers types de matrices de LED. Il permet d&rsquo;éviter d&rsquo;avoir à gérer les adresses mémoire de chacune des LED séparément.</p>
+<p>Pour l&rsquo;uitiliser, il faut d&rsquo;abord installer le module <code>ht16k33</code> comme suit:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip3 install adafruit-circuitpython-ht16k33</span></span></code></pre></div><p>La référence:</p>
+<p><a href="https://docs.circuitpython.org/projects/ht16k33/en/latest/api.html#adafruit_ht16k33.matrix.Matrix8x8" rel="external" target="_blank">https://docs.circuitpython.org/projects/ht16k33/en/latest/api.html#adafruit_ht16k33.matrix.Matrix8x8</a></p>
+<p>Le courant envoyé au module doit être de 3.3V.</p>
+<p>La librairie définit une classe <code>matrix</code> qui est utilisable comme une liste en python. Cette liste est un tableau de 8x8 dont les éléments peuvent avoir la valeur 0 (éteint) ou 1 (allumé).</p>
+<h3 id="exemple">Exemple</h3>
+<p>Pour allumer un point aux coordonnées [2,2] de la matrice:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> board
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> busio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> adafruit_ht16k33 <span style="color:#f92672">import</span> matrix
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i2c <span style="color:#f92672">=</span> busio<span style="color:#f92672">.</span>I2C(board<span style="color:#f92672">.</span>SCL, board<span style="color:#f92672">.</span>SDA)
+</span></span><span style="display:flex;"><span>mat <span style="color:#f92672">=</span> matrix<span style="color:#f92672">.</span>Matrix8x8(i2c)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mat[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>fill(<span style="color:#ae81ff">0</span>) <span style="color:#75715e"># Eteint toutes les LED</span></span></span></code></pre></div><h3 id="propriétés">Propriétés</h3>
+<p>La classe <code>matrix</code> a les propriétés suivantes:</p>
+<h6 id="blink_rate--int">blink_rate : int</h6>
+<p>Valeur de 0 à 3:</p>
+<ul>
+<li>1: 4 fois parseconde</li>
+<li>2: 2 fois par seconde</li>
+<li>3: 1 fois par seconde</li>
+</ul>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>blink_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span></span></span></code></pre></div><h6 id="brightness--float">brightness : float</h6>
+<p>Valeur entre 0 et 1; change la luminosité de l&rsquo;ensemble des points.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>brightness <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span></span></span></code></pre></div><h6 id="rows--int-columns--int">rows : int, columns : int</h6>
+<p>Donnent le nombre de rangées et de colonnes de la matrice. Lecture seule</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(mat<span style="color:#f92672">.</span>columns)</span></span></code></pre></div><h3 id="méthodes">Méthodes</h3>
+<h6 id="fillint">fill(int)</h6>
+<p>Le paramètre peut avoir une valeur de 0 ou 1. Éteint ou allume l&rsquo;ensemble des points.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>fill(<span style="color:#ae81ff">1</span>)</span></span></code></pre></div><h6 id="shiftint-int-bool">shift(int, int, bool)</h6>
+<p>Permet de décaler le point selon les valeurs des deux premiers paramètres. Si le booléen est <em>Vrai</em>, le point qui dépasse la limite de la matrice apparaîtra du côté opposé.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>shift(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#66d9ef">True</span>)</span></span></code></pre></div><h6 id="shift_leftbool-shift_rightbool-shift_upbool-shift_downbool">shift_left(bool), shift_right(bool), shift_up(bool), shift_down(bool)</h6>
+<p>Décale le point de 1 dans le sens spécifié. Si le booléen est <em>Vrai</em>, le point qui dépasse la limite de la matrice apparaîtra du côté opposé.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mat[<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>]
+</span></span><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>shift_up()
+</span></span><span style="display:flex;"><span>mat<span style="color:#f92672">.</span>shift_right(<span style="color:#66d9ef">True</span>)</span></span></code></pre></div><h2 id="adafruit_bus_device">adafruit_bus_device</h2>
+<p>On utilisera la classe <code>I2CDevice</code> pour communiquer avec la matrice de LED. Les méthodes ici sont plus génériques que celles de la section précédente car elles permettent de contrôler n&rsquo;importe quel senseur ou actuateur utilisant I2C. Nous utiliserons les deux suivantes:</p>
+<h6 id="readintobuf">readinto(buf)</h6>
+<p>Lit les données sur le composant I2C (dans notre cas, la matrice de LED) et les écrit dans la variable désignée par <code>buf</code>. Ces données sont au format binaire.</p>
+<h6 id="writebuf">write(buf)</h6>
+<p>Écrit sur le composant I2C les données contenues dans la variable <code>buf</code>.</p>
+<p>Le référence:</p>
+<p><a href="https://docs.circuitpython.org/projects/busdevice/en/latest/api.html" rel="external" target="_blank">https://docs.circuitpython.org/projects/busdevice/en/latest/api.html</a></p>
+<h3 id="exemple-1">Exemple 1</h3>
+<p>Dans le programme suivant on allume une série de LED sur chaque rangée successivement:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> board
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> busio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> adafruit_bus_device.i2c_device <span style="color:#66d9ef">as</span> i2c_device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i2cBus <span style="color:#f92672">=</span> busio<span style="color:#f92672">.</span>I2C(board<span style="color:#f92672">.</span>SCL, board<span style="color:#f92672">.</span>SDA)
+</span></span><span style="display:flex;"><span>module <span style="color:#f92672">=</span> i2c_device<span style="color:#f92672">.</span>I2CDevice(i2cBus, <span style="color:#ae81ff">0x70</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>octetAffiche <span style="color:#f92672">=</span> <span style="color:#ae81ff">165</span> <span style="color:#75715e">#10100101</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>write(bytes([i])) <span style="color:#75715e"># Spécifier l&#39;adresse qui sera utilisée</span>
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>write(bytes([i,octetAffiche])) <span style="color:#75715e"># Écrire les données à l&#39;adresse</span>
+</span></span><span style="display:flex;"><span>    sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>write(bytes([i,<span style="color:#ae81ff">0</span>])) <span style="color:#75715e"># Écrire les données (vides) à l&#39;adresse</span></span></span></code></pre></div><p><code>0x70</code> est l&rsquo;adresse que le RaspberryPi utilise pour référer à la matrice de LED. Chaque composante I2C a une adresse standard qui peut aller de 0x08 à 0x77: vous pouvez la voir en utilisant la commande <code>i2cdetect -y 1</code> dans linux.</p>
+<p>Chaque rangée de la matrice est représentée par un octet: la valeur de cet octet détermine quelles LED seront allumées. Par exemple, pour allumer la première LED, l&rsquo;octet sera <code>10000000</code>, ce qui correspond au nombre 128. Le nombre 129 est <code>10000001</code> en binaire, donc si on écrit 129 ce sont les deux LED des extrémités qui s&rsquo;allumeront, etc.</p>
+<p>Lorsqu&rsquo;on veut écrire nos 8 bits de données pour allumer les LED dans une rangée, on doit spécifier à quelle adresse écrire ces 8 bits.Notre matrice a seulement besoin de 8 octets pour représenter l&rsquo;état des 64 LED. Cependant la puce que la matrice utilise est faite pour fonctionner avec les matrice 16x16. En conséquence, plusieurs adresses sont inutiles. Les seules adresses qui nous sont utiles sont 0x00, 0x02, 0x04, 0x06, 0x08, 0x0a, 0x0c, 0x0e. Le tableau suivant illustre les adresses utilisables:</p>
+<p><img alt="ledgrid" class="noborder lazy nolightbox noshadow figure-image" loading="lazy" src="/420-314/images/ledgrid.png?width=400px" style=" height: auto; width: 400px;"></p>
+<h2 id="exemple-2">Exemple 2</h2>
+<p>Dans le programme suivant on allume chaque LED de la première rangée une après l&rsquo;autre:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> board
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> busio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> adafruit_bus_device.i2c_device <span style="color:#66d9ef">as</span> i2c_device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i2cBus <span style="color:#f92672">=</span> busio<span style="color:#f92672">.</span>I2C(board<span style="color:#f92672">.</span>SCL, board<span style="color:#f92672">.</span>SDA)
+</span></span><span style="display:flex;"><span>module <span style="color:#f92672">=</span> i2c_device<span style="color:#f92672">.</span>I2CDevice(i2cBus, <span style="color:#ae81ff">0x70</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> octet <span style="color:#f92672">in</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">32</span>,<span style="color:#ae81ff">64</span>,<span style="color:#ae81ff">128</span>]:
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>write(bytes([<span style="color:#ae81ff">0</span>])) <span style="color:#75715e"># Spécifier l&#39;adresse qui sera utilisée</span>
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>write(bytes([<span style="color:#ae81ff">0</span>,octet])) <span style="color:#75715e"># Écrire les données à l&#39;adresse</span>
+</span></span><span style="display:flex;"><span>    sleep(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>write(bytes([<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>])) <span style="color:#75715e"># Écrire les données (vides) à l&#39;adresse</span></span></span></code></pre></div><h2 id="exemple-3">Exemple 3</h2>
+<p>Il est possible de lire dans la composante I2C les données à une adresse spécifique. Dans le programme suivant on allume une série de LED dans la même rangée et ensuite on lit la valeur de la rangée:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> board
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> busio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> adafruit_bus_device.i2c_device <span style="color:#66d9ef">as</span> i2c_device
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i2cBus <span style="color:#f92672">=</span> busio<span style="color:#f92672">.</span>I2C(board<span style="color:#f92672">.</span>SCL, board<span style="color:#f92672">.</span>SDA)
+</span></span><span style="display:flex;"><span>module <span style="color:#f92672">=</span> i2c_device<span style="color:#f92672">.</span>I2CDevice(i2cBus, <span style="color:#ae81ff">0x70</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ecrire une valeur</span>
+</span></span><span style="display:flex;"><span>octet <span style="color:#f92672">=</span> <span style="color:#ae81ff">45</span>
+</span></span><span style="display:flex;"><span>module<span style="color:#f92672">.</span>write(bytes([<span style="color:#ae81ff">0</span>]))
+</span></span><span style="display:flex;"><span>module<span style="color:#f92672">.</span>write(bytes([<span style="color:#ae81ff">0</span>,octet])) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Lire la valeur</span>
+</span></span><span style="display:flex;"><span>donnees <span style="color:#f92672">=</span> bytearray(<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># Créer la liste d&#39;octets</span>
+</span></span><span style="display:flex;"><span>module<span style="color:#f92672">.</span>write(bytes([<span style="color:#ae81ff">0</span>]))
+</span></span><span style="display:flex;"><span>module<span style="color:#f92672">.</span>readinto(donnees)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Valeur binaire:&#34;</span>,bin(donnees[<span style="color:#ae81ff">0</span>]))</span></span></code></pre></div><p>La méthode <code>readinto()</code> a une séquence d&rsquo;octets, créée par la fonction <code>bytearray()</code>, comme argument. Les données lues sont écrites dans cette séquence d&rsquo;octets.</p>
+<p>Avant d&rsquo;appeler <code>readinto()</code>, le protocole I2C requiert qu&rsquo;on envoie à la composante l&rsquo;adresse qu&rsquo;on veut lire avec <code>write()</code>.</p>
+
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<svg width="180.624" height="36.042" viewBox="0 0 180.624 36.042" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#ffffff" stroke-width="0.25mm" fill="#ffffff" style="stroke:#ffffff;stroke-width:0.25mm;fill:#ffffff"><path d="M 110.823 28.038 L 111.565 27.561 Q 112.042 29.893 113.526 31.642 A 9.575 9.575 0 0 0 116.683 34.061 A 11.439 11.439 0 0 0 117.315 34.345 A 12.217 12.217 0 0 0 120.136 35.116 A 16.455 16.455 0 0 0 122.642 35.299 Q 125.663 35.299 128.021 34.239 Q 130.38 33.179 131.731 31.112 A 8.129 8.129 0 0 0 132.905 28.114 A 11.139 11.139 0 0 0 133.083 26.077 Q 133.083 23.483 131.915 21.752 A 6.004 6.004 0 0 0 131.864 21.678 Q 130.645 19.929 128.604 19.081 A 11.108 11.108 0 0 0 125.439 18.3 A 13.602 13.602 0 0 0 124.073 18.233 L 122.139 18.233 A 18.733 18.733 0 0 0 121.776 18.236 Q 121.264 18.246 120.946 18.286 L 120.946 17.491 A 11.429 11.429 0 0 0 121.417 17.523 Q 121.837 17.544 122.351 17.544 L 123.914 17.544 A 10.309 10.309 0 0 0 126.524 17.231 A 7.416 7.416 0 0 0 129.929 15.318 Q 132.182 13.092 132.182 9.276 Q 132.182 5.301 129.691 3.022 A 8.38 8.38 0 0 0 125.95 1.077 Q 124.583 0.743 122.96 0.743 A 13.71 13.71 0 0 0 119.624 1.131 A 10.731 10.731 0 0 0 116.309 2.571 Q 113.526 4.4 112.572 7.58 L 111.777 7.156 Q 112.572 4.93 114.162 3.313 Q 115.752 1.697 118.005 0.849 Q 120.257 0.001 122.96 0.001 A 14.341 14.341 0 0 1 125.493 0.214 A 10.43 10.43 0 0 1 128.287 1.114 Q 130.539 2.227 131.784 4.294 A 8.496 8.496 0 0 1 132.847 7.168 A 11.636 11.636 0 0 1 133.03 9.276 A 10.078 10.078 0 0 1 132.66 12.027 A 9.446 9.446 0 0 1 132.579 12.297 Q 132.129 13.728 131.281 14.894 Q 130.433 16.06 129.161 16.828 A 7.693 7.693 0 0 1 127.093 17.686 A 9.326 9.326 0 0 1 126.246 17.862 L 126.246 17.915 A 9.251 9.251 0 0 1 128.346 18.282 A 8.07 8.07 0 0 1 129.347 18.657 Q 130.751 19.293 131.784 20.353 A 7.031 7.031 0 0 1 133.189 22.462 A 8.284 8.284 0 0 1 133.374 22.923 A 8.989 8.989 0 0 1 133.865 25.054 A 11.274 11.274 0 0 1 133.931 26.289 A 9.863 9.863 0 0 1 133.52 29.184 A 8.482 8.482 0 0 1 132.473 31.403 A 9.717 9.717 0 0 1 128.665 34.74 A 11.529 11.529 0 0 1 128.499 34.822 A 12.122 12.122 0 0 1 124.793 35.91 A 15.456 15.456 0 0 1 122.748 36.041 Q 118.031 36.041 114.851 33.841 Q 111.671 31.642 110.823 28.038 Z M 53.212 35.511 L 29.998 35.511 L 29.998 34.769 Q 34.715 30.847 38.531 27.561 A 117.069 117.069 0 0 0 41.881 24.568 Q 43.43 23.127 44.755 21.772 A 70.393 70.393 0 0 0 45.13 21.386 Q 47.912 18.498 49.396 15.795 A 12.243 12.243 0 0 0 50.586 12.78 A 10.363 10.363 0 0 0 50.88 10.336 A 12.204 12.204 0 0 0 50.549 7.411 A 8.291 8.291 0 0 0 48.204 3.287 A 8.931 8.931 0 0 0 44.041 1.086 Q 42.609 0.743 40.916 0.743 A 12.322 12.322 0 0 0 37.617 1.162 A 9.173 9.173 0 0 0 33.443 3.605 A 10.27 10.27 0 0 0 30.777 8.573 A 14.521 14.521 0 0 0 30.422 11.237 L 29.627 10.919 A 14.699 14.699 0 0 1 30.05 7.987 A 11.208 11.208 0 0 1 31.191 5.142 Q 32.595 2.704 35.086 1.352 A 11.03 11.03 0 0 1 38.673 0.168 A 14.522 14.522 0 0 1 40.916 0.001 A 15.485 15.485 0 0 1 43.351 0.184 A 11.978 11.978 0 0 1 45.394 0.69 Q 47.382 1.379 48.787 2.73 Q 50.191 4.082 50.933 5.99 A 10.719 10.719 0 0 1 51.553 8.442 A 14.089 14.089 0 0 1 51.675 10.336 A 12.343 12.343 0 0 1 50.25 16.032 A 15.922 15.922 0 0 1 49.237 17.729 A 31.94 31.94 0 0 1 46.911 20.715 Q 45.69 22.114 44.182 23.579 A 64.013 64.013 0 0 1 42.267 25.361 A 350.419 350.419 0 0 1 38.619 28.577 Q 36.995 29.99 35.197 31.525 A 634.097 634.097 0 0 1 31.429 34.716 L 31.429 34.769 L 31.933 34.769 L 32.436 34.769 L 32.913 34.769 L 53.212 34.769 L 53.212 35.511 Z M 18.55 35.511 L 17.702 35.511 L 17.702 24.646 L 0 24.646 L 0 23.904 L 17.384 0.531 L 18.55 0.531 L 18.55 23.904 L 25.917 23.904 L 25.917 24.646 L 18.55 24.646 L 18.55 35.511 Z M 173.257 35.511 L 172.409 35.511 L 172.409 24.646 L 154.707 24.646 L 154.707 23.904 L 172.091 0.531 L 173.257 0.531 L 173.257 23.904 L 180.624 23.904 L 180.624 24.646 L 173.257 24.646 L 173.257 35.511 Z M 71.073 36.041 Q 65.084 36.041 61.851 31.377 A 15.873 15.873 0 0 1 59.765 26.947 Q 58.618 23.199 58.618 18.021 A 37.526 37.526 0 0 1 58.933 12.989 Q 59.274 10.471 59.987 8.415 A 15.385 15.385 0 0 1 61.851 4.665 A 10.301 10.301 0 0 1 69.269 0.115 A 13.874 13.874 0 0 1 71.073 0.001 Q 77.062 0.001 80.295 4.665 A 15.873 15.873 0 0 1 82.381 9.095 Q 83.528 12.843 83.528 18.021 A 37.526 37.526 0 0 1 83.213 23.053 Q 82.872 25.57 82.159 27.626 A 15.385 15.385 0 0 1 80.295 31.377 A 10.301 10.301 0 0 1 72.877 35.927 A 13.874 13.874 0 0 1 71.073 36.041 Z M 147.817 35.511 L 146.969 35.511 L 146.969 5.407 L 146.969 3.764 L 146.969 2.121 Q 145.379 4.718 142.862 6.44 A 20.72 20.72 0 0 1 139.256 8.43 A 18.198 18.198 0 0 1 137.694 9.011 L 137.429 8.322 Q 138.86 7.792 140.265 7.05 Q 141.669 6.308 142.941 5.327 Q 144.213 4.347 145.247 3.154 Q 146.28 1.962 146.969 0.531 L 147.817 0.531 L 147.817 35.511 Z M 71.073 35.299 Q 74.836 35.299 77.407 33.311 A 10.539 10.539 0 0 0 79.913 30.48 Q 80.737 29.148 81.329 27.455 A 22.201 22.201 0 0 0 82.252 23.745 Q 82.68 21.151 82.68 18.021 A 39.009 39.009 0 0 0 82.49 14.057 Q 82.292 12.123 81.888 10.459 A 19.838 19.838 0 0 0 81.328 8.56 Q 79.977 4.718 77.407 2.73 A 9.422 9.422 0 0 0 72.988 0.883 A 12.639 12.639 0 0 0 71.073 0.743 A 11.515 11.515 0 0 0 67.889 1.165 A 9.311 9.311 0 0 0 64.766 2.73 A 10.603 10.603 0 0 0 62.18 5.648 Q 61.437 6.859 60.89 8.359 A 18.297 18.297 0 0 0 60.818 8.56 Q 59.466 12.403 59.466 18.021 A 38.261 38.261 0 0 0 59.672 22.11 Q 59.893 24.164 60.352 25.92 A 19.874 19.874 0 0 0 60.818 27.455 Q 62.093 31.106 64.477 33.081 A 9.546 9.546 0 0 0 64.766 33.311 A 9.604 9.604 0 0 0 69.49 35.202 A 12.6 12.6 0 0 0 71.073 35.299 Z M 0.954 23.904 L 17.702 23.904 L 17.702 4.665 L 17.702 3.048 L 17.702 1.432 L 17.649 1.432 Q 17.119 2.227 16.51 3.022 A 58.678 58.678 0 0 0 15.64 4.185 A 50.897 50.897 0 0 0 15.37 4.559 L 0.954 23.904 Z M 155.661 23.904 L 172.409 23.904 L 172.409 4.665 L 172.409 3.048 L 172.409 1.432 L 172.356 1.432 Q 171.826 2.227 171.217 3.022 A 58.678 58.678 0 0 0 170.347 4.185 A 50.897 50.897 0 0 0 170.077 4.559 L 155.661 23.904 Z M 90.312 20.777 L 105.205 20.777 L 105.205 21.625 L 90.312 21.625 L 90.312 20.777 Z" vector-effect="non-scaling-stroke"/></g></svg>
+
+        </div>
+
+        <search>
+          <div class="searchbox default-animation">
+            <i class="fas fa-search" title="Search (CTRL+ALT+f)"></i>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </search>
+        <script>
+          var contentLangs=['fr'];
+        </script>
+        <script src="/420-314/js/auto-complete.js?1732220348" defer></script>
+        <script src="/420-314/js/lunr/lunr.min.js?1732220348" defer></script>
+        <script src="/420-314/js/lunr/lunr.stemmer.support.min.js?1732220348" defer></script>
+        <script src="/420-314/js/lunr/lunr.multi.min.js?1732220348" defer></script>
+        <script src="/420-314/js/lunr/lunr.fr.min.js?1732220348" defer></script>
+        <script src="/420-314/js/search.js?1732220348" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation">
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-topics">
+          <ul class="enlarge morespace collapsible-menu">
+          <li data-nav-id="/420-314/prep/index.html" class=""><a class="padding" href="/420-314/prep/index.html">1. Préparation</a><ul id="R-subsections-f6d2755986c76f92e9b49d375b6a4bb3" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/prep/config/index.html" class=""><a class="padding" href="/420-314/prep/config/index.html">Configuration du Pi</a></li>
+          <li data-nav-id="/420-314/prep/ssh/index.html" class=""><a class="padding" href="/420-314/prep/ssh/index.html">Service SSH</a></li>
+          <li data-nav-id="/420-314/prep/vnc/index.html" class=""><a class="padding" href="/420-314/prep/vnc/index.html">Service VNC</a></li>
+          <li data-nav-id="/420-314/prep/vscode/index.html" class=""><a class="padding" href="/420-314/prep/vscode/index.html">VS Code</a></li></ul></li>
+          <li data-nav-id="/420-314/circuits/index.html" class=""><a class="padding" href="/420-314/circuits/index.html">2. Circuits</a><ul id="R-subsections-9ab31400cf0f49f67459f0731540e5c0" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/circuits/outils/index.html" class=""><a class="padding" href="/420-314/circuits/outils/index.html">Outils et composantes</a></li>
+          <li data-nav-id="/420-314/circuits/serie/index.html" class=""><a class="padding" href="/420-314/circuits/serie/index.html">Circuits en série</a></li></ul></li>
+          <li data-nav-id="/420-314/digitio/index.html" class=""><a class="padding" href="/420-314/digitio/index.html">3. Signal digital</a><ul id="R-subsections-ce3a01a0408cabb3573c57663500a298" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/digitio/gpio/index.html" class=""><a class="padding" href="/420-314/digitio/gpio/index.html">GPIO</a></li>
+          <li data-nav-id="/420-314/digitio/output/index.html" class=""><a class="padding" href="/420-314/digitio/output/index.html">Actuateurs</a></li>
+          <li data-nav-id="/420-314/digitio/input/index.html" class=""><a class="padding" href="/420-314/digitio/input/index.html">Senseurs</a></li>
+          <li data-nav-id="/420-314/digitio/ledrgb/index.html" class=""><a class="padding" href="/420-314/digitio/ledrgb/index.html">LED RGB</a></li></ul></li>
+          <li data-nav-id="/420-314/analogin/index.html" class=""><a class="padding" href="/420-314/analogin/index.html">4. Input analogique</a><ul id="R-subsections-44ded8057918726964d0f9aef86d0d67" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/analogin/ads1115/index.html" class=""><a class="padding" href="/420-314/analogin/ads1115/index.html">Module ADS1115</a></li>
+          <li data-nav-id="/420-314/analogin/traitement/index.html" class=""><a class="padding" href="/420-314/analogin/traitement/index.html">Traitement des signaux analogiques</a></li></ul></li>
+          <li data-nav-id="/420-314/analogout/index.html" class=""><a class="padding" href="/420-314/analogout/index.html">5. Output analogique</a><ul id="R-subsections-79899f17ae394539155b9de7f1258b40" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/analogout/pwm/index.html" class=""><a class="padding" href="/420-314/analogout/pwm/index.html">PWM</a></li></ul></li>
+          <li data-nav-id="/420-314/servos/index.html" class=""><a class="padding" href="/420-314/servos/index.html">6. Servo-moteurs</a><ul id="R-subsections-3a97cc522e8bb0fb4b8699ab4ad38bb5" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/servos/fonct/index.html" class=""><a class="padding" href="/420-314/servos/fonct/index.html">Fonctionnement</a></li>
+          <li data-nav-id="/420-314/servos/controle/index.html" class=""><a class="padding" href="/420-314/servos/controle/index.html">Contrôle avec PWM</a></li></ul></li>
+          <li data-nav-id="/420-314/i2c/index.html" class="parent "><a class="padding" href="/420-314/i2c/index.html">7. I2C</a><ul id="R-subsections-8c32969aa0a203beacabb0100b592fe1" class="morespace collapsible-menu">
+          <li data-nav-id="/420-314/i2c/fct/index.html" class=""><a class="padding" href="/420-314/i2c/fct/index.html">Fonctionnement</a></li>
+          <li data-nav-id="/420-314/i2c/led8x8/index.html" class="active"><a class="padding" href="/420-314/i2c/led8x8/index.html">Matrice LED 8x8</a></li></ul></li>
+          </ul>
+        </div>
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/420-314/i2c/led8x8/index.html" lang="fr-ca" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-red" value="red" selected>Red</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons"
+    style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br>Creative Commons
+BY-NC-SA
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/420-314/js/clipboard.min.js?1732220348" defer></script>
+    <script src="/420-314/js/perfect-scrollbar.min.js?1732220348" defer></script>
+    <script src="/420-314/js/theme.js?1732220348" defer></script>
+  </body>
+</html>

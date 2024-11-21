@@ -95,7 +95,7 @@ while True:
 - 1 exercice avec 3 boutons correspondant à 0, 90 et 180 degrés
 - 1 exercice avec bouton KS où chaque clic bouge de 10 degrés, reset à la fin
 - 1 exercice avec potentiomètre
-- 1 exam avec bouton KS qui alterne entre 0 et 180
+- 1 exam avec bouton KS qui alterne entre 60 et 120
 - 1 exam avec servo qui fait des va et vient où bouton est un on/off
 
 ## Exercice 1
