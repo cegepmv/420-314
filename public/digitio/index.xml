@@ -13,7 +13,7 @@
       <link>http://localhost:1313/420-314/digitio/gpio/index.html</link>
       <pubDate>Thu, 01 Aug 2024 18:05:56 -0400</pubDate>
       <guid>http://localhost:1313/420-314/digitio/gpio/index.html</guid>
-      <description>GPIO signifie “General Purpose Input/Output” et désigne la série de broches métalliques qui servent à envoyer ou recevoir des signaux électriques sur un microcontrôleur.&#xA;Le RaspberryPi en comprend 40:&#xA;2 broches pour un courant de 3.3V 2 broches pour un courant de 5V 8 broches pour le courant négatif (“ground”) 28 broches génériques Parmi les 28 broches génériques, certaines donnent accès à des fonctionnalités plus spécifiques. Pour plus de détails: https://pinout.</description>
+      <description>GPIO signifie “General Purpose Input/Output” et désigne la série de broches métalliques qui servent à envoyer ou recevoir des signaux électriques sur un microcontrôleur.&#xA;Le RaspberryPi en comprend 40:&#xA;2 broches pour un courant de 3.3V 2 broches pour un courant de 5V 8 broches pour le courant négatif (“ground”) 28 broches génériques Parmi les 28 broches génériques, certaines donnent accès à des fonctionnalités plus spécifiques. Pour plus de détails: https://pinout.xyz/</description>
     </item>
     <item>
       <title>Actuateurs</title>

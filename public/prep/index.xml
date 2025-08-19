@@ -13,14 +13,14 @@
       <link>http://localhost:1313/420-314/prep/config/index.html</link>
       <pubDate>Thu, 01 Aug 2024 13:48:14 -0400</pubDate>
       <guid>http://localhost:1313/420-314/prep/config/index.html</guid>
-      <description>Le Raspberry Pi est fourni avec le système d’exploitation RaspberryPi OS pré-installé.&#xA;Il y a tout de même quelques étapes de configuration à réaliser.&#xA;Brancher les périphériques Le Raspberry Pi est un ordinateur à part entière: on l’utilise souvent dans des projets d’objets connectés mais il est tout-à-fait possible d’y raccorder les périphériques habituels (clavier, souris et écran) qu’on retrouve sur les PC.&#xA;Le Pi de votre kit est dans un boîtier et est déjà connecté à un écran tactile.</description>
+      <description>Le Raspberry Pi est fourni avec le système d’exploitation RaspberryPi OS pré-installé.&#xA;Il y a tout de même quelques étapes de configuration à réaliser.&#xA;Brancher les périphériques Le Raspberry Pi est un ordinateur à part entière: on l’utilise souvent dans des projets d’objets connectés mais il est tout-à-fait possible d’y raccorder les périphériques habituels (clavier, souris et écran) qu’on retrouve sur les PC.&#xA;Le Pi de votre kit est dans un boîtier et est déjà connecté à un écran tactile. Vous pouvez ôter la plaque de derrière pour accéder aux broches GPIO:</description>
     </item>
     <item>
       <title>Service SSH</title>
       <link>http://localhost:1313/420-314/prep/ssh/index.html</link>
       <pubDate>Thu, 01 Aug 2024 13:49:54 -0400</pubDate>
       <guid>http://localhost:1313/420-314/prep/ssh/index.html</guid>
-      <description>Installer SSH Le service SSH est normalement installé par défaut sur RaspberryPi OS.&#xA;Pour rendre possible l’accès au Pi par SSH (avec putty par exemple) il faut quand même s’assurer qu’il est lancé à chaque démarrage du Pi. Les commandes sont les suivantes:&#xA;sudo systemctl start ssh sudo systemctl enable sshCréer un nouvel utilisateur Afin que chaque utilisateur du RaspberryPi ait son propre compte et puisse travailler sur ses propres fichiers, vous devez vous créer un utilisateur et vous assurer qu’il peut utiliser la commande sudo.</description>
+      <description>Installer SSH Le service SSH est normalement installé par défaut sur RaspberryPi OS.&#xA;Pour rendre possible l’accès au Pi par SSH (avec putty par exemple) il faut quand même s’assurer qu’il est lancé à chaque démarrage du Pi. Les commandes sont les suivantes:&#xA;sudo systemctl start ssh sudo systemctl enable ssh Créer un nouvel utilisateur Afin que chaque utilisateur du RaspberryPi ait son propre compte et puisse travailler sur ses propres fichiers, vous devez vous créer un utilisateur et vous assurer qu’il peut utiliser la commande sudo. Les commandes adduser et usermod sont nécessaires; par exemple si vous voulez créer un utilisateur nommé “bob”, faites ceci:</description>
     </item>
     <item>
       <title>Service VNC</title>

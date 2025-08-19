@@ -13,7 +13,7 @@
       <link>http://localhost:1313/420-314/i2c/fct/index.html</link>
       <pubDate>Thu, 21 Nov 2024 11:28:38 -0500</pubDate>
       <guid>http://localhost:1313/420-314/i2c/fct/index.html</guid>
-      <description>Le fonctionnement du protocole I2C s’appuie sur des principes qu’on retrouve dans les communications digitales “sérielles”.&#xA;Horloge et données Il se base sur 2 signaux: SCL (l’horloge ou “clock”) et SDA (les données ou “data”). L’horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l’horloge.&#xA;Un exemple simple: supposons que vous voulez transmettre la lettre “a” à l’aide de I2C.</description>
+      <description>Le fonctionnement du protocole I2C s’appuie sur des principes qu’on retrouve dans les communications digitales “sérielles”.&#xA;Horloge et données Il se base sur 2 signaux: SCL (l’horloge ou “clock”) et SDA (les données ou “data”). L’horloge sert à déterminer la fréquence à laquelle des données sont envoyées, et les données sont des valeurs de 1 bit envoyées à chaque période de l’horloge.&#xA;Un exemple simple: supposons que vous voulez transmettre la lettre “a” à l’aide de I2C. Cette lettre correspond à l’octet 01100001 en ASCII, où chaque bit sera une impulsion électrique envoyée à chaque période de la fréquence définie par l’horloge :</description>
     </item>
     <item>
       <title>Matrice LED 8x8</title>

@@ -13,7 +13,7 @@
       <link>http://localhost:1313/420-314/analogin/ads1115/index.html</link>
       <pubDate>Tue, 20 Aug 2024 11:53:41 -0400</pubDate>
       <guid>http://localhost:1313/420-314/analogin/ads1115/index.html</guid>
-      <description>Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.&#xA;Nous utiliserons le convertisseur ADS1115 de Adafruit:&#xA;Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.&#xA;La librairie I2C doit être utilisée pour pouvoir interpréter ces signaux dans un programme python.</description>
+      <description>Dans cette section, nous verrons comment utiliser un convertisseur analogique-digital pour traduire les signaux d’un senseur analogique afin de les rendre utilisables par un RaspberryPi.&#xA;Nous utiliserons le convertisseur ADS1115 de Adafruit:&#xA;Tous les senseurs analogiques qu’on souhaite utiliser doivent se connecter sur ce convertisseur. Pour récupérer le signal qui provient des senseurs, le Raspberry Pi doit lui aussi se connecter sur le convertisseur.</description>
     </item>
     <item>
       <title>Traitement des signaux analogiques</title>
