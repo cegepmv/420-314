@@ -17,6 +17,10 @@ weight = 11
 
 Pour ce module et les suivants, nous allons utiliser *IDLE*, un éditeur de code simple inclus avec la distribution du langage python.
 
+{{% notice style="green" title="Référence" %}}
+Dans cette section, nous ne décrivons pas toutes les particularités de _python_: pour une référence plus complète, allez à https://www.pythoncheatsheet.org/.
+{{% /notice %}}
+
 ## Afficher un message
 Pour afficher quelque chose à l'écran en python, on utilise la fonction `print()`:
 ```python
