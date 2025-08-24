@@ -1,11 +1,38 @@
 +++
-title = 'Circuits en série'
+title = 'Loi de Ohm'
 date = 2024-08-01T17:54:17-04:00
 draft = false
-weight = 22
+weight = 20
 +++
 
 Dans cette section, nous verrons les règles qui mettent en relation la tension, l'intensité et la résistance, ce qui permet de calculer précisément le voltage ou la résistance requis dans un circuit.
+
+Nous utilisersons aussi [TinkerCAD](https://www.tinkercad.com/), un simulateur de circuits en ligne très utile pour tester des circuits sans risquer de les endommager.
+
+## TinkerCAD
+> Vous devez créer un compte personnel sur TinkerCAD pour l'utiliser.
+
+Lorsque vous êtes connecté sur _TinkerCAD_, faites `Create`-> `Circuits` pour créer un circuit électronique.
+
+À droite de l'espace de travail, vous verrez les différentes composantes disponibles (résistance, LED, bouton, etc.). Sélectionnez une pile 9V et une LED:
+
+![batt-led](/420-314/images/batt-led.png?width=400px)
+
+Ensuite, connectez les pôles de la pile à la LED. Le pôle positif doit être connecté à l'_anode_, et le pôle négatif à la _cathode_:
+
+![batt-led-cn](/420-314/images/batt-led-cn.png?width=400px)
+
+Pour tester votre circuit, cliquez sur le bouton `Start Simulation` en haut à gauche du plan de travail.
+
+Vous verrez le message suivant:
+
+![batt-led-br](/420-314/images/batt-led-br.png?width=400px)
+
+Le courant électrique de la pile est trop fort pour le LED: il faut ajouter une résistance à votre circuit.
+
+Lorsque c'est fait, relancez la simulation; vous verrez que la LED ne "brûle" pas:
+
+![batt-led-ok](/420-314/images/batt-led-ok.png?width=400px)
 
 Notre premier circuit est constitué d'une source de courant (par exemple, une pile) et d'une LED:
 
@@ -15,7 +42,9 @@ Le courant électrique est semblable au flot de l'eau dans un tuyau: il a une so
 
 Dans un circuit électrique, la source correspond au côté positif et le courant s'écoule vers le côté négatif. Si le circuit n'est pas connecté sur un pôle négatif, le courant ne circule pas. La "vitesse" du courant (son *intensité*) est proportionnelle à sa "pression" (sa *tension*).
 
-Dans le circuit ci-haut, on inclut une LED. Dans cette LED le courant électrique doit y entrer par l'**anode**, qui correspond au courant positif, et sortir par la **cathode** qui correspond au courant négatif.
+Dans le circuit ci-haut, on inclut une LED. Dans cette LED le courant électrique doit y entrer par l'**anode**, qui correspond au courant positif, et sortir par la **cathode** qui correspond au courant négatif. 
+
+> La "patte" la plus longue est le pôle **positif**.
 
 Les éléments d'un circuit électrique ne peuvent pas supporter n'importe quelle intensité de courant. En effet, une LED comme celle de l'exemple brûlera si on lui envoit un courant dont la tension est de 9V. 
 

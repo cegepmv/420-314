@@ -62,8 +62,44 @@ print("La somme est", int(n1) + int(n2))  ## Sans int(), ce sera une concaténat
 
 #### Exercices
 1. Demander à l'utilisateur d'entrer un mot et afficher le nombre de fois que la lettre "e" apparaît dans le mot
-2. Demander à l'utilisateur d'entrer deux nombres et afficher tous les nombres entre les deux
-3. Demander d'entrer un nombre et dire s'il est pair ou impair.
+<!--
+{{% expand "Réponses" %}}
+```python
+lettre = "e"
+mot = input("Entrez un mot: ")
+i = 0
+compteur = 0
+
+while i < len(mot):
+    if mot[i] == "e":
+        compteur += 1
+    i += 1
+
+print(lettre,"apparaît",compteur,"fois.")
+```
+{{% /expand %}}
+-->
+2. Demander à l'utilisateur d'entrer deux nombres et afficher tous les nombres entre les deux (inclus)
+<!--
+{{% expand "Réponses" %}}
+```python
+n1 = int(input("Entrez un nombre: "))
+n2 = int(input("Entrez un autre nombre: "))
+while n1 <= n2:
+    print(n1)
+    n1+=1
+```
+{{% /expand %}}
+-->
+3. Demander d'entrer un mot et affichez-le sans le premier et le dernier caractère. Par exemple, le mot "python" serait affiché "ytho"..
+<!--
+{{% expand "Réponses" %}}
+```python
+mot = input("Entrez un mot: "))
+print(mot[1:-1])
+```
+{{% /expand %}}
+-->
 4. Demander d'entrer un nombre et dites s'il est premier. Vous pouvez utiliser l'algorithme suivant:
 ```
 Pour chaque nombre N entre 1 et le nombre saisi
@@ -71,21 +107,22 @@ Pour chaque nombre N entre 1 et le nombre saisi
         Il n'est pas premier
 ```
 <!--
-- Strings et input(), split(), slicing
-- 4 exercices 30 min
-
-n = int(input("nombre: "))
+{{% expand "Réponses" %}}
+```python
+n = int(input("Entrez un nombre: "))
 i = 2
-prems = True
-while i < n:
-    if n % i == 0:
-        prems = False
-        print(n,i)
-        break
-    i += 1
+est_premier = True
 
-if prems:
-    print("Premier")
+while i < n:
+    if n % i == 0:  
+        est_premier = False
+        break
+    i+=1
+
+if est_premier:
+    print(n,"est premier")
 else:
-    print("Pas prems")
+    print(n,"n'est pas premier")
+```
+{{% /expand %}}
 -->

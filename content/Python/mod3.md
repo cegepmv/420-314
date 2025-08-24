@@ -28,36 +28,74 @@ print(nombres[:4])      ## Affiche [1,2,3,4]
 ```
 
 #### Méthodes des listes
-Pour ajouter un élément à une liste existante, on utilise `append()`:
+Pour ajouter _un élément_ à une liste existante, on utilise `append()`:
 ```python
 nombres = [56,11,-109,66]
 nombres.append(999)
 print(nombres)      ## Affiche [56,11,-109,66,999]
 ```
-Pour ajouter une liste à une autre, la méthode est `extend()`:
+Pour ajouter _tous les éléments d'une liste_ à une autre liste, la méthode est `extend()`:
 ```python
 liste1 = [56,11,-109,66]
 liste2 = ["allo","bye"]
 liste1.extend(liste2)
-print(liste1)
+print(liste1)       ## Affiche [56,11,-109,66,"allo","bye"]
 ```
 
 ## Boucles _for_
-En python, la boucle _for_ doit être utilisée avec une liste ou une chaîne de caractères. Elle prend la forme `for VARIABLE in LISTE`, ou `in` est suivi de la liste ou de la chaîne de caractères. Quelques exemples:
+En python, la boucle _for_ doit être utilisée avec une **liste** ou une **chaîne de caractères**. Elle prend la forme `for VARIABLE in LISTE`, ou `in` est suivi de la liste ou de la chaîne de caractères:
 ```python
 liste = [1,2,3,4,5]
 for nombre in liste:
     print(nombre + 10)
-
-mot = "bonjour"
-for lettre in mot:
-    if lettre in ['n','o','p']:  ## Autre utilisation de "in"
-        print("Trouvé un " + lettre)
+```
+Le programme suivant utilise FOR pour parcourir une chaîne de caractères et voir si elle contient un chiffre:
+```python
+mot = input("Entrez un mot: ")
+for caract in mot:
+    if caract.isnumeric():
+        print("Il y a le chiffre", caract, "dans le mot!")
+        break
 ```
 
 #### Exercices
 1. Demander d'entrer un mot, puis une lettre, et ensuite afficher le nombre de fois que la lettre apparaît dans le mot. 
-2. Faites un programme qui inverse une chaîne de caractères entrée par l'utilisateur. Par exemple, pour "salut", le programme affiche "tulas". N'utilisez pas `[::-1]`.
+<!--
+{{% expand "Réponses" %}}
+```python
+mot = input("Entrez un mot: ")
+lettre = input("Entrez une lettre: ")
+compt = 0
 
+for caract in mot:
+    if caract == lettre:
+        compt += 1
+
+print(lettre,"apparaît",compt,"fois dans",mot)
+
+```
+{{% /expand %}}
+-->
+2. Faites un programme qui demande un mot à l'utilisateur et crée une liste où chaque élément est une lettre du mot, à l'envers. Par exemple, si le mot est "python", la liste sera ['n','o','h','t','y','p']
+<!--
+{{% expand "Réponses" %}}
+```python
+mot = input("Entrez un mot: ")
+liste = []
+i = 1
+while i <= len(mot):
+    liste.append(mot[-i])
+    i+=1
+
+print(liste)
+```
+ou encore
+```python
+mot = input("Entrez un mot: ")
+liste = list(mot[::-1])
+print(liste)
+```
+{{% /expand %}}
+-->
 
   

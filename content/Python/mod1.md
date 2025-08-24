@@ -74,6 +74,12 @@ Cette valeur dépend de l'opérateur utilisé:
 - Les opérateurs de comparasion (`<`, `>`, `==`, `!=`) déterminent si l'expression est *vraie* ou *fausse* à partir de variables de n'importe quel type
 - Les opérateurs logiques (`or`, `and`) déterminent si l'expression est *vraie* ou *fausse* à partir de variables ou d'expression qui sont elles-mêmes vraies ou fausses.
 
+{{% notice style="green" title="Concaténation" %}}
+Les opérateurs arithmétiques `+` et `*` peuvent aussi être utilisés pour concaténer des chaînes de caractères:
+- `'abc' + 'def'` donne `abcdef`
+- `'abc' * 3` donne `abcabcabc`
+{{% /notice %}}
+
 ## Structures de contrôle
 Les structures de contrôle en python n'utilisent pas de délimiteur comme `{ }` en java ou javascript. C'est l'indentation qui détermine si des lignes de code font partie d'un bloc:
 ```python
@@ -94,8 +100,29 @@ while i < 10:   ## Pas de parenthèses autour de "i < 10"
 ```
 
 #### Exercices
-1. Faire un programme où vous définissez deux variables (`n1` et `n2`) correspondant à deux nombres entiers. Le programme doit afficher tous les nombres entre *n1* et *n2*.  
+1. Faire un programme où vous définissez deux variables (`n1` et `n2`) correspondant à deux nombres entiers. Le programme doit afficher tous les nombres de *n1* à *n2*.  
+<!--
+{{% expand "Réponses" %}}
+```python
+n1 = 10
+n2 = 20
+while n1 <= n2:
+    print(n1)
+    n1+=1
+```
+{{% /expand %}}
+-->
 2. Faire un programme qui affiche les 20 premiers multiples de 7 (7, 14, 21, 28...)
+<!--
+{{% expand "Réponses" %}}
+```python
+i = 1
+while i <= 20:
+    print(7 * i)
+    i+=1
+```
+{{% /expand %}}
+-->
 3. Faites un programme où vous définissez une variable entière nommée `n`. Ensuite, affichez un carré du caractère "*" dont les côtés ont la taille *n*. Par exemple, si `n = 5`, votre programme devrait afficher ceci:
 ```
   *****
@@ -104,6 +131,17 @@ while i < 10:   ## Pas de parenthèses autour de "i < 10"
   *****
   *****
 ```
+<!--
+{{% expand "Réponses" %}}
+```python
+n = 5
+i = 0
+while i < n:
+    print(n * "*")
+    i+=1
+```
+{{% /expand %}}
+-->
 4. Traduire le programme Java suivant en python:
 ```java
 public class Exercice4 {
@@ -124,6 +162,22 @@ public class Exercice4 {
  }
 }
 ```  
+<!--
+{{% expand "Réponses" %}}
+```python
+a = 15
+b = 27
+
+print("Avant : a, b =", a, b)
+
+temp = a
+a = b
+b = temp
+
+print("Après : a, b =", a, b)
+```
+{{% /expand %}}
+-->
 5. Traduire le programme Java suivant en python:
 ```java
 import java.util.Scanner;
@@ -147,4 +201,25 @@ public class Exercice5 {
     }
 }
 ```
+<!--
+{{% expand "Réponses" %}}
+```python
+nombre = 0
 
+i = 1
+while i<4:
+    j = 1
+    while j<4:
+        k = 1
+        while k<4:
+            if k != i and k != j and i != j:
+                nombre += 1
+                print(str(i)+str(j)+str(k))
+            k+=1
+        j+=1
+    i+=1
+
+print(nombre,"nombre générés")
+```
+{{% /expand %}}
+-->

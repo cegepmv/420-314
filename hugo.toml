@@ -17,6 +17,7 @@ theme = 'hugo-theme-relearn'
   disableToc = true
   # Hide Next and Previous page buttons normally displayed full height beside content
   disableNextPrev = true
+  hideAuthorDate = true
   [params.imageEffects]
     border = false
     lazy = true
