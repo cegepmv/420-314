@@ -62,8 +62,8 @@ print("La somme est", int(n1) + int(n2))  ## Sans int(), ce sera une concaténat
 
 #### Exercices
 1. Demander à l'utilisateur d'entrer un mot et afficher le nombre de fois que la lettre "e" apparaît dans le mot
-<!--
-{{% expand "Réponses" %}}
+
+{{% expand "Réponse" %}}
 ```python
 lettre = "e"
 mot = input("Entrez un mot: ")
@@ -78,10 +78,8 @@ while i < len(mot):
 print(lettre,"apparaît",compteur,"fois.")
 ```
 {{% /expand %}}
--->
 2. Demander à l'utilisateur d'entrer deux nombres et afficher tous les nombres entre les deux (inclus)
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 n1 = int(input("Entrez un nombre: "))
 n2 = int(input("Entrez un autre nombre: "))
@@ -90,24 +88,20 @@ while n1 <= n2:
     n1+=1
 ```
 {{% /expand %}}
--->
 3. Demander d'entrer un mot et affichez-le sans le premier et le dernier caractère. Par exemple, le mot "python" serait affiché "ytho"..
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 mot = input("Entrez un mot: "))
 print(mot[1:-1])
 ```
 {{% /expand %}}
--->
 4. Demander d'entrer un nombre et dites s'il est premier. Vous pouvez utiliser l'algorithme suivant:
 ```
 Pour chaque nombre N entre 1 et le nombre saisi
     Si le nombre saisi est divisible par N
         Il n'est pas premier
 ```
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 n = int(input("Entrez un nombre: "))
 i = 2
@@ -125,4 +119,3 @@ else:
     print(n,"n'est pas premier")
 ```
 {{% /expand %}}
--->

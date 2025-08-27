@@ -60,8 +60,7 @@ for caract in mot:
 
 #### Exercices
 1. Demander d'entrer un mot, puis une lettre, et ensuite afficher le nombre de fois que la lettre apparaît dans le mot. 
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 mot = input("Entrez un mot: ")
 lettre = input("Entrez une lettre: ")
@@ -75,10 +74,8 @@ print(lettre,"apparaît",compt,"fois dans",mot)
 
 ```
 {{% /expand %}}
--->
 2. Faites un programme qui demande un mot à l'utilisateur et crée une liste où chaque élément est une lettre du mot, à l'envers. Par exemple, si le mot est "python", la liste sera ['n','o','h','t','y','p']
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 mot = input("Entrez un mot: ")
 liste = []
@@ -96,6 +93,6 @@ liste = list(mot[::-1])
 print(liste)
 ```
 {{% /expand %}}
--->
+
 
   

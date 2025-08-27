@@ -101,8 +101,7 @@ while i < 10:   ## Pas de parenthèses autour de "i < 10"
 
 #### Exercices
 1. Faire un programme où vous définissez deux variables (`n1` et `n2`) correspondant à deux nombres entiers. Le programme doit afficher tous les nombres de *n1* à *n2*.  
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 n1 = 10
 n2 = 20
@@ -111,10 +110,8 @@ while n1 <= n2:
     n1+=1
 ```
 {{% /expand %}}
--->
 2. Faire un programme qui affiche les 20 premiers multiples de 7 (7, 14, 21, 28...)
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 i = 1
 while i <= 20:
@@ -122,7 +119,6 @@ while i <= 20:
     i+=1
 ```
 {{% /expand %}}
--->
 3. Faites un programme où vous définissez une variable entière nommée `n`. Ensuite, affichez un carré du caractère "*" dont les côtés ont la taille *n*. Par exemple, si `n = 5`, votre programme devrait afficher ceci:
 ```
   *****
@@ -131,8 +127,7 @@ while i <= 20:
   *****
   *****
 ```
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 n = 5
 i = 0
@@ -141,7 +136,6 @@ while i < n:
     i+=1
 ```
 {{% /expand %}}
--->
 4. Traduire le programme Java suivant en python:
 ```java
 public class Exercice4 {
@@ -162,8 +156,7 @@ public class Exercice4 {
  }
 }
 ```  
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 a = 15
 b = 27
@@ -177,7 +170,6 @@ b = temp
 print("Après : a, b =", a, b)
 ```
 {{% /expand %}}
--->
 5. Traduire le programme Java suivant en python:
 ```java
 import java.util.Scanner;
@@ -201,8 +193,7 @@ public class Exercice5 {
     }
 }
 ```
-<!--
-{{% expand "Réponses" %}}
+{{% expand "Réponse" %}}
 ```python
 nombre = 0
 
@@ -222,4 +213,3 @@ while i<4:
 print(nombre,"nombre générés")
 ```
 {{% /expand %}}
--->
