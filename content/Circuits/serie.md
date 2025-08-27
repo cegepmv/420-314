@@ -1,11 +1,9 @@
 +++
-title = 'Loi de Ohm'
-date = 2024-08-01T17:54:17-04:00
+title = 'Circuits en série'
+date = 2024-08-01T17:47:50-04:00
 draft = false
-weight = 20
+weight = 21
 +++
-
-Dans cette section, nous verrons les règles qui mettent en relation la tension, l'intensité et la résistance, ce qui permet de calculer précisément le voltage ou la résistance requis dans un circuit.
 
 Nous utilisersons aussi [TinkerCAD](https://www.tinkercad.com/), un simulateur de circuits en ligne très utile pour tester des circuits sans risquer de les endommager.
 
@@ -34,67 +32,118 @@ Lorsque c'est fait, relancez la simulation; vous verrez que la LED ne "brûle" p
 
 ![batt-led-ok](/420-314/images/batt-led-ok.png?width=400px)
 
-Notre premier circuit est constitué d'une source de courant (par exemple, une pile) et d'une LED:
+## Multimètre
+Un multimètre est un instrument électrique utilisé pour mesurer les différentes propriétés des courants électriques et électroniques dans un circuit. Ils sont couramment utilisés par les électriciens, les électroniciens, les techniciens et les ingénieurs pour effectuer des tests et des mesures de tous genres dans le domaine de l'électricité et de l'électronique.
 
-![circ1led](/420-314/images/circ1led.png?width=400px)
+Un multimètre sert principalement à mesurer:
++ La tension (en volts)
++ L'intensité (en ampères)
 
-Le courant électrique est semblable au flot de l'eau dans un tuyau: il a une source, il "coule" dans un sens spécifique et la vitesse du courant dépend de la pression exercée. Pour que le courant s'écoule, le tuyau doit être ouvert; si on met un bouchon au bout du tuyau, le courant s'arrête.
+### Mesurer la tension
+Lorsqu'on utilise un multimètre pour mesurer la tension électrique, ce qu'on mesure est une *différence de tension* entre un pôle positif (+) et négatif (-).
 
-Dans un circuit électrique, la source correspond au côté positif et le courant s'écoule vers le côté négatif. Si le circuit n'est pas connecté sur un pôle négatif, le courant ne circule pas. La "vitesse" du courant (son *intensité*) est proportionnelle à sa "pression" (sa *tension*).
+Par exemple si on connecte un multimètre directement sur une pile, comme suit:
+![multivpile](/420-314/images/multivpile.png?width=400px)
 
-Dans le circuit ci-haut, on inclut une LED. Dans cette LED le courant électrique doit y entrer par l'**anode**, qui correspond au courant positif, et sortir par la **cathode** qui correspond au courant négatif. 
+On confirme que la tension entre les pôles + et - de la pile est de 9V car le pôle positif est à 9V et le négatif à 0V.
 
-> La "patte" la plus longue est le pôle **positif**.
+Dans un circuit comprenant une LED et une résistance, on peut constater que la tension est aussi de (presque) 9V pou l'ensemble du circuit:
 
-Les éléments d'un circuit électrique ne peuvent pas supporter n'importe quelle intensité de courant. En effet, une LED comme celle de l'exemple brûlera si on lui envoit un courant dont la tension est de 9V. 
+![multivcirctot](/420-314/images/multivcirctot.png?width=400px)
 
+Notez ici que pour mesurer la tension de tout le circuit, il faut mesurer la différence en _volts_ entre le début et la fin du circuit. C'est pourquoi le multimètre est connecté sur les pôles de la pile, qui correspondent au début et à la fin du circuit électrique.
 
+Il est possible de mesurer la tension à d'autres endroits dans le circuit. Dans l'exemple suivant, on mesure la différence de tension entre les deux pôles de la résistance:
 
-![circ1leddone](/420-314/images/circ1leddone.png?width=400px)
+![multivcircres](/420-314/images/multivcircres.png?width=400px)
 
-#### Résistance
-Afin d'atténuer l'intensité du courant et d'épargner notre LED, on ajoutera une **résistance** à notre circuit:
+On peut faire la même chose pour la LED:
 
-![circ1ledres](/420-314/images/circ1ledres.png?width=400px)
+![multivcircled](/420-314/images/multivcircled.png?width=400px)
 
-En démarrant la simulation, vous constaterez que la LED s'allume.
+On note que la différence de tension impartie par la résistance est de 7.04V et celle de la LED est de 1.95V. 
 
-Pour continuer l'analogie du flot d'eau dans un tuyau, imaginez une résistance comme une partie du tuyau qui serait plus étroite: ceci diminuerait la puissance du flot dans toute la longueur du tuyau. Ce qui se passe dans notre circuit est similaire: peu importe où on met la résistance, l'intensité du courant diminue sur tout le circuit.
-
-La résistance qu'on doit ajouter dépend de l'intensité initiale. En effet, une source de courant de 20V aura besoin d'une résistance plus "forte" pour empêcher la LED de brûler. À l'inverse, une source de 1.5V n'aura peut-être même pas besoin qu'on ajoute une résistance.
-
-Dans TinkerCAD, lorsqu'on clique sur la résistance, ses spécifications s'affichent: 
-
-![resspecs](/420-314/images/resspecs.png)
-
-Cette valeur est initialement de 1kΩ, soit 1000Ω. Le symbole **Ω** signifie "Ohm" et est l'unité qu'on utilise pour mesurer la résistance.
-
-Si vous changez cette valeur pour 10Ω, vous verrez que la résistance est trop faible: la LED brûle. À partir de quelle valeur de résistance la LED s'allume-t-elle normalement?
-
-#### Loi de Ohm
-Il est possible de calculer cette valeur. La *loi de Ohm* est une formule qui met en relation les 3 valeurs suivantes:
-+ Tension (en volts, *v*)
-+ Résistance (en ohms, *Ω*)
-+ Intensité (en ampères, *A*) 
-
-La formule est la suivante:
-
-> Tension = Intensité * Résistance
-
-Ce qui signifie que pour une tension donnée, augmenter la résistance fait diminuer l'intensité du courant.
-
-On sait que notre pile a 9v et que notre LED supporte un courant de 20mA (0,02A). Pour une avoir une intensité de 0,02A à partir de 9v, de quelle résistance a-t-on besoin? La formule (qui découle de la loi de Ohm) est la suivante:
-
-> Résistance = Tension / Intensité
-
-Notre résistance doit valoir 9 / 0,02, donc 450Ω.
-
-L'équation permet donc de calculer n'importe quelle des 3 valeurs à partir des deux autres. Pour déduire l'intensité du courant lorsqu'on connaît sa tension et la valeur de la résistance, la formule est:
-
-> Intensité = Tension / Résistance
-
-Une manière simple de se souvenir de cette loi est le triangle suivant:
-
-![triangleohm](/420-314/images/triangleohm.png?width=400px)
+On peut conclure les faits suivants:
++ La tension peut varier entre différents points dans un circuit
++ La somme des tensions des différents points dans un circuit correspond à la tension globale du circuit.
 
 
+### Mesurer l'intensité
+Lorsqu'on mesure l'intensité d'un courant électrique, il faut que celui-ci *traverse* le multimètre: ce n'est pas une différence qu'on mesure.
+
+Si on connecte encore notre multimètre directement sur une pile (et qu'on clique sur le **A** sur le multimètre), on pourra voir que l'intensité du courant est de 6A:
+
+![multiapile](/420-314/images/multiapile.png?width=400px)
+
+Dans le cas d'un circuit simple, on doit le connecter pour faire en sorte que le courant le traverse: il doit donc être branché "entre" les composantes:
+
+![multiacircres](/420-314/images/multiacircres.png?width=400px)
+
+On constate que l'intensité du courant est de 15.4mA. Si on branche le multimètre à différents endroits du même circuit, on obtient les mêmes mesures:
+
+![multiacircall](/420-314/images/multiacircall.png?width=400px)
+
+On peut conclure que l'intensité du courant ne varie pas dans un même circuit.
+
+### Utilisation d'un multimètre "réel"
+Dans la section précédente on utilise des exemples de TinkerCAD, où le multimètre est très simplifié. Un multimètre réel a de nombreuses fonctionnalités, il est donc utile de voir ici comment on s'en sert.
+
+Le cadran au centre permet de sélectionner la fonction qu'on veut utiliser:
+
+![vraimulti](/420-314/images/vraimulti.jpg)
+
+Le symbole **⎓** désigne le courant direct (DC).
+
+Le symbole **∿** désigne le courant alternatif (AC).
+
+Le symbole **≃** désigne les deux types de courant (AC/DC).
+
+Pour mesurer la tension:
++ Câble positif (rouge) dans **INPUT** 
++ Câble négatif (noir) dans **COM**
++ Cadran sur **V⎓ (DC)**
+
+Pour mesurer la résistance:
++ Câble positif (rouge) dans **INPUT** 
++ Câble négatif (noir) dans **COM**
++ Cadran sur **Ω**
+  
+Pour mesurer l'intensité:
++ Câble positif (rouge) dans **mA** 
++ Câble négatif (noir) dans **COM**
++ Cadran sur **mA≃ (AC/DC)**
+
+
+## Exercices
+1. Quelle est l'intensité (en ampères) du courant fourni par une pile 9V ? 
+<!--
+{{% expand "Réponse" %}}
+6 A
+![multiex1](/420-314/images/multiex1.png?width=400px)
+{{% /expand %}}
+-->2. Montez le circuit suivant dans TinkerCAD (ne changez pas la valeur de la résistance):
+![multiex2](/420-314/images/multiex2.png?width=400px)
+Quelles sont les mesures d'intensité et de tension dans l'ensemble du circuit?
+<!--
+{{% expand "Réponse" %}}
+1.16mA, 2.99V
+![multiex2solV](/420-314/images/multiex2solV.png?width=400px)
+![multiex2solA](/420-314/images/multiex2solA.png?width=400px)
+{{% /expand %}}
+-->
+3. Remplacez la LED par un moteur DC ("à courant continu"). Quelles sont les valeurs de tension et d'intensité?
+<!--
+{{% expand "Réponse" %}}
+2.80mA, 2.97V
+![multiex3solV](/420-314/images/multiex3solV.png?width=400px)
+![multiex3solA](/420-314/images/multiex3solA.png?width=400px)
+{{% /expand %}}
+-->
+4. Faites un circuit avec une LED et un moteur DC. Quelles sont les valeurs de tension et d'intensité?
+<!--
+{{% expand "Réponse" %}}
+1.09mA, 2.97V
+![multiex4solV](/420-314/images/multiex3solV.png?width=400px)
+![multiex4solA](/420-314/images/multiex3solA.png?width=400px)
+{{% /expand %}}
+-->

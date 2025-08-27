@@ -2,7 +2,7 @@
 title = 'Plaquette'
 date = 2025-08-23T16:14:33-04:00
 draft = false
-weight = 21
+weight = 20
 +++
 
 Une plaquette de prototypage, aussi appelée "breadboard", sert à faciliter l'assemblage des composantes électroniques lorsqu'on construit des circuits. Elle permet de connecter les circuits sans avoir à faire de soudures.
