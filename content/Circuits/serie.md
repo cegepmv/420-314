@@ -121,7 +121,8 @@ Pour mesurer l'intensité:
 6 A
 ![multiex1](/420-314/images/multiex1.png?width=400px)
 {{% /expand %}}
--->2. Montez le circuit suivant dans TinkerCAD (ne changez pas la valeur de la résistance):
+-->
+2. Montez le circuit suivant dans TinkerCAD (ne changez pas la valeur de la résistance):
 ![multiex2](/420-314/images/multiex2.png?width=400px)
 Quelles sont les mesures d'intensité et de tension dans l'ensemble du circuit?
 <!--
