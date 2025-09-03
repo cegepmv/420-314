@@ -72,31 +72,37 @@ Une manière simple de se souvenir de cette loi est le triangle suivant:
 
 ## Exercices
 1. Pour un courant de 3V, quelle est la résistance idéale si le circuit comprend une LED de 20mA ?
-{{% expand "Réponse" %}}
+<!--{{% expand "Réponse" %}}
 Résistance = Tension / Intensité = 3V / 0.02A = `150 Ohms` 
 {{% /expand %}}
-
+-->
 2. Pour un courant de 6V, quelle est la résistance idéale si le circuit comprend une LED de 20mA ?
+<!--
 {{% expand "Réponse" %}}
 Résistance = Tension / Intensité = 6V / 0.02A = `300 Ohms` 
 {{% /expand %}}
-
+-->
 3. Pour un courant de 6V, quelle sera l'intensité si le circuit comprend une résistance de 500 Ohms?
+<!--
 {{% expand "Réponse" %}}
 Intensité = Tension / Résistance = 6V / 500 Ohms = `12mA `
 {{% /expand %}}
-
+-->
 4. Pour un courant de 9V, quelle sera l'intensité si le circuit comprend une résistance de 400 Ohms?
+<!--
 {{% expand "Réponse" %}}
 Intensité = Tension / Résistance = 9V / 400 Ohms = `22.5mA` 
 {{% /expand %}}
-
+-->
 5. Quelle est la tension dans un circuit qui contient une résistance de 200 Ohms où l'instensité est mesurée à 30mA ?
+<!--
 {{% expand "Réponse" %}}
 Tension = Intensité * Résistance = 0.03A * 200 = `6V`
 {{% /expand %}}
-
+-->
 6. Quelle est la tension dans un circuit qui contient une résistance de 500 Ohms où l'instensité est mesurée à 30mA ?
+<!--
 {{% expand "Réponse" %}}
 Tension = Intensité * Résistance = 0.03A * 500 = `15V`
 {{% /expand %}}
+-->
