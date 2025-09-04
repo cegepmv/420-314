@@ -116,35 +116,31 @@ Pour mesurer l'intensité:
 
 ## Exercices
 1. Quelle est l'intensité (en ampères) du courant fourni par une pile 9V ? 
-<!--
 {{% expand "Réponse" %}}
 6 A
 ![multiex1](/420-314/images/multiex1.png?width=400px)
 {{% /expand %}}
--->
+
 2. Montez le circuit suivant dans TinkerCAD (ne changez pas la valeur de la résistance):
 ![multiex2](/420-314/images/multiex2.png?width=400px)
 Quelles sont les mesures d'intensité et de tension dans l'ensemble du circuit?
-<!--
+
 {{% expand "Réponse" %}}
 1.16mA, 2.99V
 ![multiex2solV](/420-314/images/multiex2solV.png?width=400px)
 ![multiex2solA](/420-314/images/multiex2solA.png?width=400px)
 {{% /expand %}}
--->
+
 3. Remplacez la LED par un moteur DC ("à courant continu"). Quelles sont les valeurs de tension et d'intensité?
-<!--
 {{% expand "Réponse" %}}
 2.80mA, 2.97V
 ![multiex3solV](/420-314/images/multiex3solV.png?width=400px)
 ![multiex3solA](/420-314/images/multiex3solA.png?width=400px)
 {{% /expand %}}
--->
+
 4. Faites un circuit avec une LED et un moteur DC. Quelles sont les valeurs de tension et d'intensité?
-<!--
 {{% expand "Réponse" %}}
 1.09mA, 2.99V
 ![multiex4solV](/420-314/images/multiex4solV.png?width=400px)
 ![multiex4solA](/420-314/images/multiex4solA.png?width=400px)
 {{% /expand %}}
--->
