@@ -1,9 +1,9 @@
 +++
 archetype = "chapter"
 title = "Signal digital"
-weight = 3
-pre = "3. "
-draft = true
+weight = 4
+pre = "4. "
+draft = false
 +++
 
-Objectif: Traiter et envoyer des signaux numériques avec le _RaspberryPi_
+Objectif: Recevoir et envoyer des signaux numériques avec le _RaspberryPi_

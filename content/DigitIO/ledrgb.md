@@ -1,8 +1,8 @@
 +++
 title = 'LED RGB'
 date = 2024-08-11T18:31:43-04:00
-draft = false
-weight = 34
+draft = true
+weight = 44
 +++
 
 Les LED RGB ("Light Emitting Diode Red, Green, Blue") sont des diodes électroluminescentes qui peuvent émettre de la lumière dans différentes couleurs en mélangeant la lumière rouge, verte et bleue à des intensités variables. 
@@ -30,11 +30,7 @@ Pour allumer une couleur spécifique sur une LED RGB à anode commune, il faut c
 > La LED RGB du module Keystudio KS0522 est une LED à anode commune. Il faut donc envoyer un courant positif sur l'anode et les broches qu'on veut garder éteintes, et un courant négatif sur les broches qu'on veut allumer.
 
 ## Matériel requis
-
-| | |
-|:--|--|
-| Module "RGB LED" | ![ksrgbled](/420-314/images/ksrgbled.png?width=150px) |
-| 4 connecteurs F-F | ![3jumpff](/420-314/images/3jumpff.png?width=150px) |
+![ksrgbled](/420-314/images/ksrgbled.png?width=150px)
 
 ## Connexions
 

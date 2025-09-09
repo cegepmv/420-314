@@ -1,9 +1,13 @@
 +++
 title = 'Configuration du Pi'
 date = 2024-08-01T13:48:14-04:00
-draft = false
-weight = 11
+draft = true
+weight = 31
 +++
+
+-----------------------------------------------------------------------------
+-------------!!! À supprimer car on n'utilise plus l'écran !!----------------
+-----------------------------------------------------------------------------
 
 Le Raspberry Pi est fourni avec le système d'exploitation _RaspberryPi OS_ pré-installé.
 

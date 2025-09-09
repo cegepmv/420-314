@@ -2,16 +2,16 @@
 title = 'GPIO'
 date = 2024-08-01T18:05:56-04:00
 draft = false
-weight = 31
+weight = 41
 +++
 
 GPIO signifie "General Purpose Input/Output" et désigne la série de broches métalliques qui servent à envoyer ou recevoir des signaux électriques sur un microcontrôleur.
 
 Le RaspberryPi en comprend 40:
-+ 2 broches pour un courant de 3.3V
-+ 2 broches pour un courant de 5V
++ 2 broches pour un courant de 3.3V à 50mA
++ 2 broches pour un courant de 5V à 1.5A
 + 8 broches pour le courant négatif ("ground")
-+ 28 broches génériques
++ 28 broches génériques (3.3V à 16mA)
 
 ![gpio-p1](/420-314/images/GPIO_P1.png)
 
@@ -32,9 +32,13 @@ pi.write(16,1)
 time.sleep(1)
 pi.write(16,0)
 ```
+Dans ce programme, on envoit un signal (3.3V @ 16mA) sur le GPIO 16 durant 1 seconde.
 
-## Références
+{{% notice style="green" title="Référence" %}}
 + GPIO: https://pinout.xyz/
 + Module *pigpio*: https://abyz.me.uk/rpi/pigpio/python.html
-+ Modules Keystudio: https://docs.keyestudio.com/projects/KS0522/en/latest/KS0522.html
+{{% /notice %}}
+
+
+
 

@@ -1,9 +1,9 @@
 +++
 archetype = "chapter"
-title = "Préparation"
-weight = 1
-pre = "1. "
-draft = true
+title = "Connexion au Pi"
+weight = 3
+pre = "3. "
+draft = false
 +++
 
-Objectif: Configurer l'environnement de programmation sur un _RaspberryPi_
+Objectif: Se connecter et configurer l'environnement de programmation sur un _RaspberryPi_
