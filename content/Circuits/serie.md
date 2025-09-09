@@ -124,7 +124,6 @@ Pour mesurer l'intensité:
 2. Montez le circuit suivant dans TinkerCAD (ne changez pas la valeur de la résistance):
 ![multiex2](/420-314/images/multiex2.png?width=400px)
 Quelles sont les mesures d'intensité et de tension dans l'ensemble du circuit?
-
 {{% expand "Réponse" %}}
 1.16mA, 2.99V
 ![multiex2solV](/420-314/images/multiex2solV.png?width=400px)

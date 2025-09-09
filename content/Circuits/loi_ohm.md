@@ -70,6 +70,7 @@ Une manière simple de se souvenir de cette loi est le triangle suivant:
 
 ![triangleohm](/420-314/images/triangleohm.png?width=400px)
 
+--------------------
 ## Exercices
 1. Pour un courant de 3V, quelle est la résistance idéale si le circuit comprend une LED de 20mA ?
 {{% expand "Réponse" %}}
