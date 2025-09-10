@@ -10,9 +10,7 @@ Dans cette section nous verrons comment utiliser le GPIO pour traiter des signau
 ## Capter le signal d'un bouton poussoir simple
 Dans l'exemple suivant nous allons utiliser un bouton poussoir comme interrupteur d'un circuit et afficher son état (0 ou 1) à la ligne de commande.
 
-Posez le bouton sur la plaquette et reliez une de ses pattes à la broche du GPIO 4 sur votre Pi:
-
-![poussoir](/420-314/images/inputPoussoir.png)
+Posez le bouton sur la plaquette et reliez une de ses pattes à la broche du GPIO 4 sur votre Pi.
 
 Le GPIO 4 sera utilisé en mode INPUT puisqu'il doit détecter si le bouton est appuyé. Mais il peut aussi fournir un courant de 3.3V au circuit. Il y a donc 2 possibilités pour la 2e broche du bouton:
 + On le connecte à une broche GND du Pi, donc GPIO 4 fournit le courant. 

@@ -76,7 +76,6 @@ Connectez le module LED au Pi comme suit:
 + Broche `G` sur broche `9` (Ground)
 + Broche `S` sur broche `11` (GPIO 17)
 
-![testLed](/420-314/images/outputExo1.png)
 
 Lancez une nouvelle fois le programme de l'exemple précédent.
 
