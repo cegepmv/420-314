@@ -1,7 +1,7 @@
 +++
 title = 'LED RGB'
 date = 2024-08-11T18:31:43-04:00
-draft = true
+draft = false
 weight = 44
 +++
 
@@ -33,7 +33,6 @@ Pour allumer une couleur spécifique sur une LED RGB à anode commune, il faut c
 ![ksrgbled](/420-314/images/ksrgbled.png?width=150px)
 
 ## Connexions
-
 Dans cet exemple nous utiliserons les broches suivantes du *RaspberryPi*:
 + broche 17 (courant 3,3V)
 + broche 11 (GPIO 17, rouge)

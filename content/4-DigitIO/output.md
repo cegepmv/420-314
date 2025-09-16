@@ -86,3 +86,39 @@ Avec une LED ordinaire, c'est en envoyant un courant positif qu'on l'allume. Dan
 ## Exercices
 1. Faire un programme qui fait clignoter la LED Keystudio à chaque seconde
 2. Connectez une LED normale sur une autre broche GPIO et faites un programme qui fait clignoter les deux LED en alternance (lorsqu'une est éteinte, l'autres est allumée)
+{{% expand "Solution 1." %}}
+```python
+import pigpio
+import time
+
+pi = pigpio.pi()
+pi.set_mode(17,pigpio.OUTPUT)
+
+while True:
+    pi.write(17,1)
+    time.sleep(1)
+    pi.write(17,0)
+    time.sleep(1)
+```
+{{% /expand %}}
+{{% expand "Solution 2." %}}
+```python
+import pigpio
+import time
+
+LED1 = 17
+LED2 = 21
+
+pi = pigpio.pi()
+pi.set_mode(LED1,pigpio.OUTPUT)
+pi.set_mode(LED2,pigpio.OUTPUT)
+
+while True:
+    pi.write(LED1,1)
+    pi.write(LED2,0)
+    time.sleep(1)
+    pi.write(LED1,0)
+    pi.write(LED2,1)
+    time.sleep(1)
+```
+{{% /expand %}}

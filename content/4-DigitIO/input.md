@@ -95,7 +95,6 @@ Lorsque vous exécutez ce programme, une série de "1" s'affiche en continu, et 
 1. Faites un programme qui affiche "0" une seule fois lorsqu'on clique le bouton, et qui affiche "1" une seule fois lorsqu'on le relâche.
 2. Faites un programme qui affiche seulement "clic" chaque fois qu'on clique sur le bouton.
 
-<!--
 {{% expand "Solution 1." %}}
 ```python
 import pigpio
@@ -128,6 +127,5 @@ while True:
 ```
 {{% /expand %}}
 
--->
 
 

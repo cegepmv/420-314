@@ -1,5 +1,5 @@
 +++
-archetype = "chapter"
+type = "chapter"
 title = "Signal digital"
 weight = 4
 pre = "4. "

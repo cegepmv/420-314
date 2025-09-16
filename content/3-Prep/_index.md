@@ -1,5 +1,5 @@
 +++
-archetype = "chapter"
+type = "chapter"
 title = "Connexion au Pi"
 weight = 3
 pre = "3. "
