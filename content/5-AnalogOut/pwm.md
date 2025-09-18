@@ -71,7 +71,6 @@ except KeyboardInterrupt:
 2. Faites un programme qui fait augmenter puis diminuer graduellement la luminosité et continue cycliquement sans arrêter.
 3. Faites un programme qui demande d'entrer un nombre de 0-100 au clavier et allume ensuite la LED au pourcentage de luminosité correspondant.
 
-<!--
 {{% expand "Solution 1." %}}
 ```python
 ...
@@ -127,7 +126,7 @@ dc = input("SVP entrez une valeur de 0-100: ")
 pi.set_PWM_dutycycle(LED,dc)
 ```
 {{% /expand %}}
--->
+
 -------------------------------
 
 ## Références utiles
