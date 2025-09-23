@@ -65,6 +65,10 @@ finally:
     pi.stop()
 ```
 
+Pour exécuter ce programme, vous devez faire les connexions suivantes:
+
+![dcl293d](/420-314/images/dc_l293d.jpg?width=400px&lightbox=true)
+
 ## Exercices
 1. Faites un programme qui fait tourner le moteur 1 seconde dans un sens et 1 seconde dans l'autre sens, et qui se termine en arrêtant le moteur.
 
