@@ -71,8 +71,6 @@ Pour exécuter ce programme, vous devez faire les connexions suivantes:
 
 ## Exercices
 1. Faites un programme qui fait tourner le moteur 1 seconde dans un sens et 1 seconde dans l'autre sens, et qui se termine en arrêtant le moteur.
-
-<!--
 {{% expand "Solution" %}}
 ```python
 import pigpio
@@ -109,10 +107,8 @@ finally:
     pi.stop()
 ```
 {{% /expand %}}
--->
 
 2. En utilisant la fonction ***set_PWM_dutycycle()***, démarrez le moteur à sa vitesse maximale puis diminuez-la de 10% à chaque seconde jusqu'à l'arrêt. 
-<!--
 {{% expand "Solution" %}}
 ```python
 import pigpio
@@ -147,6 +143,6 @@ finally:
     pi.stop()
 ```
 {{% /expand %}}
--->
+
 3. Changez le programme du numéro précédent pour qu'il commence à zéro et augmente sa vitesse de rotation de 10% à toutes les secondes. Que remarquez-vous?
 
