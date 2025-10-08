@@ -1,10 +1,11 @@
 +++
-title = 'Contrôle avec PWM'
+title = 'Servomoteurs'
 date = 2024-10-01T16:28:35-04:00
 draft = false
 weight = 62
 +++
 
+Contrairement à un moteur électrique ordinaire qui tourne tant qu'on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s'en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
 
 On contrôle les mouvements d'un servo-moteur en utilisant la technique PWM.
 
@@ -89,18 +90,11 @@ while True:
     dc = float(input("Entrez une valeur entre 2.5 et 12.5:"))
     pi.set_PWM_dutycycle(servo,dc)
 ```
+
+## Exercices
+
+1. Faites un programmes similaire à l'exmeple 2, mais l'utilisateur doit entrer un angle entre 0 et 180 degrés au lieu d'une valeur entre 2.5 et 12.5.
 <!--
-- 4 exercices de conversion angle/DC
-- 1 exercice où on doit entrer un angle au lieu d'un DC
-- 1 exercice avec 3 boutons correspondant à 0, 90 et 180 degrés
-- 1 exercice avec bouton KS où chaque clic bouge de 10 degrés, reset à la fin
-- 1 exercice avec potentiomètre
-- 1 exam avec bouton KS qui alterne entre 60 et 120
-- 1 exam avec servo qui fait des va et vient où bouton est un on/off
-
-## Exercice 1
-Faites un programmes similaire à l'exmeple 2, mais l'utilisateur doit entrer un angle entre 0 et 180 degrés au lieu d'une valeur entre 2.5 et 12.5.
-
 ```python
 import pigpio
 from time import sleep
@@ -118,34 +112,8 @@ while True:
     dc = dc / 18 + 2.5
         pi.set_PWM_dutycycle(servo,dc)
 ```
-
-## Exercice 2
-Utilisez un potentiomètre pour changer l'angle de rotation du servo moteur.
-
-```python
-import pigpio
-from time import sleep
-import busio
-import adafruit_ads1x15.ads1115 as ADS
-from adafruit_ads1x15.analog_in import AnalogIn
-
-SCL = 3
-SDA = 2
-GAIN = 1
-servo = 17
-FREQ = 50 # Fréquence en Hz de la période
-
-i2cBus = busio.I2C(SCL, SDA)
-ads = ADS.ADS1115(i2cBus, GAIN)
-a0 = AnalogIn(ads, 0)
-
-pi = pigpio.pi()
-pi.set_mode(servo,pigpio.OUTPUT)
-pi.set_PWM_frequency(servo,FREQ)
-pi.set_PWM_range(servo,100) # Valeurs possibles dutycycle de 0-100
-
-while True:
-    dc = abs(a0.value) / 3277 + 2.5
-    pi.set_PWM_dutycycle(servo,dc)
-```
 -->
+
+2. Au début du programme, votre servomoteur est à 0 degrés. Ensuite, à chaque clic d'un bouton Keystudio, l'angle augmente de 30 degrés. Lorsque l'angle atteint sa valeur maximale, on revient à 0.
+
+
