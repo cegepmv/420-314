@@ -5,7 +5,7 @@ draft = false
 weight = 62
 +++
 
-Contrairement à un moteur électrique ordinaire qui tourne tant qu'on lui envoit un courant électrique, Les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s'en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
+Contrairement à un moteur électrique ordinaire qui tourne tant qu'on lui envoit un courant électrique, les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s'en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
 
 On contrôle les mouvements d'un servo-moteur en utilisant la technique PWM.
 

@@ -1,9 +1,9 @@
 +++
-archetype = "chapter"
+type = "chapter"
 title = "Input analogique"
-weight = 4
-pre = "4. "
-draft = true
+weight = 7
+pre = "7. "
+draft = false
 +++
 
 Objectif: Traiter des signaux analogiques avec le _RaspberryPi_
