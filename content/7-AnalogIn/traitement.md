@@ -122,7 +122,6 @@ except KeyboardInterrupt:
 ```
 {{% /expand %}}
 2. Modifiez le programme de l'exercice précédent pour que le potentiomètre contrôle la luminosité de la LED.
-<!--
 {{% expand "Solution" %}}
 ```python
 import busio
@@ -156,7 +155,6 @@ except KeyboardInterrupt:
     print("Programme interrompu.")
 ```
 {{% /expand %}}
--->
 3. Connectez le bouton Keystudio à votre Pi et alimentez-le avec un courant de 3.3V. Modifiez votre programme pour que le bouton ait l'effet d'allumer ou d'éteindre la LED. Le potentiomètre contrôle toujours la la LED lorsqu'elle est allumée.
 <!--
 {{% expand "Solution" %}}
