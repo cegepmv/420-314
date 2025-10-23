@@ -89,7 +89,6 @@ Si on définit un gain de 8, le voltage maximum (qui correspond à la valeur 327
 
 ## Exercices
 1. Utilisez le potentiomètre pour faire allumer le module LED Keystudio: lorsque la valeur lue est supérieure à 16000, la LED s'allume; en-dessous de 16000, elle s'éteint.
-<!--
 {{% expand "Solution" %}}
 ```python
 import busio
@@ -122,7 +121,6 @@ except KeyboardInterrupt:
     print("Programme interrompu.")
 ```
 {{% /expand %}}
--->
 2. Modifiez le programme de l'exercice précédent pour que le potentiomètre contrôle la luminosité de la LED.
 <!--
 {{% expand "Solution" %}}
