@@ -156,7 +156,6 @@ except KeyboardInterrupt:
 ```
 {{% /expand %}}
 3. Connectez le bouton Keystudio à votre Pi et alimentez-le avec un courant de 3.3V. Modifiez votre programme pour que le bouton ait l'effet d'allumer ou d'éteindre la LED. Le potentiomètre contrôle toujours la la LED lorsqu'elle est allumée.
-<!--
 {{% expand "Solution" %}}
 ```python
 import busio
@@ -203,7 +202,6 @@ except KeyboardInterrupt:
     print("Programme interrompu.")
 ```
 {{% /expand %}}
--->
 4. Dans cet exercice, c'est un senseur de luminosité qui contrôle si la LED s'allume ou s'éteint. Connectez le senseur de luminosité au port A0 du module ADC1115 et alimentez-le avec le courant de 3.3V. Modifiez votre programme pour que le senseur de luminosité éteigne la LED lorsque la luminosité est inférieure à 50% du maximum possible (attention, 50% ne correspond pas à 32767 / 2...). Le potentiomètre contrôle toujours la la LED lorsqu'elle est allumée.
 <!--
 {{% expand "Solution" %}}
@@ -243,4 +241,4 @@ except KeyboardInterrupt:
 ```
 {{% /expand %}}
 -->
-5. Quelle valeur de GAIN serait optimale pour la luminosité ambiante de la classe? Ajustez la valeur de la variable GAIN et passez-la au constructeur `ADS1115()` dans le programme du numéro précédent.
+5. Quelle valeur de GAIN serait optimale pour la luminosité ambiante de la classe? Trouvez cette valeur et passez-la au constructeur `ADS1115()` dans le programme du numéro précédent.
