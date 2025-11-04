@@ -215,11 +215,14 @@ from adafruit_ads1x15.analog_in import AnalogIn
 
 # Constantes 
 LED = 21
-MAX_VAL = 32767
+# Avec un gain de 1, le maximum possible est 26399 
+# car 3,3V vaut 80,6% de 4.096V, et 80,6% de 32767 = 26399
+MAX_VAL = 26399 
+GAIN = 1
 
 # Initialisations
 i2c = busio.I2C(board.SCL, board.SDA)
-ads = ADS1115(i2c)
+ads = ADS1115(i2c, GAIN)
 data_pot = AnalogIn(ads, 0)
 data_lum = AnalogIn(ads, 1)
 pi = pigpio.pi()
