@@ -1,8 +1,8 @@
 +++
 title = 'Fonctionnement'
 date = 2024-11-21T11:28:38-05:00
-draft = false
-weight = 71
+draft = true
+weight = 81
 +++
 
 Le fonctionnement du protocole I2C s'appuie sur des principes qu'on retrouve dans les communications digitales "sérielles".
