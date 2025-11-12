@@ -316,9 +316,8 @@ def allumerTout(mod):
 ```
 {{% /expand %}}
 
-
-2. Faites une fonction nommée `remplir(moduleI2C,allume)` qui allume toutes les LED si `allume` (un booléen) est Vrai, et les éteint si `allume` est Faux.
 <!--
+2. Faites une fonction nommée `remplir(moduleI2C,allume)` qui allume toutes les LED si `allume` (un booléen) est Vrai, et les éteint si `allume` est Faux.
 {{% expand "Solution" %}}
 ```python
 def remplir(mod,on):
@@ -339,7 +338,7 @@ def remplir(mod,on):
 (...)
 for addr in [0,2,4,6,8,10,12,14]:
     module.write(bytes([addr])) # Spécifier l'adresse qui sera utilisée
-    module.write(bytes([addr,255])) # Écrire les données à l'adresse
+    module.write(bytes([addr,128])) # Écrire les données à l'adresse
     sleep(1)
     module.write(bytes([addr,0])) # Écrire les données (vides) à l'adresse
 (...)
@@ -398,7 +397,7 @@ for i in range(0,8):
 ```
 {{% /expand %}}
 -->
-7. Si on appelle plusieurs fois la fonction `allumer()` du numéro 4 pour la même rangée, seul une LED s'allume à la fois. Modifiez la fonction pour que les LED déjà allumées ne s'éteignent pas. Un indice: l'opérateur bitwise `|` est utile ici.
+7. Si on appelle plusieurs fois la fonction `allumer()` du numéro 5 pour la même rangée, seul une LED s'allume à la fois. Modifiez la fonction pour que les LED déjà allumées ne s'éteignent pas. Un indice: l'opérateur bitwise `|` est utile ici.
 <!--
 {{% expand "Solution" %}}
 ```python
