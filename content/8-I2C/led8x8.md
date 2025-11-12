@@ -215,10 +215,10 @@ En python, on peut effectuer cette opération avec le symbole `&`:
 
 #### OU logique
 Le OU logique correspond à faire une opération de disjonction sur chacun des bits correspondants de deux nombres. Le résultat vaut 1 lorsqu'au moins un des deux bits vaut 1:
-- 1 ET 1 = 1
-- 1 ET 0 = 1
-- 0 ET 1 = 1
-- 0 ET 0 = 0
+- 1 OU 1 = 1
+- 1 OU 0 = 1
+- 0 OU 1 = 1
+- 0 OU 0 = 0
 
 Par exemple, 235 OU 173 = 239:
 ```
@@ -240,10 +240,10 @@ En python, on peut effectuer cette opération avec le symbole `|`:
 
 #### OU exclusif (XOR)
 Pour le OU exclusif, les deux bits correspondants doivent être différents pour que le résultat soit 1:
-- 1 ET 1 = 0
-- 1 ET 0 = 1
-- 0 ET 1 = 1
-- 0 ET 0 = 0
+- 1 XOR 1 = 0
+- 1 XOR 0 = 1
+- 0 XOR 1 = 1
+- 0 XOR 0 = 0
 
 Dans l'exemple suivant, 235 XOR 173 = 70: 
 ```
