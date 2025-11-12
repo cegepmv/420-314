@@ -95,7 +95,9 @@ mat.shift_right(True)
 
 ## adafruit_bus_device
 
-On utilisera la classe `I2CDevice` pour communiquer avec la matrice de LED. Cette classe comprend les deux méthodes suivantes::
+On utilisera la classe `I2CDevice` du module *adafruit_bus_device* pour communiquer avec la matrice de LED. Aussi la matrice est montée sur un circuit intégré `ht16k33` qui traduit en signaux électriques les instructions qu'il reçoit par I2C. On doit donc déclarer une instance de `I2CDevice` et l'utiliser d'abord pour intialiser le circuit intégré. Ensuite il est possible d'envoyer les instructions pour allumer les différentes LED de la matrice.
+
+On utilisera principalement les deux méthodes suivantes:
 
 ###### readinto(buf)
 Lit les données sur le composant I2C (dans notre cas, la matrice de LED) et les écrit dans la variable désignée par `buf`. Ces données sont au format binaire.
@@ -103,9 +105,13 @@ Lit les données sur le composant I2C (dans notre cas, la matrice de LED) et les
 ###### write(buf)
 Écrit sur le composant I2C les données contenues dans la variable `buf`.
 
-Le référence:
+{{% notice info "Références" %}}
+Module *adafruit_bus_device*: https://docs.circuitpython.org/projects/busdevice/en/latest/api.html
 
-https://docs.circuitpython.org/projects/busdevice/en/latest/api.html
+Circuit *ht16k33*: https://www.partsnotincluded.com/controlling-led-matrix-with-the-ht16k33/
+{{% /notice %}}
+
+
 
 ### Exemple 1
 Dans le programme suivant on allume une série de LED sur chaque rangée successivement:
@@ -115,8 +121,12 @@ import busio
 from time import sleep
 import adafruit_bus_device.i2c_device as i2c_device
 
-i2cBus = busio.I2C(board.SCL, board.SDA)
+# Initialisation
+i2cBus = busio.I2C(board.SCL, board.SDA)    
 module = i2c_device.I2CDevice(i2cBus, 0x70)
+module.write(bytes([0x21])) # Initialiser l'oscillateur du contrôleur
+module.write(bytes([0x81])) # Initialiser la matrice de LED 
+module.write(bytes([0xEF])) # Initialiser la luminosité
 
 octetAffiche = 165 #10100101
 for i in range(0,16,2):
@@ -144,8 +154,11 @@ import busio
 from time import sleep
 import adafruit_bus_device.i2c_device as i2c_device
 
-i2cBus = busio.I2C(board.SCL, board.SDA)
+i2cBus = busio.I2C(board.SCL, board.SDA)    
 module = i2c_device.I2CDevice(i2cBus, 0x70)
+module.write(bytes([0x21])) 
+module.write(bytes([0x81])) 
+module.write(bytes([0xEF])) 
 
 for octet in [1,2,4,8,16,32,64,128]:
     module.write(bytes([0])) # Spécifier l'adresse qui sera utilisée
@@ -162,8 +175,11 @@ import busio
 from time import sleep
 import adafruit_bus_device.i2c_device as i2c_device
 
-i2cBus = busio.I2C(board.SCL, board.SDA)
+i2cBus = busio.I2C(board.SCL, board.SDA)    
 module = i2c_device.I2CDevice(i2cBus, 0x70)
+module.write(bytes([0x21])) 
+module.write(bytes([0x81])) 
+module.write(bytes([0xEF])) 
 
 # Ecrire une valeur
 octet = 45
