@@ -378,7 +378,6 @@ def allumerUneLed(mod,rg,col):
 ```
 {{% /expand %}}
 6. Faites un programme qui allume plusieurs LED sur toutes les rangées (avec la fonction `random.randint()`) puis affichez à la console les valeurs (en binaire) de chaque rangée.
-<!--
 {{% expand "Solution" %}}
 ```python
 import board
@@ -404,9 +403,7 @@ for i in range(0,8):
     print(donnees[0],bin(donnees[0]))
 ```
 {{% /expand %}}
--->
 7. Si on appelle plusieurs fois la fonction `allumer()` du numéro 5 pour la même rangée, seul une LED s'allume à la fois. Modifiez la fonction pour que les LED déjà allumées ne s'éteignent pas. Un indice: l'opérateur bitwise `|` est utile ici.
-<!--
 {{% expand "Solution" %}}
 ```python
 def allumer(mod,rg,col):
@@ -422,4 +419,3 @@ def allumer(mod,rg,col):
     module.write(bytes([adr,octet]))
 ```
 {{% /expand %}}
--->
