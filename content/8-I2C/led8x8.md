@@ -372,7 +372,7 @@ def rangee(mod,rg):
 ```python
 def allumerUneLed(mod,rg,col):
     adr = rg << 1
-    octet = 1 << col
+    octet = 128 >> col
     mod.write(bytes([adr]))
     mod.write(bytes([adr,octet]))
 ```
