@@ -331,9 +331,8 @@ def allumerTout(mod):
         mod.write(bytes([i,255]))
 ```
 {{% /expand %}}
-
-<!--
 2. Faites une fonction nommée `remplir(moduleI2C,allume)` qui allume toutes les LED si `allume` (un booléen) est Vrai, et les éteint si `allume` est Faux.
+<!--
 {{% expand "Solution" %}}
 ```python
 def remplir(mod,on):
