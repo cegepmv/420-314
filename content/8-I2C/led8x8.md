@@ -332,7 +332,6 @@ def allumerTout(mod):
 ```
 {{% /expand %}}
 2. Faites une fonction nommée `remplir(moduleI2C,allume)` qui allume toutes les LED si `allume` (un booléen) est Vrai, et les éteint si `allume` est Faux.
-<!--
 {{% expand "Solution" %}}
 ```python
 def remplir(mod,on):
@@ -344,10 +343,8 @@ def remplir(mod,on):
             mod.write(bytes([i,0]))
 ```
 {{% /expand %}}
--->
 
 3. Faites un programme semblable à celui de l'exemple 2 plus haut, mais qui allume la première LED de chaque rangée (au lieu de chaque LED d'une même rangée)
-<!--
 {{% expand "Solution" %}}
 ```python
 (...)
@@ -359,9 +356,8 @@ for addr in [0,2,4,6,8,10,12,14]:
 (...)
 ```
 {{% /expand %}}
--->
+
 4. Faites une fonction nommée `rangee(moduleI2C,ligne)` qui allume toutes les LED de la ligne passée (un entier de 0 à 7). Utilisez l'opérateur `<<` pour convertir ce nombre entier dans un numéro de rangée possible (0, 2, 4, 6, 8, 10, 12, 14).
-<!--
 {{% expand "Solution" %}}
 ```python
 def rangee(mod,rg):
@@ -370,7 +366,6 @@ def rangee(mod,rg):
     module.write(bytes([i,255]))
 ```
 {{% /expand %}}
--->
 
 5. Faites une fonction nommée `allumer(moduleI2C,ligne,colonne)` qui allume une LED à la ligne et à la colonne passées (des entiers de 0 à 7). Utilisez l'opérateur `<<` pour calculer l'adresse de la rangée et aussi pour déterminer quelle LED allumer.
 <!--
