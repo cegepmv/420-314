@@ -408,7 +408,7 @@ for i in range(0,8):
 ```python
 def allumer(mod,rg,col):
     adr = rg << 1
-    octet = 1 << col
+    octet = 128 >> col
 
     mod.write(bytes([adr]))
     donnees = bytearray(1)
