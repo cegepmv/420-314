@@ -367,18 +367,16 @@ def rangee(mod,rg):
 ```
 {{% /expand %}}
 
-5. Faites une fonction nommée `allumer(moduleI2C,ligne,colonne)` qui allume une LED à la ligne et à la colonne passées (des entiers de 0 à 7). Utilisez l'opérateur `<<` pour calculer l'adresse de la rangée et aussi pour déterminer quelle LED allumer.
-<!--
+5. Faites une fonction nommée `allumerUneLed(moduleI2C,ligne,colonne)` qui allume une LED à la ligne et à la colonne passées (des entiers de 0 à 7). Utilisez l'opérateur `<<` pour calculer l'adresse de la rangée et aussi pour déterminer quelle LED allumer.
 {{% expand "Solution" %}}
 ```python
-def allumer(mod,rg,col):
+def allumerUneLed(mod,rg,col):
     adr = rg << 1
     octet = 1 << col
     mod.write(bytes([adr]))
     mod.write(bytes([adr,octet]))
 ```
 {{% /expand %}}
--->
 6. Faites un programme qui allume plusieurs LED sur toutes les rangées (avec la fonction `random.randint()`) puis affichez à la console les valeurs (en binaire) de chaque rangée.
 <!--
 {{% expand "Solution" %}}
