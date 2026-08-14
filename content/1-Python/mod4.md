@@ -9,7 +9,7 @@ weight = 14
 
 
 ## 1. Introduction
-
+ 
 Introduites en Python 3.6, les **f-strings** (ou *Formatted String Literals*) sont la méthode moderne, la plus rapide et la plus lisible pour intégrer des variables ou des expressions à l'intérieur d'une chaîne de caractères.
 
 Pour transformer une chaîne normale en f-string, il suffit de placer la lettre `f` ou `F` juste **avant** les guillemets ouvrants.

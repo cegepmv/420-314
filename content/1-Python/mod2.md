@@ -8,7 +8,7 @@ weight = 12
 ## Chaînes de caractères
 Il est facile de déclarer des chaînes de caractères en python:
 ```python
-s = "abcdef"
+s = "abcdef" 
 ```
 
 Elles peuvent ensuite être menipulées comme des objets, avec leurs méthodes spécifiques:

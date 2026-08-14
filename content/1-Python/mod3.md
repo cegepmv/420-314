@@ -4,7 +4,7 @@ date = 2025-08-18T11:22:54-04:00
 draft = false
 weight = 13
 +++
-
+<!-- Test -->
 ## Listes
 En python les listes sont déclarées à l'aide de crochets:
 ```python
@@ -75,7 +75,7 @@ print(lettre,"apparaît",compt,"fois dans",mot)
 ```
 {{% /expand %}}
 1. Faites un programme qui demande un mot à l'utilisateur et crée une liste où chaque élément est une lettre du mot, à l'envers. Par exemple, si le mot est "python", la liste sera ['n','o','h','t','y','p']
-{{% expand "Réponse" %}}
+{{% expand "Réponse" %}} 
 ```python
 mot = input("Entrez un mot: ")
 liste = []

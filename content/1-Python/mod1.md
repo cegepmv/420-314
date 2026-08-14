@@ -4,7 +4,7 @@ date = 2025-08-18T11:22:48-04:00
 draft = false
 weight = 11
 +++
-<!--
+<!-- 
 - IDE à utiliser?
 - print hello world, mettre dans une variable : pas de type
 - truc = "10+3", 10+3, 10-3, 10*3... il manque quoi? : Division. / vs //. 
