@@ -1,7 +1,7 @@
 +++
 title = 'Servomoteurs'
 date = 2024-10-01T16:28:35-04:00
-draft = false
+draft = true
 weight = 62
 +++
 

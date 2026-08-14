@@ -1,9 +1,9 @@
 +++
 type = "chapter"
-title = "Connexion au Pi"
+title = "Configuration du ESP-32"
 weight = 3
 pre = "3. "
 draft = false
 +++
 
-Objectif: Se connecter et configurer l'environnement de programmation sur un _RaspberryPi_
+Objectif: Configurer l'environnement de programmation sur un **_ESP-32_**
