@@ -1,5 +1,5 @@
 +++
-title = 'Module 2'
+title = 'Partie 2'
 date = 2025-08-18T11:22:51-04:00
 draft = false
 weight = 12
@@ -96,11 +96,9 @@ print(mot[1:-1])
 ```
 {{% /expand %}}
 4. Demander d'entrer un nombre et dites s'il est premier. Vous pouvez utiliser l'algorithme suivant:
-```
-Pour chaque nombre N entre 1 et le nombre saisi
-    Si le nombre saisi est divisible par N
-        Il n'est pas premier
-```
+
+Pour chaque nombre N entre 1 et le nombre saisi, si le nombre saisi est divisible par N alors le nombre n'est pas premier
+
 {{% expand "Réponse" %}}
 ```python
 n = int(input("Entrez un nombre: "))

@@ -1,5 +1,5 @@
 +++
-title = 'Module 3'
+title = 'Partie 3'
 date = 2025-08-18T11:22:54-04:00
 draft = false
 weight = 13

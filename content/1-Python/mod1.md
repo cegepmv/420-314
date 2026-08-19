@@ -1,5 +1,5 @@
 +++
-title = 'Module 1'
+title = 'Partie 1'
 date = 2025-08-18T11:22:48-04:00
 draft = false
 weight = 11
@@ -14,8 +14,6 @@ weight = 11
 - indentation en python: les ":", les erreurs d'indentation (démo)
 - conditions
 -->
-
-Pour ce module et les suivants, nous allons utiliser *IDLE*, un éditeur de code simple inclus avec la distribution du langage python.
 
 {{% notice style="green" title="Référence" %}}
 Dans cette section, nous ne décrivons pas toutes les particularités de _python_: pour une référence plus complète, allez à https://www.pythoncheatsheet.org/.

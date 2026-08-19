@@ -2,6 +2,10 @@ baseURL = 'https://cegepmv.github.io/420-314/'
 languageCode = 'fr-ca'
 title = 'Programmation de plateformes embarquées'
 theme = 'hugo-theme-relearn'
+enableEmoji = true
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
   # Change default color scheme with a variant one. Can be empty, "red", "blue", "green".
   themeVariant = "green"
