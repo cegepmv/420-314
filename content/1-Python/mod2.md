@@ -11,7 +11,7 @@ Il est facile de déclarer des chaînes de caractères en python:
 s = "abcdef" 
 ```
 
-Elles peuvent ensuite être menipulées comme des objets, avec leurs méthodes spécifiques:
+Elles peuvent ensuite être manipulées comme des objets, avec leurs méthodes spécifiques:
 ```python
 s1 = "abcdef"
 s2 = s1.upper()

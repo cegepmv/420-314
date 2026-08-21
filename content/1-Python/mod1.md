@@ -196,11 +196,11 @@ public class Exercice5 {
 nombre = 0
 
 i = 1
-while i<4:
+while i <= 4:
     j = 1
-    while j<4:
+    while j <= 4:
         k = 1
-        while k<4:
+        while k <= 4:
             if k != i and k != j and i != j:
                 nombre += 1
                 print(str(i)+str(j)+str(k))
