@@ -12,7 +12,7 @@ Va sur le [site officiel](https://github.com/arduino/lab-micropython-installer/r
 
 >[!IMPORTANT]
 >Si l'étape 1 ne fonctionne pas, vous pouvez essayer les étapes suivantes sur Linux. J'ai testé sur Ubuntu et j'ajouterai éventuellement les étapes pour Windows. 
-<!-- ### 2. Créer l'environnement de flashage (Sandbox) sur Ubuntu
+### 2. Créer l'environnement de flashage (Sandbox) sur Ubuntu
 
 Ouvre un terminal et tape ces commandes pour installer l'outil officiel d'Espressif (`esptool`) sans casser ton système :
 
@@ -23,9 +23,13 @@ python3 -m venv espenv
 source espenv/bin/activate
 pip install esptool
 
-``` -->
+echo 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="2341", MODE:="0666"' | sudo tee /etc/udev/rules.d/60-arduino-esp32.rules
 
-### 1. Passer l'Arduino en "Mode Bootloader" (Mode Flash)
+sudo udevadm trigger && sudo udevadm control --reload-rules
+
+``` 
+
+### 3. Passer l'Arduino en "Mode Bootloader" (Mode Flash)
 
 * Branche l'Arduino en USB.
 * Relie la broche **`B1`** à la broche **`GND`** avec un petit fil ou un trombone.

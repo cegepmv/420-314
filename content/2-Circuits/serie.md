@@ -137,7 +137,7 @@ Quelles sont les mesures d'intensité et de tension dans l'ensemble du circuit?
 ![multiex3solA](/420-314/images/multiex3solA.png?width=400px)
 {{% /expand %}}
 
-4. Faites un circuit avec une LED et un moteur DC. Quelles sont les valeurs de tension et d'intensité?
+4. Faites un circuit avec une LED et un moteur DC en série. Quelles sont les valeurs de tension et d'intensité?
 {{% expand "Réponse" %}}
 1.09mA, 2.99V
 ![multiex4solV](/420-314/images/multiex4solV.png?width=400px)
