@@ -161,11 +161,14 @@ Avec une LED ordinaire, c'est en envoyant un courant positif qu'on l'allume. Dan
 {{% /notice %}}
 
 ## Exercices
-
+1. Faire un programme qui demande à l'utilisateur d'entrer un nombre entier et clignote une LED à toutes les secondes le nombre de fois que l'utilisateur à indiqué.
 1. Faire un programme qui fait clignoter la LED Keyestudio à chaque seconde (en boucle infinie).
-2. Connectez une LED normale sur une autre broche GPIO (ex: GPIO 5) et faites un programme qui fait clignoter les deux LED en alternance (lorsqu'une est éteinte, l'autre est allumée).
-
+1. Connectez une LED RGB sur une autre broche GPIO (ex: GPIO 5) et faites un programme qui fait clignoter les deux LED en alternance (lorsqu'une est éteinte, l'autre est allumée). La LED RGB doit être jaune.
 {{% expand "Solution 1." %}}
+
+{{% /expand %}}
+
+{{% expand "Solution 2." %}}
 
 ```python
 from machine import Pin
@@ -183,23 +186,10 @@ while True:
 
 {{% /expand %}}
 
-{{% expand "Solution 2." %}}
+{{% expand "Solution 3." %}}
 
 ```python
-from machine import Pin
-import time
 
-LED1 = Pin(4, Pin.OUT)
-LED2 = Pin(5, Pin.OUT)
-
-while True:
-    LED1.value(1)
-    LED2.value(0)
-    time.sleep(1)
-    
-    LED1.value(0)
-    LED2.value(1)
-    time.sleep(1)
 
 ```
 

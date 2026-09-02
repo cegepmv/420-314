@@ -17,7 +17,7 @@ Voici comment configurer VSCode sur Windows et Ubuntu (Linux)
 ### Sur Windows
 
 1. **Node.js :** L'extension Pymakr en a absolument besoin pour fonctionner. Télécharge et installe la version LTS sur le [site officiel de Node.js](https://nodejs.org/).
-2. **Pilotes (Driver) :** Comme tu as dit l'avoir déjà installé, assure-toi simplement que ton ESP32 apparaît bien dans le **Gestionnaire de périphériques** sous l'onglet *Ports (COM et LPT)* (généralement nommé `CH340` ou `CP210x`).
+2. **Pilotes (Driver) :** Assure-toi simplement que ton ESP32 apparaît bien dans le **Gestionnaire de périphériques** sous l'onglet *Ports (COM et LPT)* (généralement nommé `CH340` ou `CP210x`). S'il n'apparait pas tu dois installer un driver.
 
 ### Sur Ubuntu (Linux)
 
@@ -64,14 +64,14 @@ Pour éviter les nœuds, suis cette structure simple :
 
 
 
-Ajoute ce code de test dans ton `main.py` pour faire clignoter la LED interne (la broche 0 sur nos ESP32) :
+Ajoute ce code de test dans ton `main.py` pour faire clignoter la LED interne (la broche 48 sur nos ESP32) :
 
 ```python
 import machine
 import time
 
 # La broche 2 contrôle souvent la LED bleue intégrée
-led = machine.Pin(0, machine.Pin.OUT)
+led = machine.Pin(48, machine.Pin.OUT)
 
 print("Démarrage du clignotement...")
 
