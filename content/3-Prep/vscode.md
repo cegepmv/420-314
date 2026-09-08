@@ -98,3 +98,88 @@ L'ESP32 va redémarrer et ta LED devrait commencer à clignoter !
 
 Dans votre projet à côter de votre ESP32 vous pouvez cliquer sur les "..." et configurer l'appareil. Ceci vous permet de changer son nom.
 
+
+
+
+<!-- Pour programmer un **Arduino Nano ESP32** sous **Fedora** via **VS Code**, la communication série pose souvent problème à cause des permissions Linux, des règles `udev` manquantes, ou de la façon dont VS Code gère les extensions (Arduino ou PlatformIO).
+
+Voici la marche à suivre complète pour que tout fonctionne fluidement :
+
+---
+
+### 1. Résoudre le problème de permissions (Port bloqué)
+
+L'Arduino Nano ESP32 apparaît généralement sous `/dev/ttyACM0`. Par défaut, Fedora restreint l'accès à ces ports.
+
+1. **Ajoutez votre utilisateur au groupe `dialout**` :
+```bash
+sudo usermod -a -G dialout $USER
+
+```
+
+
+2. **Créez une règle udev** pour forcer les permissions en lecture/écriture sur le port de l'ESP32 :
+Créez un fichier de règles :
+```bash
+sudo nano /etc/udev/rules.d/99-arduino-esp32.rules
+
+```
+
+
+Ajoutez-y cette ligne :
+```text
+KERNEL=="ttyACM[0-9]*", MODE="0666"
+
+```
+
+
+Sauvegardez (`Ctrl+O`, `Entrée`, puis `Ctrl+X`), puis rechargez les règles :
+```bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+```
+
+
+3. **Fermez votre session utilisateur et rouvrez-la** (ou redémarrez votre PC) pour appliquer les changements de groupe.
+
+---
+
+### 2. Configuration sous VS Code (Deux approches possibles)
+
+Selon l'extension que vous utilisez dans VS Code, assurez-vous de configurer correctement le Nano ESP32 :
+
+#### Option A : Avec PlatformIO (Recommandé pour l'ESP32)
+
+1. Installez l'extension **PlatformIO IDE** dans VS Code.
+2. Dans votre fichier `platformio.ini`, configurez votre carte de cette manière :
+```ini
+[env:arduino_nano_esp32]
+platform = espressif32
+board = arduino_nano_esp32
+framework = arduino
+monitor_speed = 115200
+
+```
+
+
+3. PlatformIO gère généralement très bien la détection automatique du port série sous Linux une fois que les permissions ci-dessus sont réglées.
+
+#### Option B : Avec l'extension officielle "Arduino"
+
+1. Installez l'extension **Arduino** de Microsoft.
+2. Installez le coeur ESP32 via le gestionnaire de cartes Arduino IDE classique (ou assurez-vous que les paquets ESP32 de espressif sont bien installés sur votre système).
+3. Dans la palette de commandes VS Code (`Ctrl+Shift+P`), tapez **`Arduino: Select Board`** et choisissez *Arduino Nano ESP32*.
+4. Sélectionnez ensuite le port série avec **`Arduino: Select Serial Port`** (ex: `/dev/ttyACM0`).
+
+---
+
+### 3. Astuce spécifique au Nano ESP32 (Mode Bootloader)
+
+L'Arduino Nano ESP32 possède un double microcontrôleur / mode natif USB. Si VS Code n'arrive pas à téléverser votre code (erreur du type *A serial exception occurred* ou *No serial data received*) :
+
+* **Maintenez le bouton "BOOT" (ou "MODE") enfoncé** sur la carte.
+* Lancez le téléversement (Upload) depuis VS Code.
+* Relâchez le bouton dès que vous voyez le message de connexion apparaître dans la console.
+
+Rencontrez-vous une erreur spécifique lors de la compilation ou au moment précis de l'envoi du code sur la carte ? -->

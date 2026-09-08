@@ -190,6 +190,32 @@ while True:
 
 ```python
 
+import machine
+import time
+from pins import Pins
+# La broche 2 contrôle souvent la LED bleue intégrée
+led = machine.Pin(Pins.D6, machine.Pin.OUT)
+R =  machine.Pin(Pins.D3, machine.Pin.OUT)
+G =  machine.Pin(Pins.D4, machine.Pin.OUT)
+B =  machine.Pin(Pins.D2, machine.Pin.OUT)
+
+R.value(1)
+G.value(1)
+B.value(1)
+led.value(0)
+
+
+
+while True:
+    led.value(1)
+    R.value(1)
+    G.value(1)
+    time.sleep(1) 
+
+    led.value(0)
+    R.value(0)
+    G.value(0)   
+    time.sleep(1) 
 
 ```
 
