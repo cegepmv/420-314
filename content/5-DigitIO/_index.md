@@ -32,7 +32,7 @@ Exécutez ensuite le programme suivant :
 
 ```python
 import machine
-from Pins import Pins 
+from pins import Pins 
 import time
 
 # Le module possède sa propre résistance, pas besoin de spécifier PULL_UP/DOWN
@@ -50,13 +50,13 @@ Lorsque vous exécutez ce programme, une série de "1" s'affiche en continu, et 
 
 ## Exercices
 
-1. Faites un programme qui affiche "0" une seule fois lorsqu'on clique sur le bouton du module (GPIO 6), et qui affiche "1" une seule fois lorsqu'on le relâche.
+1. Faites un programme qui affiche "0" une seule fois lorsqu'on clique sur le bouton du module, et qui affiche "1" une seule fois lorsqu'on le relâche.
 
 {{% expand "Solution 1." %}}
 
 ```python
 import machine
-from Pins import Pins 
+from pins import Pins 
 import time
 
 bouton = machine.Pin(6, machine.Pin.IN)
@@ -81,7 +81,7 @@ while True:
 {{% expand title="Solution 2"%}}
 ```python
 import machine
-from Pins import Pins 
+from pins import Pins 
 import time
 
 
@@ -103,7 +103,7 @@ while True:
 {{% expand title="Solution 3" %}}
 ```py
 import machine
-from Pins import Pins 
+from pins import Pins 
 import time
 
 # On configure le GPIO 5 en ENTREE avec la résistance de PULL_UP activée
@@ -176,3 +176,48 @@ asyncio.run(main())
 4. la LED doit rester allumée tant que le bouton est maintenu enfoncé, et s'éteindre dès qu'il est relâché.
 
 5. Implémentez un interrupteur : à chaque nouveau click, changez l'état de la LED (si éteinte -> allumée ; si allumée -> éteinte).
+
+
+## Comprendre l'état flottant et les résistances *Pull-up* / *Pull-down*
+
+Lorsqu'on connecte un simple bouton poussoir à une broche GPIO configurée en entrée (`IN`), une question physique se pose : **quel est l'état du signal lorsque le bouton n'est pas enfoncé ?**
+
+Si la broche est connectée à rien d'autre qu'au bouton, elle se trouve dans un **état flottant** (*floating*). Le microcontrôleur risque alors d'interpréter des parasites électriques ambiants comme des changements d'état aléatoires (des 0 et des 1 intempestifs).
+
+Pour résoudre ce problème, on utilise des **résistances de tirage** :
+
+### 1. Résistance *Pull-down* (Tirage vers le bas)
+
+* **Principe :** La broche est reliée à la masse (`GND`) via une résistance. Par défaut, le signal lu est donc **`0`**.
+* **Action :** Lorsque l'on appuie sur le bouton, on connecte la broche à l'alimentation (`3.3V`), le signal bascule à **`1`**.
+
+### 2. Résistance *Pull-up* (Tirage vers le haut) — *La plus courante*
+
+* **Principe :** La broche est reliée à l'alimentation (`3.3V`) via une résistance interne ou externe. Par défaut, le signal lu est donc **`1`**.
+* **Action :** Lorsque l'on appuie sur le bouton, on connecte la broche à la masse (`GND`), le signal bascule à **`0`**.
+
+---
+
+### Configuration en MicroPython
+
+L'ESP32 intègre directement des résistances de tirage logicielles, ce qui évite d'avoir à en ajouter physiquement sur votre breadboard. On peut les activer directement dans le constructeur `machine.Pin` :
+
+```python
+import machine
+from pins import Pins 
+import time
+
+# Configuration d'une broche en entrée avec une résistance Pull-Up interne
+# Par défaut, le bouton renverra 1 (relâché) et 0 (pressé)
+bouton = machine.Pin(Pins.D5, machine.Pin.IN, machine.Pin.PULL_UP)
+
+while True:
+    print(bouton.value())
+    time.sleep(0.2)
+
+```
+
+> **Résumé des modes disponibles :**
+> * `machine.Pin.PULL_UP` : Active la résistance de tirage au +3.3V (repos à `1`).
+> * `machine.Pin.PULL_DOWN` : Active la résistance de tirage au GND (repos à `0`).
+> * *(Aucun paramètre)* : Désactive les résistances internes (utilisé si le module externe possède déjà sa propre résistance, comme le module *Button Switch* vu précédemment).
