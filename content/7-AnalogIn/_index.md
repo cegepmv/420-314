@@ -183,7 +183,7 @@ except KeyboardInterrupt:
 
 {{% /expand %}}
 
-4. Dans cet exercice, c'est un senseur de luminosité qui contrôle si la LED s'allume ou s'éteint. Modifiez votre programme pour que le senseur de luminosité éteigne la LED lorsque la luminosité ambiante est inférieure à 50% de la plage maximale mesurable (0-4095). Le potentiomètre contrôle toujours la LED lorsqu'elle est allumée.
+4. Dans cet exercice, c'est un senseur de luminosité qui contrôle si la LED s'allume ou s'éteint. Modifiez votre programme pour que le senseur de luminosité éteigne la LED lorsque la luminosité ambiante est supérieure à 50% de la plage maximale mesurable (0-4095). Le potentiomètre contrôle toujours la LED lorsqu'elle est allumée.
 {{% expand "Solution" %}}
 
 ```python
