@@ -141,7 +141,7 @@ except KeyboardInterrupt:
 
 {{% /expand %}}
 
-3. Connectez le bouton Keystudio à la broche **GPIO20** de votre ESP32 et alimentez-le en 3.3V. Modifiez votre programme pour que le bouton fonctionne comme une bascule (interrupteur ON/OFF) pour la LED. Le potentiomètre contrôle toujours la luminosité de la LED, mais uniquement lorsqu'elle est activée par le bouton.
+3. Connectez un bouton à votre ESP32. Modifiez votre programme pour que le bouton fonctionne comme une bascule (interrupteur ON/OFF) pour la LED. Le potentiomètre contrôle toujours la luminosité de la LED, mais uniquement lorsqu'elle est activée par le bouton.
 {{% expand "Solution" %}}
 
 ```python
@@ -183,7 +183,7 @@ except KeyboardInterrupt:
 
 {{% /expand %}}
 
-4. Dans cet exercice, c'est un senseur de luminosité qui contrôle si la LED s'allume ou s'éteint. Connectez le senseur de luminosité à la broche **GPIO34** de l'ESP32. Modifiez votre programme pour que le senseur de luminosité éteigne la LED lorsque la luminosité ambiante est inférieure à 50% de la plage maximale mesurable (0-4095). Le potentiomètre contrôle toujours la LED lorsqu'elle est allumée.
+4. Dans cet exercice, c'est un senseur de luminosité qui contrôle si la LED s'allume ou s'éteint. Modifiez votre programme pour que le senseur de luminosité éteigne la LED lorsque la luminosité ambiante est inférieure à 50% de la plage maximale mesurable (0-4095). Le potentiomètre contrôle toujours la LED lorsqu'elle est allumée.
 {{% expand "Solution" %}}
 
 ```python

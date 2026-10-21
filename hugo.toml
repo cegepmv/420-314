@@ -3,28 +3,34 @@ languageCode = 'fr-ca'
 title = 'Programmation de plateformes embarquées'
 theme = 'hugo-theme-relearn'
 enableEmoji = true
+
 [markup.goldmark.renderer]
-unsafe = true
+  unsafe = true
+
+[markup.goldmark.extensions]
+  math = true
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['$$', '$$'], ['\\[', '\\]']]
+    inline = [['$', '$'], ['\\(', '\\)']]
 
 [params]
-  # Change default color scheme with a variant one. Can be empty, "red", "blue", "green".
   themeVariant = "green"
   disableLandingPageButton = true
   alwaysopen = false
-  # Set this to true to disable copy-to-clipboard button for inline code.
   disableInlineCopyToClipBoard = true
-  # Désactiver search bar
-  # disableSearch = true
-  # Hide breadcrumbs in the header and only show the current page title
   disableBreadcrumb = false
-  # If set to true, hide table of contents menu in the header of all pages
   disableToc = true
-  # Hide Next and Previous page buttons normally displayed full height beside content
   disableNextPrev = true
   hideAuthorDate = true
+  
+  # CRUCIAL for Relearn theme when using passthrough math:
+  math = true 
+
   [params.imageEffects]
     border = false
     lazy = true
     lightbox = false
     shadow = false
-#comment
