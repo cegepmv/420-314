@@ -267,31 +267,14 @@ Le plus gros changement ici concerne la transition de **CircuitPython** (`board`
 
 La matrice de LED fournie dans le kit KS0522 utilise le protocole de communication I2C. Puisqu'elle agit uniquement en tant que périphérique de sortie (*output*) et n'envoie pas de signal analogique à l'Arduino, aucun convertisseur ADC n'est requis. Elle est équipée d'une puce **HT16K33**, conçue spécialement pour contrôler l'affichage de matrices de LED en gérant le multiplexage à notre place.
 
-Dans cette section, nous verrons comment la contrôler directement en MicroPython.
-
-Sur l'**Arduino Nano ESP32**, vous avez deux options pour brancher les broches I2C (**SDA** et **SCL**), selon la façon dont vous préférez repérer vos broches.
-
 Voici où les connecter physiquement :
-
-### Option 1 : Les broches analogiques classiques (Recommandé)
-
-C'est la configuration standard que nous avons utilisée dans les exemples de code MicroPython :
 
 * 🔌 **SDA** ➔ Se branche sur la broche **A4**
 * 🔌 **SCL** ➔ Se branche sur la broche **A5**
 
-### Option 2 : Les broches numériques dédiées
-
-Si vous regardez le dessus de votre carte Arduino Nano ESP32, vous verrez des petites inscriptions directement imprimées sur le circuit imprimé (du côté des broches D11 / D12) :
-
-* 🔌 **SDA** ➔ Se branche sur la broche marquée **SDA** (physiquement positionnée entre la broche *GND* et la broche *D12*)
-* 🔌 **SCL** ➔ Se branche sur la broche marquée **SCL** (physiquement positionnée au bout de la rangée, juste après la broche *SDA*)
-
 ---
 
 ### N'oubliez pas l'alimentation !
-
-Pour que votre matrice de LED ou votre périphérique fonctionne, il faut aussi brancher les deux broches d'alimentation :
 
 * **VCC** ou **V+** du module ➔ Se branche sur la broche **3.3V** de l'Arduino.
 * **GND** du module ➔ Se branche sur une broche **GND** (masse) de l'Arduino.
@@ -301,9 +284,7 @@ Pour que votre matrice de LED ou votre périphérique fonctionne, il faut aussi 
 
 ## Communication I2C native en MicroPython
 
-Sur le Raspberry Pi, nous utilisions la bibliothèque d'Adafruit. Sur l'Arduino Nano ESP32 en MicroPython, nous utilisons directement le module natif `machine`. L'équivalent de l'initialisation et des méthodes `write` et `readinto` se fait très simplement grâce aux fonctions intégrées du bus I2C.
-
-Nous utiliserons principalement ces deux méthodes de l'objet `I2C` :
+Nous utiliserons principalement les méthodes `write` et `readinto` de l'objet `I2C` :
 
 ###### writeto(adresse, buf)
 
@@ -385,7 +366,7 @@ i2c.writeto(adresse_matrice, bytes([0x00, 0x00]))
 
 ### Exemple 3 : Lire l'état de la matrice
 
-MicroPython simplifie grandement la lecture de registres grâce à la méthode `readfrom_mem()`. Plus besoin de faire un `write` manuel de l'adresse avant de lire !
+La méthode `readfrom_mem()`. 
 
 ```python
 from machine import Pin, I2C
