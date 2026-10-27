@@ -7,17 +7,7 @@ pre = "9. "
 +++
 
 ---
-```python
-print("Scan du bus I2C en cours...")
-appareils = i2c.scan()
 
-if len(appareils) == 0:
-    print("Aucun appareil I2C détecté ! Vérifiez le câblage et l'alimentation.")
-else:
-    print(f"Trouvé : {len(appareils)} appareil(s) I2C")
-    for adresse in appareils:
-        print(f"- Adresse décimale : {adresse} | Adresse Hexadécimale : {hex(adresse)}")
-```
 ## Le protocole I2C sur Arduino Nano ESP32
 
 Le fonctionnement du protocole I2C s'appuie sur des principes qu'on retrouve dans les communications numériques "série".
@@ -37,7 +27,7 @@ Un exemple simple : supposons que vous vouliez transmettre la lettre "a" à l'ai
 
 Un contrôleur (*Master* ou *Main*) peut envoyer et recevoir des signaux de plusieurs périphériques (*Target* ou *Client*). Il peut y avoir jusqu'à 127 périphériques sur le même bus. Pour s'y retrouver, chaque périphérique possède une adresse unique (souvent écrite en hexadécimal).
 
-Avec le Raspberry Pi, on utilisait la commande système `i2cdetect -y 1`. Avec MicroPython, on utilise l'objet `I2C` de la bibliothèque `machine` pour scanner le bus directement dans le code :
+Avec MicroPython, on utilise l'objet `I2C` de la bibliothèque `machine` pour scanner le bus directement dans le code :
 
 ```python
 from machine import Pin, I2C
@@ -258,24 +248,12 @@ configCamera(True, False, True)
 Contrairement au Raspberry Pi où certaines bibliothèques acceptent des entiers bruts, l'API `machine.I2C` de MicroPython exige une structure de type tableau d'octets (`bytes` ou `bytearray`) pour envoyer des données, même s'il n'y a qu'un seul octet à transmettre !
 
 
-Voici la réécriture complète de votre cours sur la matrice LED 8x8.
-
-Le plus gros changement ici concerne la transition de **CircuitPython** (`board`, `busio`, `adafruit_bus_device`) vers le **MicroPython natif** standard de l'Arduino Nano ESP32. En MicroPython, on utilise directement la classe `machine.I2C`, ce qui rend le code beaucoup plus léger et évite d'avoir à installer de lourdes bibliothèques tierces, tout en conservant exactement la même logique de communication (méthodes `writeto` et `readfrom_mem`).
-
-
 # MAtrice LED 8x8
-
-La matrice de LED fournie dans le kit KS0522 utilise le protocole de communication I2C. Puisqu'elle agit uniquement en tant que périphérique de sortie (*output*) et n'envoie pas de signal analogique à l'Arduino, aucun convertisseur ADC n'est requis. Elle est équipée d'une puce **HT16K33**, conçue spécialement pour contrôler l'affichage de matrices de LED en gérant le multiplexage à notre place.
 
 Voici où les connecter physiquement :
 
 * 🔌 **SDA** ➔ Se branche sur la broche **A4**
 * 🔌 **SCL** ➔ Se branche sur la broche **A5**
-
----
-
-### N'oubliez pas l'alimentation !
-
 * **VCC** ou **V+** du module ➔ Se branche sur la broche **3.3V** de l'Arduino.
 * **GND** du module ➔ Se branche sur une broche **GND** (masse) de l'Arduino.
 
@@ -284,7 +262,7 @@ Voici où les connecter physiquement :
 
 ## Communication I2C native en MicroPython
 
-Nous utiliserons principalement les méthodes `write` et `readinto` de l'objet `I2C` :
+Nous utiliserons principalement les méthodes `write` et `readfrom_mem` de l'objet `I2C` :
 
 ###### writeto(adresse, buf)
 
@@ -396,7 +374,7 @@ print("Valeur lue (binaire) :", bin(donnees[0]))
 ```python
 def allumerTout(bus):
     for i in range(0, 16, 2):
-        bus.writeto(0x70, bytes([i, 255]))
+        bus.writeto(0x70, bytes([i, 0b11111111]))
 
 ```
 
@@ -407,7 +385,7 @@ def allumerTout(bus):
 
 ```python
 def remplir(bus, on):
-    valeur = 255 if on else 0
+    valeur = 0b11111111 if on else 0
     for i in range(0, 16, 2):
         bus.writeto(0x70, bytes([i, valeur]))
 
@@ -421,7 +399,7 @@ def remplir(bus, on):
 ```python
 # (...) Partie initialisation I2C inchangée (...)
 for addr in range(0, 16, 2):
-    i2c.writeto(0x70, bytes([addr, 128])) # 128 = 0b10000000 (première LED)
+    i2c.writeto(0x70, bytes([addr, 0b10000000 ])) 
     sleep(0.5)
     i2c.writeto(0x70, bytes([addr, 0]))
 
@@ -435,7 +413,7 @@ for addr in range(0, 16, 2):
 ```python
 def rangee(bus, ligne):
     reg = ligne << 1  # Multiplie par 2 pour obtenir l'adresse paire
-    bus.writeto(0x70, bytes([reg, 255]))
+    bus.writeto(0x70, bytes([reg, 0b11111111]))
 
 ```
 
@@ -447,12 +425,13 @@ def rangee(bus, ligne):
 ```python
 def allumerUneLed(bus, ligne, colonne):
     reg = ligne << 1
-    octet = 128 >> colonne  # Décale le bit de poids fort vers la droite
+    octet = 0b10000000 >> colonne  # Décale le bit de poids fort vers la droite
     bus.writeto(0x70, bytes([reg, octet]))
 
 ```
 
 {{% /expand %}}
+
 
 6. Faites un programme qui allume un nombre aléatoire de LED sur toutes les rangées (avec `random.randint()`), puis lisez et affichez à la console la valeur binaire stockée dans chaque registre de la matrice.
 {{% expand "Solution" %}}
@@ -468,7 +447,7 @@ i2c = I2C(0, scl=Pin(Pin.board.A5), sda=Pin(Pin.board.A4))
 # Génération et écriture de valeurs aléatoires
 for ligne in range(8):
     reg = ligne << 1
-    octet_aleatoire = randint(0, 255)
+    octet_aleatoire = randint(0, 0b11111111)
     i2c.writeto(0x70, bytes([reg, octet_aleatoire]))
 
 # Lecture et affichage des registres
@@ -487,7 +466,7 @@ for ligne in range(8):
 ```python
 def allumerUneLedPersistant(bus, ligne, colonne):
     reg = ligne << 1
-    nouvelle_led = 128 >> colonne
+    nouvelle_led = 0b10000000 >> colonne
     
     # 1. Lire l'état actuel du registre
     etat_actuel = bus.readfrom_mem(0x70, reg, 1)[0]
