@@ -23,8 +23,8 @@ weight = 10
 * **Question :** Quel cycle de travail maximal dois-tu appliquer en ms ($ct$ en ms) ?
 
 {{% expand title="Solution" %}}
-    $$ct_{\%} = \frac{Tension désirée}{Tension de sortie} = \frac{2}{3.3} = 0.606061 = 60.6061{\%}$$
-    $$ct = période * ct_{\%} = 30.30ms$$
+$$ct_{\%} = \frac{Tension désirée}{Tension de sortie} = \frac{2}{3.3} = 0.606061 = 60.6061{\%}$$
+$$ct = période * ct_{\%} = 30.30ms$$
 {{% /expand %}}
 
 ### Question 3
@@ -33,7 +33,7 @@ weight = 10
 * **Question :** Quel doit être le temps à l'état haut ($ct$ en ms) pour ne pas dépasser cette limite de tension moyenne ?
 
 {{% expand title="Solution" %}}
-$$ct_{\%} = \frac{Tension désirée}{Tension de sortie} = \frac{2}{3.3} = 0.606061 = 60.6061{\%}$$
+$$ct = \frac{Tension désirée}{Tension de sortie} \times  = \frac{2}{3.3} = 0.606061 = 60.6061{\%}$$
 $$ct = période * ct_{\%} = 30.30ms$$
 {{% /expand %}}
 
