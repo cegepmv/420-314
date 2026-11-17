@@ -1,7 +1,7 @@
 +++
 title = 'Épreuve finale — Système embarqué interactif'
 date = 2026-11-17T09:00:00-05:00
-draft = true
+draft = false
 weight = 10
 pre = "10. "
 +++
