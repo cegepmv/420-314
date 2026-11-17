@@ -17,14 +17,13 @@ Comme nous l'avons vu précédemment le Raspberry Pi ne peut envoyer que des sig
 Il en est de même pour la réception de signaux: les broches GPIO ne peuvent lire que les valeurs 0 ou 1.
 Lorsqu'on dispose de senseurs qui envoient des signaux analogiques, comme un potentiomètre ou un détecteur de luminosité, il faut utiliser un convertisseur pour traduire le signal analogique en valeurs numériques. Mais cette traduction n'est possible que pour les signaux qui vont ***vers*** le Raspberry Pi.
 
-PWM permet de simuler des signaux analogiques envoyés ***à partir*** d'un Raspberry Pi vers un actuateur.
-Le principe est assez simple. Si on a un courant de 5V (par exemple) et qu'on alterne ce courant rapidement avec un signal de 0V, la tension dans le circuit sera de 2.5V, car la moyenne entre les deux valeurs 0V et 5V est de 2.5V.
+PWM permet de commander un actuateur avec un signal numérique dont on fait varier le cycle de travail. Le signal alterne rapidement entre un niveau bas et un niveau haut; il ne devient pas pour autant une tension analogique continue. Sur un Raspberry Pi, les sorties GPIO sont à 3,3 V (et non à 5 V).
 
-Dans cet exemple, on suppose que la durée de l'impulsion de 5V est égale à la durée du signal de 0V: c'est pourquoi la moyenne est de 2.5V. Mais cette moyenne dépend des durées relatives entre le signal et l'absence de signal. Pour une **période** de 100ms, une impulsion de 50ms correspond à 50% de la période; l'effet sur le voltage sera proportionnel: pour un courant de 5V, le résultat sera un tension de 50% de 5V, donc 2.5V. Pour la même période, une impulsion de 30ms correspond à 30% de la période, donc donnera un courant de 1.5V (30% de 5V); etc.
+Dans un modèle idéal, la valeur moyenne du signal est proportionnelle au cycle de travail : pour un niveau haut de 3,3 V et un niveau bas de 0 V, un cycle de travail de 50 % donne une moyenne théorique de 1,65 V; 30 % donne 0,99 V. La tension réellement mesurée aux bornes d'une charge dépend du circuit et de la charge; une tension continue moyenne n'est obtenue que si le signal est filtré. Certains actuateurs, comme une LED ou un moteur, réagissent à la puissance moyenne sans qu'on ait besoin de transformer le PWM en tension continue.
 
-![pwm1](/420-314/images/pwm1.png)
+![pwm1](/420-314/images/pwm-1.png)
 
-On appelle *cycle de travail* (en anglais, "duty cycle") cette proportion entre la durée de l'impulsion et la durée de la période. Donc pour une tension de 5V, un cycle de travail de 20% donnera un signal de 1V (20% de la tension de référence de 5V), et ainsi de suite. Un élément important: la durée de la période n'a pas beaucoup d'importance ici, ce qui compte c'est la valeur du *duty cycle*.
+On appelle *cycle de travail* (en anglais, "duty cycle") cette proportion entre la durée de l'impulsion et la durée de la période. Dans le modèle idéal, un cycle de travail de 20 % avec un niveau haut de 3,3 V correspond à une valeur moyenne de 0,66 V. La période compte aussi pour le comportement de la charge : il faut choisir une fréquence appropriée à l'actuateur.
 
 
 ## Exemple 
@@ -34,7 +33,7 @@ On utilise la fonction `set_PWM_dutycycle()` du module *pigpio*. Elle prend 2 pa
 + Le numéro GPIO de la broche
 + La valeur du cycle de travail.
 
-Ici le **dutycycle** n'est pas un pourcentage mais plutôt une valeur comprise entre 0 et 255. Une valeur de 255 correspond donc à une tension de 3.3V envoyé sur la broche GPIO; 128 correspond à 1.65V, etc. 
+Ici le **dutycycle** n'est pas un pourcentage mais plutôt une valeur comprise entre 0 et 255. Une valeur de 255 correspond à un cycle de travail de 100 % (niveau haut de 3,3 V); 128 correspond à environ 50 % et à une moyenne théorique de 1,65 V. La tension sur la charge n'est pas nécessairement cette valeur moyenne.
 
 {{% notice style="green" title="Référence" %}}
 Il est possible de changer cette plage de valeurs pour une broche GPIO avec la méthode `set_PWM_range()`. Si on souhaite utiliser des pourcentages au lieu d'une valeur entre 0-255, il s'agit de fixer le maximum à 100 comme suit:

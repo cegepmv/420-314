@@ -5,7 +5,7 @@ draft = false
 weight = 83
 +++
 
-La matrice de LED founie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en "output" et donc n'envoie pas de signal analogique au RaspberryPi, on n'a pas besoin du convertisseur ADC pour l'utiliser. Elle est équipée d'une puce HT16K33, conçue spécialement pour contrôler l'affichage dans des matrices de LED de différentes dimensions. 
+La matrice de LED fournie dans le kit KS0522 utilise le protocole de communication I2C, mais puisque celle-ci est en "output" et donc n'envoie pas de signal analogique au Raspberry Pi, on n'a pas besoin du convertisseur ADC pour l'utiliser. Elle est équipée d'une puce HT16K33, conçue spécialement pour contrôler l'affichage dans des matrices de LED de différentes dimensions.
 
 Dans cette section nous verrons comment utiliser le module `adafruit_bus_device` pour la contrôler.
 
@@ -144,7 +144,7 @@ Chaque rangée de la matrice est représentée par un octet: la valeur de cet oc
 
 Lorsqu'on veut écrire nos 8 bits de données pour allumer les LED dans une rangée, on doit spécifier à quelle adresse écrire ces 8 bits.Notre matrice a seulement besoin de 8 octets pour représenter l'état des 64 LED. Cependant la puce que la matrice utilise est faite pour fonctionner avec les matrice 16x16. En conséquence, plusieurs adresses sont inutiles. Les seules adresses qui nous sont utiles sont 0x00, 0x02, 0x04, 0x06, 0x08, 0x0a, 0x0c, 0x0e. Le tableau suivant illustre les adresses utilisables:
 
-![ledgrid](/420-314/images/ledgrid.png?width=400px)
+![ledgrid](/420-314/images/led-grid.png?width=400px)
 
 ## Exemple 2
 Dans le programme suivant on allume chaque LED de la première rangée une après l'autre:

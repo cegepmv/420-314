@@ -33,8 +33,8 @@ $$ct = période * ct_{\%} = 30.30ms$$
 * **Question :** Quel doit être le temps à l'état haut ($ct$ en ms) pour ne pas dépasser cette limite de tension moyenne ?
 
 {{% expand title="Solution" %}}
-$$ct = \frac{Tension désirée}{Tension de sortie} \times  = \frac{2}{3.3} = 0.606061 = 60.6061{\%}$$
-$$ct = période * ct_{\%} = 30.30ms$$
+$$ct_{\%} = \frac{Tension moyenne désirée}{Tension de sortie} = \frac{3}{5} = 0.6 = 60{\%}$$
+$$ct = période \times ct_{\%} = 20\text{ ms} \times 0.6 = 12\text{ ms}$$
 {{% /expand %}}
 
 ### Question 4
@@ -51,7 +51,8 @@ $$ct_{\%} = \frac{ct}{période} = \frac{0.8 / 1000}{4 / 1000} = 20{\%}$$
 $$f = \frac{1}{période} = \frac{1}{4 / 1000} = 250 Hz$$
 {{% /expand %}}
 
----
+### Atténuation de l'ADC
+
 | Constante MicroPython | Atténuation | Plage de tension mesurable |
 | --- | --- | --- |
 | `ADC.ATTN_0DB` | 0 dB | 0.0V à 1.1V |
@@ -139,7 +140,7 @@ Vous devez décaler les bits de **$5$ positions** ($n = 5$).
 
 # Cahier des charges : Jeu de devinette de mot (Potentiomètre & Matrice LED)
 
-## 📌 Résumé global du projet
+## Résumé global du projet
 
 Le but de ce projet est de deviner un **mot secret** lettre par lettre à l'aide d'un dispositif physique :
 
@@ -149,7 +150,7 @@ Le but de ce projet est de deviner un **mot secret** lettre par lettre à l'aide
 
 ---
 
-## ⚙️ Spécifications fonctionnelles détaillées
+## Spécifications fonctionnelles détaillées
 
 ### 1. Sélection de la lettre via le potentiomètre
 
@@ -160,7 +161,7 @@ Le but de ce projet est de deviner un **mot secret** lettre par lettre à l'aide
 
 * Pour garantir la fluidité du programme et éviter le scintillement, l'affichage de la lettre sur la matrice LED ne se rafraîchit pas à chaque lecture brute du capteur, mais **uniquement lorsque la lettre active change**.
 
-![matrice](/420-314/images/matrice_e2.png)
+![matrice](/420-314/images/matrice-e2.png)
 
 
 ### 3. Système d'indication visuelle (LED blanche)
@@ -184,7 +185,9 @@ L'état de la LED blanche varie en fonction de la lettre actuellement sélection
 
 # Code
 
-Compléter ce code, vous ne pouvez pas modifier ce qui est déjà écrit, vous avez uniquement le droit de retirer les `pass`. Attention, je retirerai des points si l'expérience utilisateur est mauvaise (ex: indication pas claire)
+{{% notice style="info" title="Consignes de réalisation" %}}
+Complétez ce code sans modifier les lignes déjà écrites; vous pouvez uniquement retirer les `pass`. La qualité de l'expérience utilisateur sera évaluée, notamment la clarté des indications.
+{{% /notice %}}
 
 ```py
 from machine import Pin, I2C, ADC, PWM

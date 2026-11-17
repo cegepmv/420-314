@@ -12,18 +12,18 @@ Dans l'exemple suivant nous allons utiliser un bouton poussoir comme interrupteu
 
 Posez le bouton sur la plaquette et reliez une de ses pattes à la broche du GPIO 4 sur votre Pi.
 
-Le GPIO 4 sera utilisé en mode INPUT puisqu'il doit détecter si le bouton est appuyé. Mais il peut aussi fournir un courant de 3.3V au circuit. Il y a donc 2 possibilités pour la 2e broche du bouton:
-+ On le connecte à une broche GND du Pi, donc GPIO 4 fournit le courant. 
-+ On le connecte à une broche 3.3V du Pi qui fournit le courant, donc GPIO 4 agit comme GND. 
+Le GPIO 4 sera utilisé en mode `INPUT` pour détecter si le bouton est appuyé. Une entrée ne fournit pas le courant comme une sortie; une résistance de rappel (*pull-up* ou *pull-down*) fixe son niveau logique lorsque le bouton est relâché. On peut câbler le bouton de l'une des deux façons suivantes :
++ Entre le GPIO 4 et GND, avec une résistance de rappel vers 3,3 V (`PUD_UP`).
++ Entre le GPIO 4 et 3,3 V, avec une résistance de rappel vers GND (`PUD_DOWN`).
 
 Dans le programme, il faudra appeler la fonction `set_pull_up_down()` et lui passer un argument qui spécifie à laquelle des deux possibilités notre circuit correspond.
 
-#### Possibilité 1: GPIO fournit 3.3V
+#### Possibilité 1 : bouton entre GPIO et GND (`PUD_UP`)
 La connexion est la suivante:
 
-![pud_up](/420-314/images/pud_up.png)
+![pud_up](/420-314/images/pull-up.png)
 
-Le programme suivant affiche **0** lorsqu'on appuie sur le bouton:
+Le programme suivant affiche **1** lorsque le bouton est relâché et **0** lorsqu'on appuie dessus :
 ```python
 import pigpio
 import time
@@ -38,16 +38,16 @@ while True:
 Remarquez que la méthode `set_mode()` met le GPIO 4 en mode "INPUT".
 
 
-#### Possibilité 2: GPIO est GND
+#### Possibilité 2 : bouton entre GPIO et 3,3 V (`PUD_DOWN`)
 La connexion est la suivante:
 
-![pud_down](/420-314/images/pud_down.png)
+![pud_down](/420-314/images/pull-down.png)
 
 {{% notice warning "ATTENTION" %}}
 Assurez-vous de bien connecter le bouton sur une broche **3.3V**. Vous pouvez endommager le Pi si vous connectez le bouton sur 5V.
 {{% /notice %}}
 
-Le programme suivant affiche **1** lorsqu'on appuie sur le bouton:
+Le programme suivant affiche **0** lorsque le bouton est relâché et **1** lorsqu'on appuie dessus :
 
 ```python
 import pigpio
@@ -64,16 +64,18 @@ while True:
 ## Capter le signal du module _Button Switch_
 Dans l'exemple suivant nous allons connecter un bouton au *RaspberryPi* et afficher son état sur la ligne de commande.
 
-Le bouton envoit un signal correspondant à `0` lorsqu'on l'appuie et `1` lorsqu'on le relâche. On peut utiliser ces signaux pour contrôler l'exécution d'un programme.
+Le bouton envoie un signal correspondant à `0` lorsqu'on l'appuie et `1` lorsqu'on le relâche. On peut utiliser ces signaux pour contrôler l'exécution d'un programme.
 
 Vous aurez besoin du module suivant:
 
-![kspshbut](/420-314/images/kspshbut.png?width=150px)
+![kspshbut](/420-314/images/keyestudio-push-button.png?width=150px)
 
 Connectez le bouton au *Pi* comme suit:
-+ Broche `V` sur broche `2` (5V)
++ Broche `V` sur une broche **3,3 V** du Pi
 + Broche `G` sur broche `9` (Ground)
 + Broche `S` sur broche `16` (GPIO 23)
+
+N'alimentez pas ce module en 5 V lorsque sa sortie `S` est reliée directement au GPIO du Pi : les GPIO du Pi ne tolèrent pas une entrée de 5 V.
 
 Exécutez ensuite le programme suivant:
 
@@ -126,6 +128,3 @@ while True:
     dernier = signal
 ```
 {{% /expand %}}
-
-
-

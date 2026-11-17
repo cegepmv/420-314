@@ -9,7 +9,7 @@ weight = 33
 -------------!!! À supprimer car on n'utilise plus l'écran !!----------------
 -----------------------------------------------------------------------------
 
-VNC est un protocole qui permet d'accéder à distance à l'environnement graphique d'un hôte. Le **serveur** VNC doit s'éxécuter sur l'hôte où on veut se connecter; le **client** VNC doit s'éxécuter sur l'hôte à partir d'où on se connecte. 
+VNC est un protocole qui permet d'accéder à distance à l'environnement graphique d'un hôte. Le **serveur** VNC doit s'exécuter sur l'hôte où on veut se connecter; le **client** VNC doit s'exécuter sur l'hôte à partir d'où on se connecte. 
 
 Il faut donc lancer le service VNC sur votre _Pi_ et utiliser le client VNC sur le poste de travail Windows du lab.
 
@@ -30,10 +30,10 @@ Une fois le service installé, il faut activer l'interface:
 #### Client VNC
 Le programme `VNC Viewer` installé sur les postes de travail Windows permet de se connecter au serveur VNC sur votre Pi:
 
-![vncview](/420-314/images/vncview.png)
+![vncview](/420-314/images/vnc-viewer.png)
 
 Au démarrage du programme, utilisez le nom d’hôte de votre Pi suivi de ".local" pour y établir une connexion. Par exemple, si le Pi a `prof` comme _hostname_, vous devez vous connecter sur `prof.local`:
 
-![vncconf](/420-314/images/vncconf.png)
+![vncconf](/420-314/images/vnc-config.png)
 
 Vous devrez confirmer que vous souhaitez bien vous connecter en cliquant sur `Continuer`. Ensuite, il suffit d’entrer votre identifiant et mot de passe du Pi.

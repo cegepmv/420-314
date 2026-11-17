@@ -18,11 +18,10 @@ Le potentiomètre doit donc être connecté comme suit :
 
 ```python
 from machine import ADC, Pin
-from Pins import Pins 
 
 
 # Initialisation sur A0
-adc = ADC(Pin(Pins.A0))
+adc = ADC(Pin.board.A0)
 # Configuration pour lire le 3.3V
 adc.atten(ADC.ATTN_11DB)
 
@@ -58,7 +57,9 @@ Voici les configurations possibles de l'atténuation sur l'ESP32 :
 | `ADC.ATTN_6DB` | 6 dB | 0.0V à 2.2V |
 | `ADC.ATTN_11DB` | 11 dB | 0.0V à 3.6V (idéal pour le 3.3V) |
 
-> **Attention :** Il ne faut jamais appliquer une tension supérieure à 3.3V sur les broches de l'ESP32 sous peine d'endommager définitivement le microcontrôleur.
+{{% notice style="warning" title="Limites électriques" %}}
+N'appliquez jamais une tension supérieure aux limites électriques des broches de l'ESP32 : cela pourrait endommager le microcontrôleur.
+{{% /notice %}}
 
 Si vous n'appliquez aucune atténuation (`ATTN_0DB`), la tension maximale lisible est de 1.1V. Si votre potentiomètre est branché sur le 3.3V, dès que vous dépasserez 1.1V en tournant le bouton, la valeur lue restera bloquée au maximum (`4095`). Pour utiliser toute la course du potentiomètre alimenté en 3.3V, il faut impérativement configurer l'atténuation à 11 dB (`ADC.ATTN_11DB`).
 
@@ -79,12 +80,11 @@ Puisque le signal est toujours converti sur 12 bits (4096 niveaux), changer l'at
 
 ```python
 from machine import Pin, ADC
-from Pins import Pins 
 import time
 
 # Configuration des broches
-LED = Pin(Pins.A1, Pin.OUT)
-adc = ADC(Pin(Pins.A0))
+LED = Pin(Pin.board.A1, Pin.OUT)
+adc = ADC(Pin.board.A0)
 adc.atten(ADC.ATTN_11DB)  # Plage jusqu'à ~3.6V
 
 # Boucle principale
@@ -110,15 +110,14 @@ except KeyboardInterrupt:
 
 ```python
 from machine import Pin, ADC, PWM
-from Pins import Pins 
 import time
 
 # Configuration de la LED en PWM
 # Note : Sur ESP32, le rapport cyclique (duty) en MicroPython va de 0 à 1023
-led_pwm = PWM(Pin(Pins.A1), freq=1000)
+led_pwm = PWM(Pin(Pin.board.A1), freq=1000)
 
 # Configuration de l'ADC (0 à 4095)
-adc = ADC(Pin(Pins.A0))
+adc = ADC(Pin.board.A0)
 adc.atten(ADC.ATTN_11DB)
 
 # Boucle principale
@@ -146,13 +145,12 @@ except KeyboardInterrupt:
 
 ```python
 from machine import Pin, ADC, PWM
-from Pins import Pins 
 import time
 
 # Configuration
-led_pwm = PWM(Pin(Pins.A1), freq=1000)
+led_pwm = PWM(Pin(Pin.board.A1), freq=1000)
 bouton = Pin(20, Pin.IN, Pin.PULL_UP) # Utilisation de la résistance de tirage interne si nécessaire
-adc = ADC(Pin(Pins.A0))
+adc = ADC(Pin.board.A0)
 adc.atten(ADC.ATTN_11DB)
 
 allume = False
@@ -188,16 +186,15 @@ except KeyboardInterrupt:
 
 ```python
 from machine import Pin, ADC, PWM
-from Pins import Pins 
 import time
 
 # Configuration
-led_pwm = PWM(Pin(Pins.A1, Pin.OUT)), freq=1000)
+led_pwm = PWM(Pin(Pin.board.A1), freq=1000)
 
-adc_pot = ADC(Pin(Pins.A0))
+adc_pot = ADC(Pin.board.A0)
 adc_pot.atten(ADC.ATTN_11DB)
 
-adc_lum = ADC(Pin(Pins.A2))
+adc_lum = ADC(Pin.board.A2)
 adc_lum.atten(ADC.ATTN_11DB)
 
 MAX_VAL = 4095

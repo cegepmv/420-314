@@ -18,13 +18,13 @@ Le Raspberry Pi est un ordinateur à part entière: on l'utilise souvent dans de
 
 Le Pi de votre kit est dans un boîtier et est déjà connecté à un écran tactile. Vous pouvez ôter la plaque de derrière pour accéder aux broches GPIO:
 
-![broche](/420-314/images/prepBroche.png)
+![broche](/420-314/images/prep-broche.png)
 
 Ces broches permettent de connecter les différentes composantes électroniques qui seront utilisées avec le Pi dans ce cours.
 
 Pour l'instant, connectez le clavier et la souris sur votre Pi et branchez-le pour le démarrer.
 
-![assemblage](/420-314/images/prepAssemblage.png)
+![assemblage](/420-314/images/prep-assemblage.png)
 
 
 ## Changer le _hostname_
@@ -34,7 +34,7 @@ Par défaut, ce nom est “raspberrypi”. Choisissez un nom ayant de bonnes cha
 
 Il faut aussi changer le nom dans le fichier `/etc/hosts`, qui est associé à l'adresse locale `127.0.1.1` :
 
-![etchosts](/420-314/images/etchosts.png)
+![etchosts](/420-314/images/etc-hosts.png)
 
 > Attention, le nom ne changera pas tant que vous n'aurez pas redémarrez le Pi. Pour ce faire vous pouvez lancer la commande `sudo reboot now`.
 
@@ -42,11 +42,11 @@ Il faut aussi changer le nom dans le fichier `/etc/hosts`, qui est associé à l
 
 Le boîtier utilisé fait que l'affichage apparaît à l'envers sur l'écran. Pour le remettre à l'endroit il faut changer la configuration dans les préférences:
 
-![screenconf1](/420-314/images/screenconf1.png?width=600px)
+![screenconf1](/420-314/images/screen-conf-1.png?width=600px)
 
 Ensuite, changez l'orientation pour "Inverted":
 
-![screenconf](/420-314/images/screenconf2.png?width=600px)
+![screenconf](/420-314/images/screen-conf-2.png?width=600px)
 ## Connexion au réseau
 Dans ce cours nous utiliserons souvent les PC du lab pour nous connecter sur le RaspberryPi. Pour ce faire, les deux hôtes doivent être connectés sur le même réseau local. 
 
@@ -110,7 +110,7 @@ Le système d'exploitation _RaspberryPi OS_ inclut le programme _Thonny_, un env
 
 Celui-ci dispose des fonctionnalités essentielles d’un IDE de base: débogueur, points d’arrêts et une console au bas de l’interface. Pour exécuter un programme, cliquez sur _Run_:
 
-![thonnyexec](/420-314/images/thonnyexec.png)
+![thonnyexec](/420-314/images/thonny-exec.png)
 
 ## Programmes complémentaires
 #### Clavier tactile

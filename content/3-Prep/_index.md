@@ -6,4 +6,6 @@ pre = "3. "
 draft = false
 +++
 
-Objectif: Configurer l'environnement de programmation sur un **_ESP-32_**
+<script>
+window.location.replace("/420-314/3-prep/flash/");
+</script>

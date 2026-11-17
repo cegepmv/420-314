@@ -5,14 +5,14 @@ draft = true
 weight = 61
 +++
 
-![dcmotor3v](/420-314/images/dcmotor3v.png)
+![dcmotor3v](/420-314/images/dc-motor-3v.png)
 
 ## Fonctionnement
 Les moteurs DC ("courant direct") sont les plus simples des moteurs électriques. Ils ont deux pôles (positif et négatif), et le sens de leur rotation change lorsqu'on inverse la polarité du courant sur ces pôles. 
 
 
 ## Contrôleur 
-Un moteur DC ne peut pas être connecté directement sur les broches GPIO d'un Pi: l'intensité du courant sur celles-ci peut atteindre un maximum de 50mA, mais un moteur de 3V-6V comme ceux fournis nécessite au moins 500mA. Il faut donc utiliser une alimentation électrique continue (comme les broches 5V du Pi, ou encore une source de courant externe comme une pile), et contrôler ce courant électrique à l'aide du GPIO.
+Un moteur DC ne doit pas être connecté directement aux broches GPIO d'un Pi : celles-ci fournissent des signaux logiques et ne sont pas conçues pour alimenter un moteur. Le courant nécessaire dépend du moteur et de la charge; il peut augmenter fortement au démarrage ou si le moteur bloque. Utilisez un pilote adapté et une alimentation moteur capable de fournir le courant requis, avec une masse commune au Pi.
 
 Plusieurs composantes électroniques peuvent être utilisées à cette fin, mais une des plus populaires est le contrôleur L293D. 
 
@@ -21,18 +21,18 @@ Plusieurs composantes électroniques peuvent être utilisées à cette fin, mais
 Le courant électrique destiné au moteur traverse ce circuit intégré. Lorsqu'on le connecte sur un Pi, il permet d'utiliser les GPIO comme des interrupteurs et aussi d'inverser facilement le sens de rotation du moteur.
 
 Utiliser un contrôleur a d'autres avantages:
-- Le Pi fournit un courant continu de 3.3V ou 5V, mais certains moteurs ont besoin d'une tension plus élevée. Le contrôleur L293D supporte une tension pouvant aller jsuqu'à 36V.
+- Le moteur peut être alimenté par une source distincte de celle du Pi. Le L293D accepte une alimentation moteur pouvant atteindre 36 V; il faut également respecter les limites de courant et les autres spécifications de sa fiche technique.
 - On peut connecter deux moteurs DC au contrôleur L293D.
 - Il inclut des composantes qui diminuent le risque de dommages électriques.
 
 ### Broches
-![l293dpins](/420-314/images/l293dpinout.png)
+![l293dpins](/420-314/images/l293d-pinout.png)
 
 
 ## Exemple
 Comme on le voit dans le programme suivant, on contrôle le sens de la rotation à partir des deux broches `INPUT`: inverser les valeurs inversera la rotation. Si les deux valeurs sont identiques, le moteur ne tournera pas (on recommande quand même de mettre les deux valeurs à 0 pour arrêter le moteur).  
 
-La broche `ENABLE` agit comme un interrupteur: elle bloque ou laisser passer le courant VSS (alimentation du moteur).
+La broche `ENABLE` active ou désactive le canal de sortie. Le moteur est alimenté par la broche `VS` du L293D; `VSS` correspond à son alimentation logique.
 
 ```python
 import pigpio
@@ -67,7 +67,7 @@ finally:
 
 Pour exécuter ce programme, vous devez faire les connexions suivantes:
 
-![dcl293d](/420-314/images/dc_l293d.jpg?width=400px&lightbox=true)
+![dcl293d](/420-314/images/dc-l293d.jpg?width=400px&lightbox=true)
 
 ## Exercices
 1. Faites un programme qui fait tourner le moteur 1 seconde dans un sens et 1 seconde dans l'autre sens, et qui se termine en arrêtant le moteur.
@@ -145,4 +145,3 @@ finally:
 {{% /expand %}}
 
 3. Changez le programme du numéro précédent pour qu'il commence à zéro et augmente sa vitesse de rotation de 10% à toutes les secondes. Que remarquez-vous?
-

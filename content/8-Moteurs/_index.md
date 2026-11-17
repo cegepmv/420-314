@@ -10,7 +10,7 @@ draft = true
 Notes pas encore adaptées aux ESP-32, nous allons devoir acheter, soit une source de courant externe ou un condensateur.
 {{% /notice %}}
 
-![dcmotor3v](/420-314/images/dcmotor3v.png)
+![dcmotor3v](/420-314/images/dc-motor-3v.png)
 
 ## Fonctionnement
 Les moteurs DC ("courant direct") sont les plus simples des moteurs électriques. Ils ont deux pôles (positif et négatif), et le sens de leur rotation change lorsqu'on inverse la polarité du courant sur ces pôles. 
@@ -33,7 +33,7 @@ Utiliser un contrôleur a d'autres avantages :
 - Il inclut des diodes de protection internes qui diminuent le risque de dommages électriques dus aux retours de courant (forces contre-électromotrices).
 
 ### Broches
-![l293dpins](/420-314/images/l293dpinout.png)
+![l293dpins](/420-314/images/l293d-pinout.png)
 
 
 ## Exemple
@@ -43,13 +43,12 @@ La broche `ENABLE` (`EN1`) agit comme un interrupteur principal : elle bloque ou
 
 ```python
 from machine import Pin
-from Pins import Pins 
 import time
 
 # Broches GPIO (Adaptez les numéros selon vos connexions sur l'ESP32)
-EN1 = Pin(Pins.A1, Pin.OUT)
-IN1 = Pin(Pins.A2, Pin.OUT)
-IN2 = Pin(Pins.A3, Pin.OUT)
+EN1 = Pin(Pin.board.A1, Pin.OUT)
+IN1 = Pin(Pin.board.A2, Pin.OUT)
+IN2 = Pin(Pin.board.A3, Pin.OUT)
 
 try:
     # Définir le sens de rotation
@@ -80,12 +79,11 @@ Faites un programme qui fait tourner le moteur 1 seconde dans un sens et 1 secon
 
 ```python
 from machine import Pin
-from Pins import Pins 
 import time
 
-EN1 = Pin(Pins.A1, Pin.OUT)
-IN1 = Pin(Pins.A2, Pin.OUT)
-IN2 = Pin(Pins.A3, Pin.OUT)
+EN1 = Pin(Pin.board.A1, Pin.OUT)
+IN1 = Pin(Pin.board.A2, Pin.OUT)
+IN2 = Pin(Pin.board.A3, Pin.OUT)
 
 try:
     # Activer l'alimentation du moteur
@@ -121,15 +119,14 @@ En utilisant la classe `PWM` de MicroPython sur la broche `ENABLE`, démarrez le
 
 ```python
 from machine import Pin, PWM
-from Pins import Pins 
 import time
 
 # Configuration des broches de direction
-IN1 = Pin(Pins.A2, Pin.OUT)
-IN2 = Pin(Pins.A3, Pin.OUT)
+IN1 = Pin(Pin.board.A2, Pin.OUT)
+IN2 = Pin(Pin.board.A3, Pin.OUT)
 
 # Configuration de la broche de vitesse en PWM (Fréquence de 1kHz)
-en1_pwm = PWM(Pin(Pins.A1), freq=1000)
+en1_pwm = PWM(Pin(Pin.board.A1), freq=1000)
 
 try:
     # Sens de rotation

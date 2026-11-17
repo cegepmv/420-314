@@ -15,11 +15,11 @@ Assurez-vous d'abord que le PC et le Pi sont tous deux connectés sur le réseau
 
 Votre Pi est identifié par son _hostname_ suivi du domaine “.local”, par exemple `rasp22.local`. Pour vous connecter au serveur pour la première fois, cliquez sur l’élément suivant dans le coin inférieur gauche de VSCode:
 
-![vscodeconnect](/420-314/images/vscodeconnect.png)
+![vscodeconnect](/420-314/images/vscode-connect.png)
 
 Ensuite, choisissez `Connect to Host...` puis `Add New SSH Host...` dans les options disponibles:
 
-![newconnection](/420-314/images/newconnection.png)
+![newconnection](/420-314/images/new-connection.png)
 
 Entrez ensuite la commande de connexion sur votre serveur. Par exemple pour l'utilisateur _pi_ sur le serveur _rasp22.local_, la commande est `pi@rasp22.local`.
 

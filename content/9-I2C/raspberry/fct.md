@@ -12,7 +12,7 @@ Il se base sur 2 signaux: SCL (l'horloge ou "clock") et SDA (les données ou "da
 
 Un exemple simple: supposons que vous voulez transmettre la lettre "a" à l'aide de I2C. Cette lettre correspond à l'octet `01100001` en ASCII, où chaque bit sera une impulsion électrique envoyée à chaque période de la fréquence définie par l'horloge :
 
-![sdascl](/420-314/images/sdascl.png)
+![sdascl](/420-314/images/sda-scl.png)
 
 #### Adressage
 Un contrôleur ("master") peut envoyer et recevoir des signaux de plusieurs périphériques ("slave"); il peut y avoir jusqu'à 127 périphériques. Pour s'y retrouver, chaque périphérique se fait attribuer une adresse.

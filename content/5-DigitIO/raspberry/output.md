@@ -69,7 +69,7 @@ Dans l'exemple suivant, nous allons connecter un module LED sur le Pi et le cont
 
 Vous aurez besoin du module "LED" Keystudio suivant:
 
-![mod1led](/420-314/images/mod1led.png?width=200px) 
+![mod1led](/420-314/images/module-1-led.png?width=200px) 
 
 Connectez le module LED au Pi comme suit:
 + Broche `V` sur broche `2` (5V)

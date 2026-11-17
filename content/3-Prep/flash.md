@@ -7,11 +7,12 @@ weight = 31
 
 ### 1. Télécharger le firmware
 
-Va sur le [site officiel](https://github.com/arduino/lab-micropython-installer/releases/tag/v1.4.0) de MicroPython et télécharge le fichier **`.deb`**(linux) ou **`.exe`**(windows). Installe l'application, branche ton arduino et intalle micropython dessus.
+Va sur le [site officiel](https://github.com/arduino/lab-micropython-installer/releases/tag/v1.4.0) de MicroPython et télécharge le fichier **`.deb`** (Linux) ou **`.exe`** (Windows). Installe l'application, branche ton Arduino et installe MicroPython dessus.
 
 
->[!IMPORTANT]
->Si l'étape 1 ne fonctionne pas, vous pouvez essayer les étapes suivantes sur Linux. J'ai testé sur Ubuntu et j'ajouterai éventuellement les étapes pour Windows. 
+{{% notice style="info" title="Si l'installation échoue" %}}
+Vous pouvez essayer les étapes suivantes sur Linux. Elles ont été testées sur Ubuntu; les étapes pour Windows ne sont pas détaillées ici.
+{{% /notice %}}
 ### 2. Créer l'environnement de flashage (Sandbox) sur Ubuntu
 
 Ouvre un terminal et tape ces commandes pour installer l'outil officiel d'Espressif (`esptool`) sans casser ton système :
@@ -34,7 +35,7 @@ sudo udevadm trigger && sudo udevadm control --reload-rules
 * Branche l'Arduino en USB.
 * Relie la broche **`B1`** à la broche **`GND`** avec un petit fil ou un trombone.
 * Appuie une fois sur le bouton **Reset** de la carte.
-* L'Aduino doit s'allumer en **Vert/Violet fixe**. Tu peux enlever le fil.
+* L'Arduino doit s'allumer en **Vert/Violet fixe**. Tu peux enlever le fil.
 * Recommence 
 <!-- 
 ### 1. Nettoyer et Installer

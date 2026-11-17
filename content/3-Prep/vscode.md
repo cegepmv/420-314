@@ -12,7 +12,7 @@ Voici comment configurer VSCode sur Windows et Ubuntu (Linux)
 
 ---
 
-## 🛠️ Étape 1 : Les prérequis sur le système
+## Étape 1 : Prérequis système
 
 ### Sur Windows
 
@@ -37,11 +37,13 @@ sudo usermod -aG dialout $USER
 ```
 
 
-⚠️ **IMPORTANT :** Tu *dois* redémarrer ton PC (ou te déconnecter/reconnecter de ta session) pour que ce changement de groupe soit pris en compte.
+{{% notice style="warning" title="Redémarrer la session" %}}
+Après avoir ajouté votre compte au groupe `dialout`, déconnectez-vous puis reconnectez-vous (ou redémarrez l'ordinateur) pour appliquer le changement.
+{{% /notice %}}
 
 ---
 
-## 💻 Étape 2 : Configuration de VSCode (Identique sur Windows et Ubuntu)
+## Étape 2 : Configuration de VS Code
 
 1. Ouvre VSCode.
 2. Va dans l'onglet **Extensions** (l'icône avec 4 carrés à gauche, ou `Ctrl+Shift+X`).
@@ -50,7 +52,7 @@ sudo usermod -aG dialout $USER
 
 ---
 
-## 🚀 Étape 3 : Créer ton premier projet MicroPython
+## Étape 3 : Créer un projet MicroPython
 
 Pour éviter les nœuds, suis cette structure simple :
 
@@ -83,7 +85,7 @@ while True:
 
 ---
 
-## ⚡ Étape 4 : Connexion et Flash
+## Étape 4 : Connexion et transfert du projet
 
 1. Branche ton ESP32 en USB.
 2. Dans l'onglet Pymakr, sous **Devices**, ton ESP32 devrait être détecté automatiquement (il affichera le port COM sur Windows, ou `/dev/ttyUSB0` sur Ubuntu).

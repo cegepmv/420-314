@@ -31,6 +31,6 @@ ssh pi@rasp20.local
 
 À partir d'un PC Windows, ouvrez une session sur votre Pi avec _putty_ (remplacez "prof.local" par le nom de votre _Pi_): 
 
-![puttycnx](/420-314/images/puttycnx.png)
+![puttycnx](/420-314/images/putty-connection.png)
 
 Si le service est correctement configuré, vous devriez avoir accès à la ligne de commande sur le Pi.

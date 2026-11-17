@@ -9,7 +9,7 @@ Une plaquette de prototypage, aussi appelée "breadboard", sert à faciliter l'a
 
 Dans une plaquette de prototypage, les points sont reliés entre eux comme dans le schéma suivant:
 
-![bread1](/420-314/images/bread1.png?width=400px)
+![bread1](/420-314/images/bread-1.png?width=400px)
 
 Tous les points d'une rangée "+" (en rouge) sont reliés entre eux, comme tous les points d'une rangée "-" (en noir). Les points a, b, c, d et e d'une rangée sont reliés; f, g, h, i et j aussi, etc.
 
@@ -17,7 +17,7 @@ Les rangées + et - sont celles où on connecte la source de courant. Lorsqu'on 
 
 Ainsi, pour recréer sur une plaquette le circuit simple LED-résistance, on pourrait procéder comme suit:
 
-![bbsimple](/420-314/images/bbsimple.png?width=800px)
+![bbsimple](/420-314/images/breadboard-simple.png?width=800px)
 
 Dans ce schéma, le courant électrique suit le chemin suivant:
 + Un fil relie le courant positif de la rangée "+" au connecteur *a-14*;

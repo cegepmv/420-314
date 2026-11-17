@@ -5,23 +5,23 @@ draft = true
 weight = 62
 +++
 
-Contrairement à un moteur électrique ordinaire qui tourne tant qu'on lui envoit un courant électrique, les servos-moteurs sont utilisés pour effectuer des mouvements angulaires. La plupart peuvent faire des rotations de 0 à 180 degrés. On s'en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés, orienter des antennes ou des caméras de surveillance, etc.
+Un servomoteur positionnel est conçu pour atteindre une position angulaire commandée. Sa course varie selon le modèle; plusieurs servomoteurs courants couvrent environ 0 à 180 degrés. On s'en sert par exemple pour contrôler l’ouverture de fenêtres, déplacer des bras robotisés ou orienter des antennes et des caméras.
 
 On contrôle les mouvements d'un servo-moteur en utilisant la technique PWM.
 
 Dans cette section on utilisera le module *Micro Servo 9G*:
 
-![microservo](/420-314/images/microservo.png)
+![microservo](/420-314/images/micro-servo.png)
 
-On connecte les fils positif (rouge, 5V) et négatif (brun), et le fil jaune doit être connecté dans une des broches GPIO du Raspberry Pi.
+Le fil rouge sert à l'alimentation, le brun à la masse et le jaune au signal de commande. Un servomoteur peut demander plus de courant que le Pi ne peut fournir : utilisez une alimentation adaptée si nécessaire et reliez sa masse à celle du Pi. Vérifiez aussi que l'entrée de commande du servo accepte un signal logique de 3,3 V.
 
 ## Contrôle des servos-moteurs
-L'utilisation de PWM, lorsqu'on l'utilise pour contrôler des servos-moteurs, est soumise à quelques contraintes. En effet, la période de l'impulsion doit avoir une valeur bien spécifique (définie par le fabricant du moteur), et des cycles de travail précis correspondent aux movement angulaires qu'on veut faire faire par le moteur.
+L'utilisation du PWM pour contrôler un servomoteur est soumise à quelques contraintes. La période du signal et la durée de l'impulsion à l'état haut sont définies par le fabricant; elles déterminent la position commandée.
 
 <!-- Si on se fie aux [spécification techniques](http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf), -->
-Le servo-moteur *Micro Servo 9G* utilise un signal PWM dont la période est de 20ms, et des cycles de travail allant de 0.5ms à 2.5ms (donc 2.5% à 12.5%). Les angles correspondants à chacun de ces cycles de travail sont les suivants:
+Pour l'exemple du *Micro Servo 9G*, on utilise un signal de période 20 ms et des impulsions de 0,5 ms à 2,5 ms (soit un cycle de travail de 2,5 % à 12,5 %). Ces valeurs et les angles correspondants dépendent du modèle : vérifiez la documentation du servo utilisé.
 
-![pwm2](/420-314/images/pwm2.png)
+![pwm2](/420-314/images/pwm-2.png)
 
 Les valeurs intermédiaires, par exemple -15°, +40°, etc. sont obtenues en faisant varier le cycle de travail entre 2.5% et 12.5%. Pour calculer le cycle de travail pour un angle donné, la logique est la suivante:
 
@@ -32,7 +32,7 @@ Les valeurs intermédiaires, par exemple -15°, +40°, etc. sont obtenues en fai
 + On additionne 2.5 car la valeur minimale possible de cycle est 2.5%
   
 Par exemple, pour un angle de +45°:
-![calc_dc](/420-314/images/calc_dc.png)
+![calc_dc](/420-314/images/calc-dc.png)
 
 + Un angle de +45° correspond à 135° à partir de la valeur minimale du cycle de travail (-90° + 45°). 
 + 135 / 180 = 0.75
@@ -42,11 +42,11 @@ Par exemple, pour un angle de +45°:
 Donc un cycle de 10% correspond à un angle de +45°.
 
 ## Contrôle avec _pigpio_
-Pour définir une période de 20ms avec la librairie *pigpio* on doit utiliser la méthode ``set_PWM_frequency(pi,f)`` où ``pi`` désigne l'instance de la classe "Pi" qu'on utilise dans le programme et ``f`` désigne la fréquence en Hz correpsondant à la période. 
+Pour définir une période de 20 ms avec la bibliothèque *pigpio*, on règle la fréquence PWM sur la broche du servo avec `pi.set_PWM_frequency(servo, f)`, où `pi` est l'instance de la classe `Pi`, `servo` le numéro GPIO et `f` la fréquence en Hz.
 
-> Sachant que 1Hz correspond à une période de 1ms, la formule pour convertir en Hz une période mesurée en ms est **Hz = 1000 / ms**.
+> La fréquence et la période sont réciproques : **f (Hz) = 1000 / période (ms)**.
 
-Aussi, il peut être utile de redéfinir la plage de valeurs possibles de cycles. En effet, la librairie ``pigpio`` utilise par défaut une plage de 256 valeurs lorsqu'on appelle la méthode ``set_PWM_dutycycle()``. Si on souhaite utiliser une plage de 100, ce qui serait utile si on représente les cycles comme des pourcentages, on doit appeler la méthode ``set_PWM_range(pi,max)`` où ``max`` correspond à la valeur maximale de la plage qu'on veut définir.
+Aussi, il peut être utile de redéfinir la plage de valeurs possibles du cycle de travail. La bibliothèque `pigpio` utilise par défaut une plage de 256 valeurs pour `set_PWM_dutycycle()`. Pour utiliser une plage de 100 correspondant à des pourcentages, on appelle `pi.set_PWM_range(servo, 100)`.
 
 
 ## Exemple 1
@@ -93,7 +93,7 @@ while True:
 
 ## Exercices
 
-1. Faites un programmes similaire à l'exmeple 2, mais l'utilisateur doit entrer un angle entre 0 et 180 degrés au lieu d'une valeur entre 2.5 et 12.5.
+1. Faites un programme similaire à l'exemple 2, mais l'utilisateur doit entrer un angle entre 0 et 180 degrés au lieu d'une valeur entre 2.5 et 12.5.
 <!--
 ```python
 import pigpio
@@ -115,5 +115,4 @@ while True:
 -->
 
 2. Au début du programme, votre servomoteur est à 0 degrés. Ensuite, à chaque clic d'un bouton Keystudio, l'angle augmente de 30 degrés. Lorsque l'angle atteint sa valeur maximale, on revient à 0.
-
 

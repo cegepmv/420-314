@@ -32,11 +32,10 @@ Exécutez ensuite le programme suivant :
 
 ```python
 import machine
-from pins import Pins 
 import time
 
 # Le module possède sa propre résistance, pas besoin de spécifier PULL_UP/DOWN
-bouton_module = machine.Pin(Pins.D3, machine.Pin.IN)
+bouton_module = machine.Pin(machine.Pin.board.D3, machine.Pin.IN)
 
 while True:
     print(bouton_module.value())
@@ -56,7 +55,6 @@ Lorsque vous exécutez ce programme, une série de "1" s'affiche en continu, et 
 
 ```python
 import machine
-from pins import Pins 
 import time
 
 bouton = machine.Pin(6, machine.Pin.IN)
@@ -81,11 +79,10 @@ while True:
 {{% expand title="Solution 2"%}}
 ```python
 import machine
-from pins import Pins 
 import time
 
 
-bouton = machine.Pin(Pins.D5, machine.Pin.IN)
+bouton = machine.Pin(machine.Pin.board.D5, machine.Pin.IN)
 cur = bouton.value()
 prev = cur
 
@@ -103,11 +100,10 @@ while True:
 {{% expand title="Solution 3" %}}
 ```py
 import machine
-from pins import Pins 
 import time
 
 # On configure le GPIO 5 en ENTREE avec la résistance de PULL_UP activée
-bouton = machine.Pin(Pins.D5, machine.Pin.IN)
+bouton = machine.Pin(machine.Pin.board.D5, machine.Pin.IN)
 cur = bouton.value()
 prev = cur
 compteur = 0
@@ -126,7 +122,7 @@ while True:
 import uasyncio as asyncio
 from machine import Pin
 
-btn = Pin(Pins.D5, Pin.IN, Pin.PULL_UP)
+btn = Pin(Pin.board.D5, Pin.IN, Pin.PULL_UP)
 print_buffer = []
 count = 0
 done_event = asyncio.Event()  # <-- L'objet événement
@@ -182,7 +178,9 @@ asyncio.run(main())
 
 Lorsqu'on connecte un simple bouton poussoir à une broche GPIO configurée en entrée (`IN`), une question physique se pose : **quel est l'état du signal lorsque le bouton n'est pas enfoncé ?**
 
+{{% notice style="warning" title="État flottant" %}}
 Si la broche est connectée à rien d'autre qu'au bouton, elle se trouve dans un **état flottant** (*floating*). Le microcontrôleur risque alors d'interpréter des parasites électriques ambiants comme des changements d'état aléatoires (des 0 et des 1 intempestifs).
+{{% /notice %}}
 
 Pour résoudre ce problème, on utilise des **résistances de tirage** :
 
@@ -204,12 +202,11 @@ L'ESP32 intègre directement des résistances de tirage logicielles, ce qui évi
 
 ```python
 import machine
-from pins import Pins 
 import time
 
 # Configuration d'une broche en entrée avec une résistance Pull-Up interne
 # Par défaut, le bouton renverra 1 (relâché) et 0 (pressé)
-bouton = machine.Pin(Pins.D5, machine.Pin.IN, machine.Pin.PULL_UP)
+bouton = machine.Pin(machine.Pin.board.D5, machine.Pin.IN, machine.Pin.PULL_UP)
 
 while True:
     print(bouton.value())

@@ -7,7 +7,7 @@ weight = 72
 
 Dans cet exemple nous allons utiliser le module de potentiomètre du kit *Keystudio* ("analog rotation sensor") pour générer un signal analogique, et nous verrons comment varier le ***gain*** pour modifier la qualité des données reçues.
 
-![ars](/420-314/images/ars.png?width=200px)
+![ars](/420-314/images/analog-rotation-sensor.png?width=200px)
 
 Après avoir connecté le convertisseur au Pi, il reste 6 broches inutilisées; parmi celles-ci 4 peuvent être utilisées pour recevoir des signaux analogiques: il s'agit de A0, A1, A2 et A3. Nous devons donc brancher une de ces 4 broches à celle qui correspond au signal envoyé par le senseur (la broche "S").
 
@@ -20,71 +20,69 @@ Le potentiomètre doit donc être connecté comme suit:
 Lancez le programme *testADC.py* de la [section précédente](/420-314/7-analogin/ads1115/#tester-la-communication) et observez ce qui se passe lorsque vous tournez le bouton.
 
 ## Interprétation des signaux analogiques
-Lorsqu'on tourne le potentiomètre, le voltage envoyé par celui-ci vers le convertisseur augmente ou diminue (selon le sens de rotation). Le convertisseur ADC reçoit ce signal électrique et le traduit en valeur numérique, puis l'envoit vers le RaspberryPi. 
+Lorsqu'on tourne le potentiomètre, la tension envoyée par celui-ci vers le convertisseur augmente ou diminue (selon le sens de rotation). Le convertisseur ADC reçoit ce signal électrique et le traduit en valeur numérique, puis l'envoie vers le Raspberry Pi.
 
 Ce signal envoyé par la puce ADC vers le Pi est une valeur stockée sur **16 bits** signé (i.e. positif et négatif). En théorie elle peut donc contenir 65536 valeurs distinctes, soit de `-32768` à `+32767`. Mais attention: _ce nombre n'est pas une mesure directe du voltage_. 
 
-Dans le programme, il y a deux méthodes pour accéder aux données envoyées par le module: 
-- `value()` retourne les données brutes, une valeur entre -32768 et 32767.
-- `voltage()` convertit ces données en voltage. _Les valeurs retournées sont le résultat d'un calcul_, elles ne correspondent pas à un voltage réel reçu par le _Pi_, et sont donc moins fiables.  
+Dans le programme, il y a deux propriétés pour accéder aux données envoyées par le module :
+- `value` retourne la conversion brute, une valeur signée entre -32768 et 32767.
+- `voltage` estime la tension mesurée à l'entrée de l'ADS1115 à partir de cette valeur et du gain configuré. Le Raspberry Pi reçoit les données numériques par I2C; il ne reçoit pas cette tension sur une broche GPIO.
 
-Le module ADS1115 est conçu pour recevoir des signaux entre -4.096V et +4.096V. Mais le potentiomètre, s'il est connecté sur 5V, envoit un signal entre 0 et 5V: sa valeur maximum dépasse donc celle que peut recevoir le module (+4.096V). Cela ne causera pas de dommages, mais les valeurs lues au-delà de cette limite seront erronées. Si vous branchez le potentiomètre sur 5V et que vous lancez le programme `testADC.py`, puis tournez le potentiomètre à son maximum, vous verrez que les valeurs commencent à devenir incohérentes à partir de 30000 environ.
+Avec un gain de 1, la plage de conversion différentielle de l'ADS1115 est de ±4,096 V. Cette plage ne signifie pas que l'on peut appliquer ces tensions directement à ses entrées : les broches doivent aussi respecter leurs limites électriques par rapport à VDD. Comme le module de cet exemple est alimenté en 3,3 V et que le potentiomètre fournit une tension entre 0 V et VDD, ne le branchez pas sur 5 V. Une tension hors des limites des broches peut endommager le convertisseur; au-delà de la plage de conversion, les résultats ne sont pas fiables. Pour lire un capteur dont la sortie dépasse VDD, utilisez un circuit d'adaptation approprié.
 
-Connectez maintenant le potentiomètre sur le courant 3.3V. Cette fois-ci lorsque vous le tournez au maximum, vous verrez que la valeur reçue est d'environ 26340: les valeurs sont bonnes car elles sont à l'intérieur des limites du convertisseur ADS1115.
+Connectez maintenant le potentiomètre sur la broche 3,3 V. La tension de sortie reste alors dans les limites électriques du convertisseur.
 
-> Il faut donc s'assurer que les valeurs envoyées au convertisseur ne dépassent pas le voltage maximum qu'il peut représenter sur les 16 bits. Donc les senseurs analogiques dont le signal sera traité par le convertisseur doivent toujours être alimentées par un courant de 3.3V.
+> Il faut respecter à la fois la plage de conversion choisie et les limites électriques des entrées. N'alimentez pas tous les capteurs automatiquement en 3,3 V : consultez leur documentation et adaptez leur signal si nécessaire.
 
 #### Gain
 
-Selon le senseur et le voltage du courant, les caractéristiques du signal envoyé peuvent être différentes. Comme on vient de le voir, il arrive que les limites des valeurs envoyées par le convertisseur ADS1115 ne correspondent pas exactement aux limites du courant envoyé par le senseur: avec un potentiomètre branché sur 3.3V, la valeur maximum du potentiomètre (3.3V) est inférieure au maximum du module ADS1115 (4.096V); avec un courant de 5V, le maximum du potentiomètre (5V) est supérieur à 4.096V. Mais il est possible d'ajuster le maximum du module ADS1115. 
-
-Le courant électrique peut être **amplifié** par le module ADS1115, et il est possible de contrôler cet effet dans nos programmes. La variable `GAIN`, passée (optionnellement) au constructeur `ADS1115()`, correspond au facteur d'amplification qu'on souhaite avoir. Par exemple, pour multiplier par 2 le signal, on appellera la fonction comme suit:
+La plage de conversion de l'ADS1115 peut être réglée avec son amplificateur à gain programmable (*PGA*). Ce réglage ne modifie pas la tension du capteur et n'envoie pas un signal amplifié vers le Raspberry Pi : il adapte la plage de conversion interne du convertisseur. Par exemple, on peut régler un gain de 2 ainsi :
 ```python
-data = AnalogIn(ads, 2) 
+ads = ADS1115(i2c, gain=2)
 ```
 
-Attention: le voltage _entrant_ qui vient du senseur ne change pas, ni le fait que c'est toujours sur 16 bits que le signal est représenté. Le gain amplifie le signal _sortant_, entre le module ADS1115 et le RaspberryPi.
+Attention : la tension _entrante_ du capteur ne change pas et la conversion est toujours représentée sur 16 bits. Avec un gain de 1, la plage différentielle est de ±4,096 V; avec un gain de 2, elle est de ±2,048 V. Ces plages de conversion ne remplacent pas les limites électriques des broches décrites plus haut.
 
-Par exemple, pour un signal de 1V avec un gain de 1, la valeur lue sera d'environ 7999 car:
+Par exemple, pour un signal différentiel de 1 V avec un gain de 1, la valeur lue sera d'environ 8000, car :
 ```
   1V        7999
 ------  =~  -----
 4.096V      32767
 ```
-Pour un signal de 1V avec un gain de 2, la valeur lue sera d'environ 16000 car le Pi reçoit un signal de 2V:
+Pour le même signal de 1 V avec un gain de 2, la valeur lue sera d'environ 16000, car la plage de conversion est deux fois plus petite :
 ```
-  2V        16000
+  1V        16000
 ------  =~  -----
-4.096V      32767
+2.048V      32767
 ```
-Le gain a donc aussi, inversement, l'effet de **diviser la limite maximale du voltage entrant**: avec un gain de 1, le convertisseur peut recevoir des valeurs allant jusqu'à 4.096V; avec un gain de 2, la valeur entrante maximum est de 2.048; etc. Encore une fois, ce n'est pas une limite physique, mais seulement une limite sur les valeurs qui peuvent être représentées sur les 16 bits.
+Augmenter le gain réduit donc la plage de conversion et permet de représenter de plus petites variations avec davantage de comptes numériques. Cela ne rend pas les broches capables de recevoir une tension supérieure à leurs limites électriques.
 
 Le tableau suivant donne les valeurs possibles de la variable GAIN et l'effet qu'elles ont sur le signal envoyé:
 
-![tblgain](/420-314/images/tblgain.png?width=400px)
+![tblgain](/420-314/images/table-gain.png?width=400px)
 
 > Il n'est pas possible de donner des valeurs de gain autre que celles du tableau: par exemple, des gains de 3 ou 32 ne sont pas possibles et causeront une erreur dans le programme.
 
 Ceci signifie que:
-+ Un gain de 1 permet de lire les voltages allant de -4.096V à 4.096V et donc, que la valeur 16bit de -32768 correspond à -4.096V et 32767 correspond à 4.096V.
-+ Un gain de 2 permet de lire les voltages allant de -2.048V à 2.048V et donc, que la valeur 16bit de -32768 correspond à -2.048V et 32767 correspond à 2.048V.
++ Un gain de 1 associe les valeurs numériques de -32768 à 32767 à la plage différentielle de -4,096 V à environ +4,096 V.
++ Un gain de 2 associe ces mêmes valeurs à la plage différentielle de -2,048 V à environ +2,048 V.
 + etc.
 
-En contrepartie, lorsque le gain augmente, il devient possible de détecter des plus petites variations de voltage car on a toujours 16bits pour représenter un ensemble de valeurs moins large. Par exemple, encore selon la table ci-haut:
+En contrepartie, lorsque le gain augmente, la résolution de conversion s'améliore : les mêmes 16 bits couvrent une plage plus petite. Par exemple, selon la table ci-haut :
 + Un gain de 1 permet de lire des variations de voltage de 0.1250mV.
 + Un gain de 2 permet de lire des variations de voltage de 0.0625mV.
 + etc.
 
 #### À quoi ça sert?
-Dans ce cours, on recommande que les senseurs dont le signal doit être converti par le module ADS1115 soient toujours connectés sur 3.3V. Si le voltage d'entrée est toujours le même, inférieur à 4.096V, à quoi peut donc servir la variable `GAIN`?
+Dans l'exemple du potentiomètre, on utilise une alimentation de 3,3 V pour que son signal reste dans les limites électriques du convertisseur. Le gain peut être utile lorsqu'un capteur produit un signal plus petit que la plage de conversion choisie, à condition que ce signal respecte toujours les limites électriques des broches.
 
 La réponse est que parfois, les senseurs ont des paramètres opérationnels très différents de ceux dans lesquels ils seront utilisés.
 
-Imaginez une application pour une épicerie qui mesure le poids d'un objet qu'on dépose sur un plateau. La composante électronique qui détecte le poids a peut-être une limite de 100kg: elle convertit des poids de 0-100kg en une valeur de 0-3.3V. Cette valeur de 0-3.3V sera elle-même convertie en une valeur de 0-32767. Mais dans notre application, on veut seulement peser des fruits ou des légumes. On ne pense jamais dépasser 10kg même dans les cas extrêmes. Donc dans les valeurs de 0-32767, seulement 10% seront utilisés (soit 0-3277 ou 0,33V).
+Imaginez une application pour une épicerie qui mesure le poids d'un objet déposé sur un plateau. Le capteur peut convertir une plage de 0 à 100 kg en une tension de 0 à 3,3 V. Si l'on veut peser au plus 10 kg, le signal utile ne dépassera que 0,33 V. Avec un gain de 1, cette tension correspond à environ 2640 comptes sur la plage de conversion de ±4,096 V.
 
-Si on définit un gain de 8, le voltage maximum (qui correspond à la valeur 32767) sera de 0,512V. On a donc une plus grande précision pour des variations de poids plus petites: les poids de 0-10kg correspondront à des valeurs de 0-21119. 
+Avec un gain de 8, la plage de conversion devient ±0,512 V; le même signal de 0,33 V correspond alors à environ 21119 comptes. Le convertisseur utilise ainsi davantage de ses comptes pour représenter la plage de poids utile, sans que cela augmente la précision intrinsèque du capteur.
 
-> Lorsque le gain augmente, la **précision** des valeurs lues augmente, mais l'écart entre les valeurs minimum et maximum diminue.
+> Lorsque le gain augmente, la **résolution** de conversion augmente, mais la plage mesurable diminue. La précision réelle dépend aussi du bruit et des autres caractéristiques du capteur et du convertisseur.
 
 
 ## Exercices
@@ -98,6 +96,7 @@ import pigpio
 
 from adafruit_ads1x15.ads1115 import ADS1115
 from adafruit_ads1x15.analog_in import AnalogIn
+from adafruit_ads1x15 import ads1x15
 
 # Constantes GPIO
 LED = 21
@@ -105,7 +104,7 @@ LED = 21
 # Initialisations
 i2c = busio.I2C(board.SCL, board.SDA)
 ads = ADS1115(i2c)
-data = AnalogIn(ads, 0)
+data = AnalogIn(ads, ads1x15.Pin.A0)
 pi = pigpio.pi()
 pi.set_mode(LED,pigpio.OUTPUT)
 
@@ -131,6 +130,7 @@ import pigpio
 
 from adafruit_ads1x15.ads1115 import ADS1115
 from adafruit_ads1x15.analog_in import AnalogIn
+from adafruit_ads1x15 import ads1x15
 
 # Constantes 
 LED = 21
@@ -139,7 +139,7 @@ MAX_VAL = 32767
 # Initialisations
 i2c = busio.I2C(board.SCL, board.SDA)
 ads = ADS1115(i2c)
-data = AnalogIn(ads, 0)
+data = AnalogIn(ads, ads1x15.Pin.A0)
 pi = pigpio.pi()
 pi.set_mode(LED,pigpio.OUTPUT)
 pi.set_PWM_range(LED,100)

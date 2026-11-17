@@ -23,7 +23,7 @@ Le but de ce projet est de concevoir un système interactif de base permettant d
 * 1 Microcontrôleur
 * 2 Boutons poussoirs (A et B)
 * 1 LED blanche (avec résistance de protection adaptée)
-* 1 LED de signalisation
+* 1 LED RGB
 * Fils de câblage et plaque d'essai (breadboard)
 
 #### 3. Travail demandé
@@ -36,10 +36,10 @@ Le but de ce projet est de concevoir un système interactif de base permettant d
 
 
 {{% expand title="Solution 1" %}}
-<img src="exo1-1.jpg" alt="exo1" style="transform: rotate(-90deg);" />
-<img src="exo1-2.jpg" alt="exo1" style="transform: rotate(-90deg);" />
-<img src="exo1-3.jpg" alt="exo1" style="transform: rotate(-90deg);" />
-<img src="exo1-4.jpg" alt="exo1" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo1-1.jpg" alt="exo1" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo1-2.jpg" alt="exo1" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo1-3.jpg" alt="exo1" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo1-4.jpg" alt="exo1" style="transform: rotate(-90deg);" />
 
 
 {{% /expand %}}
@@ -67,30 +67,29 @@ Développer le programme en respectant les exigences fonctionnelles ci-dessous :
 {{% expand title="Solution 2" %}}
 Il y a un bouton de trop ici. Il sera utilisé à la solution 3.
 
-<img src="exo2-1.jpg" alt="exo2" style="transform: rotate(-90deg);" />
-<img src="exo2-2.jpg" alt="exo2" style="transform: rotate(-90deg);" />
-<img src="exo2-3.jpg" alt="exo2" style="transform: rotate(-90deg);" />
-<img src="exo2-4.jpg" alt="exo2" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo2-1.jpg" alt="exo2" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo2-2.jpg" alt="exo2" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo2-3.jpg" alt="exo2" style="transform: rotate(-90deg);" />
+<img src="/420-314/images/intra1-exo2-4.jpg" alt="exo2" style="transform: rotate(-90deg);" />
 
 ```python
 import machine
-from pins import Pins 
 import time
 
 # Mise en place
-rgb_vert = machine.Pin(Pins.D2, machine.Pin.OUT)
-rgb_rouge = machine.Pin(Pins.D3, machine.Pin.OUT)
-rgb_blue = machine.Pin(Pins.D4, machine.Pin.OUT)
+rgb_vert = machine.Pin(machine.Pin.board.D2, machine.Pin.OUT)
+rgb_rouge = machine.Pin(machine.Pin.board.D3, machine.Pin.OUT)
+rgb_blue = machine.Pin(machine.Pin.board.D4, machine.Pin.OUT)
 
-sign_vert = machine.Pin(Pins.D5, machine.Pin.OUT)
-sign_jaune = machine.Pin(Pins.D6, machine.Pin.OUT)
-sign_rouge = machine.Pin(Pins.D7, machine.Pin.OUT)
+sign_vert = machine.Pin(machine.Pin.board.D5, machine.Pin.OUT)
+sign_jaune = machine.Pin(machine.Pin.board.D6, machine.Pin.OUT)
+sign_rouge = machine.Pin(machine.Pin.board.D7, machine.Pin.OUT)
 
-led = machine.Pin(Pins.D8, machine.Pin.OUT)
+led = machine.Pin(machine.Pin.board.D8, machine.Pin.OUT)
 
-btn_B_rgb = machine.Pin(Pins.D9, machine.Pin.IN, machine.Pin.PULL_DOWN)
-btn_B_sign = machine.Pin(Pins.D10, machine.Pin.IN, machine.Pin.PULL_DOWN)
-btn_A = machine.Pin(Pins.D11, machine.Pin.IN, machine.Pin.PULL_DOWN)
+btn_B_rgb = machine.Pin(machine.Pin.board.D9, machine.Pin.IN, machine.Pin.PULL_DOWN)
+btn_B_sign = machine.Pin(machine.Pin.board.D10, machine.Pin.IN, machine.Pin.PULL_DOWN)
+btn_A = machine.Pin(machine.Pin.board.D11, machine.Pin.IN, machine.Pin.PULL_DOWN)
 
 # Tests et initialisations
 rgb_vert.value(1)
@@ -231,23 +230,22 @@ Le montage est le même qu'à la solution 2, mais vous pouvez ignorer les LEDs d
 
 ```python
 import machine
-from pins import Pins 
 import time
 import random
 # Mise en place
-rgb_vert = machine.Pin(Pins.D2, machine.Pin.OUT)
-rgb_rouge = machine.Pin(Pins.D3, machine.Pin.OUT)
-rgb_blue = machine.Pin(Pins.D4, machine.Pin.OUT)
+rgb_vert = machine.Pin(machine.Pin.board.D2, machine.Pin.OUT)
+rgb_rouge = machine.Pin(machine.Pin.board.D3, machine.Pin.OUT)
+rgb_blue = machine.Pin(machine.Pin.board.D4, machine.Pin.OUT)
 
-sign_vert = machine.Pin(Pins.D5, machine.Pin.OUT)
-sign_jaune = machine.Pin(Pins.D6, machine.Pin.OUT)
-sign_rouge = machine.Pin(Pins.D7, machine.Pin.OUT)
+sign_vert = machine.Pin(machine.Pin.board.D5, machine.Pin.OUT)
+sign_jaune = machine.Pin(machine.Pin.board.D6, machine.Pin.OUT)
+sign_rouge = machine.Pin(machine.Pin.board.D7, machine.Pin.OUT)
 
-led = machine.Pin(Pins.D8, machine.Pin.OUT)
+led = machine.Pin(machine.Pin.board.D8, machine.Pin.OUT)
 
 
-btn_A = machine.Pin(Pins.D10, machine.Pin.IN, machine.Pin.PULL_DOWN)
-btn_B = machine.Pin(Pins.D11, machine.Pin.IN, machine.Pin.PULL_DOWN)
+btn_A = machine.Pin(machine.Pin.board.D10, machine.Pin.IN, machine.Pin.PULL_DOWN)
+btn_B = machine.Pin(machine.Pin.board.D11, machine.Pin.IN, machine.Pin.PULL_DOWN)
 
 # Tests et initialisations
 rgb_vert.value(1)

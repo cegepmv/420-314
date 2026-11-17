@@ -23,7 +23,7 @@ Le principe est assez simple. Si on alterne très rapidement le courant entre 3.
 
 Si la durée de l'impulsion de 3.3V est égale à la durée du signal de 0V, la moyenne perçue sera de 1.65V (50% de 3.3V). Cette moyenne dépend du rapport entre le temps "haut" et le temps "bas" sur une **période** donnée. 
 
-![pwm1](/420-314/images/pwm1.png)
+![pwm1](/420-314/images/pwm-1.png)
 On appelle *cycle de travail* (en anglais, **duty cycle**) cette proportion entre la durée de l'impulsion et la durée totale de la période. 
 - Un *duty cycle* de 20% donnera une tension moyenne d'environ 0.66V (20% de 3.3V).
 - Un *duty cycle* de 80% donnera environ 2.64V.
@@ -43,7 +43,6 @@ Dans ce programme, on allume graduellement une LED connectée à la broche GPIO 
 
 ```python
 from machine import Pin, PWM
-from Pins import Pins 
 import time
 
 # Configuration de la broche GPIO 21 en mode PWM
@@ -85,11 +84,10 @@ except KeyboardInterrupt:
 2. Faites un programme qui fait augmenter, puis diminuer graduellement la luminosité de la LED, et continue ce cycle à l'infini.
 3. Faites un programme qui demande à l'utilisateur d'entrer un pourcentage de luminosité (0-100) au clavier et ajuste la LED en conséquence. *(Indice : vous devrez convertir le pourcentage 0-100 en une valeur de duty cycle allant de 0-1023)*.
 
-### {{% expand "Solution 1." %}}
+{{% expand "Solution 1." %}}
 
 ```python
 from machine import Pin, PWM
-from Pins import Pins 
 import time
 
 led_pin = Pin(21, Pin.OUT)
@@ -117,11 +115,10 @@ except KeyboardInterrupt:
 
 {{% /expand %}}
 
-### {{% expand "Solution 2." %}}
+{{% expand "Solution 2." %}}
 
 ```python
 from machine import Pin, PWM
-from Pins import Pins 
 import time
 
 led_pin = Pin(21, Pin.OUT)
@@ -154,11 +151,10 @@ except KeyboardInterrupt:
 
 {{% /expand %}}
 
-### {{% expand "Solution 3." %}}
+{{% expand "Solution 3." %}}
 
 ```python
 from machine import Pin, PWM
-from Pins import Pins 
 led_pin = Pin(21, Pin.OUT)
 pwm_led = PWM(led_pin)
 pwm_led.freq(1000)
@@ -187,5 +183,4 @@ except ValueError:
 
 * [Documentation officielle MicroPython - Classe PWM](https://docs.micropython.org/en/latest/library/machine.PWM.html)
 * [U=RI | Qu'est-ce que la PWM?](https://www.youtube.com/watch?v=CSReyYwbGRY)
-
 

@@ -53,7 +53,9 @@ La fonction `input()` sert à entrer du texte à partir de la ligne de commande.
 s = input("SVP entrez votre nom: ")
 print("Bonjour " + s)
 ```
-Attention, cette fonction retourne toujours une chaîne de caractères. Si on veut saisir un nombre, il faudra la convertir:
+{{% notice style="info" title="Saisie numérique" %}}
+La fonction `input()` retourne toujours une chaîne de caractères. Pour saisir un nombre, il faut convertir la valeur retournée :
+{{% /notice %}}
 ```python
 n1 = input("SVP entrez un nombre: ")
 n2 = input("SVP entrez un autre nombre: ")

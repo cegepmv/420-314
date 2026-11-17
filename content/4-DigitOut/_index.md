@@ -10,13 +10,13 @@ Sur un *ESP32*, les composantes électroniques peuvent être utilisées de deux 
 
 Les composantes "input", qui envoient un signal vers l'*ESP32*, sont nommées ***senseurs***.
 
-Les composantes "output", qui reçoivent un signal de l'*ESP32*, sont généralement nommés ***actuateurs***.
+Les composantes "output", qui reçoivent un signal de l'*ESP32*, sont généralement nommées ***actuateurs***.
 
 Dans cette section, nous verrons comment utiliser le GPIO pour **envoyer** un signal (en _output_) à des composantes.
 
 ## Composantes électroniques
 
-![Image pins](/420-314/images/pinsESP32.png)
+![Image pins](/420-314/images/pins-esp32.png)
 *Figure 1 : Plan de correspondance des broches de l’Arduino Nano ESP32. Source : [Arduino Docs](https://docs.arduino.cc/tutorials/nano-esp32/pin-setup/) (Consulté en 2026).*
 
 GPIO signifie "General Purpose Input/Output" et désigne la série de broches métalliques qui servent à envoyer ou recevoir des signaux électriques sur un microcontrôleur.
@@ -27,19 +27,20 @@ L'Arduino Nano ESP32 en comprend 30 (réparties sur deux rangées) :
 + 2 broches pour le courant négatif ("ground" / GND)
 + 22 broches génériques d'E/S (compatibles 3.3V, courant max ~40mA par broche)
 
-> **Attention au double mapping !** Contrairement à d'autres cartes, l'Arduino Nano ESP32 a deux numérotations. Les étiquettes imprimées sur la carte (ex: `D2`, `A0`) correspondent au standard Arduino. Mais en **MicroPython**, le système utilise par défaut les numéros de **GPIO natifs** du processeur ESP32-S3. Par exemple, la broche notée `D2` sur la carte correspond en réalité au `GPIO 5`.
+{{% notice style="warning" title="Correspondance des broches" %}}
+Contrairement à d'autres cartes, l'Arduino Nano ESP32 a deux numérotations. Les étiquettes imprimées sur la carte (ex. : `D2`, `A0`) correspondent au standard Arduino. En **MicroPython**, `machine.Pin.board` permet de désigner les broches par ces noms de carte; les numéros GPIO natifs du processeur ESP32-S3 sont différents. Par exemple, la broche notée `D2` correspond au `GPIO 5`.
+{{% /notice %}}
 
-Dans un programme en *MicroPython*, c'est le numéro du GPIO natif qui doit être utilisé par défaut. Par exemple, dans le programme suivant, le nombre **5** réfère au numéro de GPIO de l'ESP32, ce qui contrôlera physiquement la broche labellisée `D2` sur la carte :
+En *MicroPython*, on peut utiliser le nom de la broche imprimé sur la carte avec `machine.Pin.board`. Par exemple, `machine.Pin.board.D2` désigne la broche `D2` de la carte :
 
 ```python
 import machine
-from Pins import Pins 
 import time
 
-# Configuration du GPIO 5 (Broche D2 sur la carte) en mode SORTIE
-pin = machine.Pin(5, machine.Pin.OUT)
+# Configuration de la broche D2 en mode SORTIE
+pin = machine.Pin(machine.Pin.board.D2, machine.Pin.OUT)
 
-# On envoie un signal (3.3V) sur le GPIO 5 durant 1 seconde
+# On envoie un signal (3.3V) sur D2 durant 1 seconde
 pin.value(1)
 time.sleep(1)
 
@@ -48,49 +49,15 @@ pin.value(0)
 
 ```
 
-Dans ce programme, la bibliothèque native `machine` est utilisée pour interagir directement avec le matériel de l'ESP32.
+Dans ce programme, `machine.Pin.board.D2` désigne la broche `D2` de la carte, et la bibliothèque native `machine` permet d'interagir avec le matériel de l'ESP32.
 
 {{% notice style="info" title="Astuce MicroPython" %}}
-Pour éviter de devoir consulter le tableau des correspondances à chaque fois ajoute ce fichier à tous tes projets.
+Utilisez `machine.Pin.board` pour désigner directement une broche par le nom imprimé sur la carte. Par exemple :
 ```python
-# Fichier de correspondance pour Arduino Nano ESP32 générique
-from machine import Pin as _Pin
+import machine
 
-class Pins:
-    OUT = _Pin.OUT
-    IN = _Pin.IN
-    PULL_UP = _Pin.PULL_UP
-    PULL_DOWN = _Pin.PULL_DOWN
-    
-    # Correspondance des broches (Sérigraphie -> GPIO)
-    D0 = 44
-    D1 = 43
-    D2 = 5
-    D3 = 6
-    D4 = 7
-    D5 = 8
-    D6 = 9
-    D7 = 10
-    D8 = 17
-    D9 = 18
-    D10 = 21
-    D11 = 38
-    D12 = 47
-    D13 = 48
-    A0 = 1
-    A1 = 2
-    A2 = 3
-    A3 = 4
-    A4 = 11
-    A5 = 12
-    A6 = 13
-    A7 = 14
+pin = machine.Pin(machine.Pin.board.D2, machine.Pin.OUT)
 ```
-
-
-Tu peux remplacer la configuration de la broche par :
-`from Pins import Pins`
-`pin = Pin(Pins.D2, Pin.OUT)`
 {{% /notice %}}
 
 {{% notice style="green" title="Référence" %}}
@@ -106,10 +73,10 @@ Le signal envoyé par l'ESP32 sur les broches GPIO est un courant électrique de
 Dans ce qui suit, nous allons alimenter une LED simple en utilisant le GPIO dans un programme MicroPython.
 
 Connectez votre *ESP32* à la plaquette de prototypage (breadboard) comme suit :
-+ Broche **GND** (Ground) dans la rangée "-"
-+ Broche **G4** (GPIO 4) dans la rangée "+"
++ Broche **GND** (Ground) au rail négatif de la plaquette.
++ Broche **G4** (GPIO 4) à une rangée libre, et non au rail positif.
 
-> Sachant qu'une LED ordinaire doit recevoir un courant de 20mA sous 3.3V, quelle est idéalement la résistance qu'on doit utiliser ?
+Branchez ensuite en série la résistance et la LED entre **G4** et **GND** (anode de la LED du côté de G4). Choisissez une résistance à partir de la tension directe de la LED et d'un courant qui respecte les limites recommandées du GPIO : $R = (3{,}3\text{ V} - V_f) / I$.
 
 Posez ensuite une LED et une résistance sur la plaquette, puis lancez le programme de l'exemple suivant.
 
@@ -161,10 +128,35 @@ Avec une LED ordinaire, c'est en envoyant un courant positif qu'on l'allume. Dan
 {{% /notice %}}
 
 ## Exercices
-1. Faire un programme qui demande à l'utilisateur d'entrer un nombre entier et clignote une LED à toutes les secondes le nombre de fois que l'utilisateur à indiqué.
+1. Faire un programme qui demande à l'utilisateur d'entrer un nombre entier et clignote une LED à toutes les secondes le nombre de fois que l'utilisateur a indiqué.
 1. Faire un programme qui fait clignoter la LED Keyestudio à chaque seconde (en boucle infinie).
 1. Connectez une LED RGB sur une autre broche GPIO (ex: GPIO 5) et faites un programme qui fait clignoter les deux LED en alternance (lorsqu'une est éteinte, l'autre est allumée). La LED RGB doit être jaune.
+
 {{% expand "Solution 1." %}}
+
+```python
+from machine import Pin
+import time
+
+led = Pin(4, Pin.OUT)
+led.off()
+
+while True:
+    try:
+        nombre = int(input("Combien de fois faire clignoter la LED ? "))
+        if nombre < 0:
+            print("Entrez un nombre positif ou nul.")
+            continue
+        break
+    except ValueError:
+        print("Entrez un nombre entier.")
+
+for _ in range(nombre):
+    led.on()
+    time.sleep(1)
+    led.off()
+    time.sleep(1)
+```
 
 {{% /expand %}}
 
@@ -192,12 +184,11 @@ while True:
 
 import machine
 import time
-from pins import Pins
 # La broche 2 contrôle souvent la LED bleue intégrée
-led = machine.Pin(Pins.D6, machine.Pin.OUT)
-R =  machine.Pin(Pins.D3, machine.Pin.OUT)
-G =  machine.Pin(Pins.D4, machine.Pin.OUT)
-B =  machine.Pin(Pins.D2, machine.Pin.OUT)
+led = machine.Pin(machine.Pin.board.D6, machine.Pin.OUT)
+R =  machine.Pin(machine.Pin.board.D3, machine.Pin.OUT)
+G =  machine.Pin(machine.Pin.board.D4, machine.Pin.OUT)
+B =  machine.Pin(machine.Pin.board.D2, machine.Pin.OUT)
 
 R.value(1)
 G.value(1)
@@ -220,6 +211,3 @@ while True:
 ```
 
 {{% /expand %}}
-
-
-

@@ -9,13 +9,13 @@ Les LED RGB ("Light Emitting Diode Red, Green, Blue") sont des diodes électrolu
 
 Dans n'importe quel type de diode, on nomme **anode** la broche *positive* et **cathode** la broche *négative*. Par exemple pour une LED simple:
 
-![ledpoles](/420-314/images/ledpoles.png?width=300px)
+![ledpoles](/420-314/images/led-poles.png?width=300px)
 
 Dans le cas d'une LED RGB, les choses sont un peu différentes. Le fait qu'elles aient une source d'alimentation pour 3 couleurs permet de regrouper des broches.
 
 Les LED RGB à **anode commune** et à **cathode commune** sont deux configurations différentes pour ce type de LED; elles diffèrent par la manière dont elles sont connectées électriquement:
 
-![rgbtypes](/420-314/images/rgbtypes.png?width=400px)
+![rgbtypes](/420-314/images/rgb-types.png?width=400px)
 
 ## Cathode commune
 Dans une *LED RGB à cathode commune*, les cathodes (-) de chaque LED interne sont connectées ensemble et sortent sous forme d'une seule broche commune (la LED RGB dans *TinkerCAD* est de ce type).
@@ -30,7 +30,7 @@ Pour allumer une couleur spécifique sur une LED RGB à anode commune, il faut c
 > La LED RGB du module Keystudio KS0522 est une LED à anode commune. Il faut donc envoyer un courant positif sur l'anode et les broches qu'on veut garder éteintes, et un courant négatif sur les broches qu'on veut allumer.
 
 ## Matériel requis
-![ksrgbled](/420-314/images/ksrgbled.png?width=150px)
+![ksrgbled](/420-314/images/keyestudio-rgb-led.png?width=150px)
 
 ## Connexions
 Dans cet exemple nous utiliserons les broches suivantes du *RaspberryPi*:

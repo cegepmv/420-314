@@ -248,14 +248,18 @@ configCamera(True, False, True)
 Contrairement au Raspberry Pi où certaines bibliothèques acceptent des entiers bruts, l'API `machine.I2C` de MicroPython exige une structure de type tableau d'octets (`bytes` ou `bytearray`) pour envoyer des données, même s'il n'y a qu'un seul octet à transmettre !
 
 
-# MAtrice LED 8x8
+# Matrice LED 8x8
 
 Voici où les connecter physiquement :
 
-* 🔌 **SDA** ➔ Se branche sur la broche **A4**
-* 🔌 **SCL** ➔ Se branche sur la broche **A5**
-* **VCC** ou **V+** du module ➔ Se branche sur la broche **3.3V** de l'Arduino.
-* **GND** du module ➔ Se branche sur une broche **GND** (masse) de l'Arduino.
+* **SDA** : broche **A4**
+* **SCL** : broche **A5**
+* **VCC** ou **V+** du module : broche **3.3V** de l'Arduino.
+* **GND** du module : broche **GND** (masse) de l'Arduino.
+
+{{% notice style="warning" title="Vérifier le câblage" %}}
+Ces broches correspondent au câblage utilisé dans les exemples pour l'Arduino Nano ESP32. Vérifiez la tension d'alimentation requise par votre module avant de le brancher.
+{{% /notice %}}
 
 
 ---
